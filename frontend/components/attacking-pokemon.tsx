@@ -9,6 +9,7 @@ import { Pokemon } from "../models/pokemon";
 import { StatsRank } from "../models/stats-rank";
 import { StatusAilment } from "../models/status-ailment";
 import { TeraType } from "../models/tera-type";
+import { Type } from "../models/type";
 
 type Props = {
   attackingPokemonStatus: AttackingPokemonStatus;
@@ -22,6 +23,7 @@ const AttackingPokemon: React.FC<Props> = ({
   const [showPokemonModal, setShowPokemonModal] = useState(false);
   const [showMoveModal, setShowMoveModal] = useState(false);
   const [expandStats, setExpandStats] = useState(false);
+  const [expandRank, setExpandRank] = useState(false);
 
   const [pokemonList, setPokemonList] = useState(
     Pokemon.listAllValidSVPokemons()
@@ -510,12 +512,108 @@ const AttackingPokemon: React.FC<Props> = ({
     onUpdate(newValue);
   };
 
+  const onDefenseRankUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      attackingPokemonStatus.ev,
+      attackingPokemonStatus.nature,
+      new StatsRank(
+        attackingPokemonStatus.statsRank.attack,
+        parseInt(e.target.value),
+        attackingPokemonStatus.statsRank.spAtk,
+        attackingPokemonStatus.statsRank.spDef,
+        attackingPokemonStatus.statsRank.speed
+      ),
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpAtkRankUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      attackingPokemonStatus.ev,
+      attackingPokemonStatus.nature,
+      new StatsRank(
+        attackingPokemonStatus.statsRank.attack,
+        attackingPokemonStatus.statsRank.defense,
+        parseInt(e.target.value),
+        attackingPokemonStatus.statsRank.spDef,
+        attackingPokemonStatus.statsRank.speed
+      ),
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpDefRankUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      attackingPokemonStatus.ev,
+      attackingPokemonStatus.nature,
+      new StatsRank(
+        attackingPokemonStatus.statsRank.attack,
+        attackingPokemonStatus.statsRank.defense,
+        attackingPokemonStatus.statsRank.spAtk,
+        parseInt(e.target.value),
+        attackingPokemonStatus.statsRank.speed
+      ),
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpeedRankUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      attackingPokemonStatus.ev,
+      attackingPokemonStatus.nature,
+      new StatsRank(
+        attackingPokemonStatus.statsRank.attack,
+        attackingPokemonStatus.statsRank.defense,
+        attackingPokemonStatus.statsRank.spAtk,
+        attackingPokemonStatus.statsRank.spDef,
+        parseInt(e.target.value)
+      ),
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
   const onMoveFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setShowMoveModal(true);
   };
 
-  const onTeraTypeUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onTeraTypeUpdate = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
       attackingPokemonStatus.level,
@@ -645,6 +743,10 @@ const AttackingPokemon: React.FC<Props> = ({
 
   const onExpandStatsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setExpandStats(!expandStats);
+  };
+
+  const onExpandRankClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setExpandRank(!expandRank);
   };
 
   const onSelectMoveUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1191,14 +1293,115 @@ const AttackingPokemon: React.FC<Props> = ({
             </div>
           </div>
           <div className="space-y-1">
-            <div>
-              <label className="text-sm">攻撃ランク</label>
-              <input
-                type="number"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                onChange={onAttackRankUpdate}
-                value={attackingPokemonStatus.statsRank.attack.toString()}
-              ></input>
+            <div className="space-y-2">
+              <div className="flex flex-col">
+                <div className="flex items-center justify-between">
+                  <h6 className="text-sm font-bold leading-none text-gray-900">
+                    ランク
+                  </h6>
+                </div>
+                {expandRank ||
+                attackingPokemonStatus.move.category.equals(
+                  MoveCategory.fromNameEn("Physical")
+                ) ? (
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_attack_rank"
+                      className="text-sm"
+                    >
+                      攻撃
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_attack_rank"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onAttackRankUpdate}
+                      value={attackingPokemonStatus.statsRank.attack.toString()}
+                    ></input>
+                  </div>
+                ) : null}
+                {expandRank ? (
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_defense_rank"
+                      className="text-sm"
+                    >
+                      防御
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_defense_rank"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onDefenseRankUpdate}
+                      value={attackingPokemonStatus.statsRank.defense.toString()}
+                    ></input>
+                  </div>
+                ) : null}
+                {expandRank ||
+                attackingPokemonStatus.move.category.equals(
+                  MoveCategory.fromNameEn("Special")
+                ) ? (
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_sp_atk_rank"
+                      className="text-sm"
+                    >
+                      特攻
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_sp_atk_rank"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onSpAtkRankUpdate}
+                      value={attackingPokemonStatus.statsRank.spAtk.toString()}
+                    ></input>
+                  </div>
+                ) : null}
+                {expandRank ? (
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_sp_def_rank"
+                      className="text-sm"
+                    >
+                      特防
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_sp_def_rank"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onSpDefRankUpdate}
+                      value={attackingPokemonStatus.statsRank.spDef.toString()}
+                    ></input>
+                  </div>
+                ) : null}
+                {expandRank ? (
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_attack_rank"
+                      className="text-sm"
+                    >
+                      素早さ
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_speed_rank"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onSpeedRankUpdate}
+                      value={attackingPokemonStatus.statsRank.speed.toString()}
+                    ></input>
+                  </div>
+                ) : null}
+              </div>
+              <div className="flex flex-row-reverse">
+                <button
+                  type="button"
+                  id="expand_stats"
+                  className="bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded"
+                  onClick={onExpandRankClick}
+                >
+                  {expandRank ? "隠す" : "他のランクを変更する"}
+                </button>
+              </div>
             </div>
             <div>
               <label htmlFor="attacking_pokemon_move" className="text-sm">
@@ -1212,6 +1415,7 @@ const AttackingPokemon: React.FC<Props> = ({
                 defaultValue={attackingPokemonStatus.move.nameJp.toString()}
               ></input>
               <div className="flex space-x-1 text-xs">
+                <span>{attackingPokemonStatus.move.category.nameJp}</span>
                 <span>{attackingPokemonStatus.move.type.nameJp}</span>
                 <span>威力{attackingPokemonStatus.move.power}</span>
                 <span>PP{attackingPokemonStatus.move.pp}</span>
@@ -1221,13 +1425,19 @@ const AttackingPokemon: React.FC<Props> = ({
               <label htmlFor="attacking_pokemon_tera_type" className="text-sm">
                 テラスタイプ
               </label>
-              <input
-                type="text"
+              <select
                 id="attacking_pokemon_tera_type"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full text-gray-700 py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 onChange={onTeraTypeUpdate}
-                value={attackingPokemonStatus.teraType.id.toString()}
-              ></input>
+                defaultValue={"0"}
+              >
+                <option value="0">無効</option>
+                {Type.listAllTypes().map((e) => (
+                  <option key={e.id} value={e.id}>
+                    {e.nameJp}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <label htmlFor="attacking_pokemon_ability" className="text-sm">

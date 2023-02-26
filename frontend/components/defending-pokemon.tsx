@@ -10,6 +10,7 @@ import { Pokemon } from "../models/pokemon";
 import { StatsRank } from "../models/stats-rank";
 import { StatusAilment } from "../models/status-ailment";
 import { TeraType } from "../models/tera-type";
+import { Type } from "../models/type";
 
 type Props = {
   attackingPokemonStatus: AttackingPokemonStatus;
@@ -24,6 +25,7 @@ const DefendingPokemon: React.FC<Props> = ({
 }) => {
   const [showPokemonModal, setShowPokemonModal] = useState(false);
   const [expandStats, setExpandStats] = useState(false);
+  const [expandRank, setExpandRank] = useState(false);
 
   const [pokemonList, setPokemonList] = useState(
     Pokemon.listAllValidSVPokemons()
@@ -451,6 +453,28 @@ const DefendingPokemon: React.FC<Props> = ({
     onUpdate(newValue);
   };
 
+  const onAttackRankUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new DefendingPokemonStatus(
+      defendingPokemonStatus.pokemon,
+      defendingPokemonStatus.level,
+      defendingPokemonStatus.iv,
+      defendingPokemonStatus.ev,
+      defendingPokemonStatus.nature,
+      new StatsRank(
+        parseInt(e.target.value),
+        defendingPokemonStatus.statsRank.defense,
+        defendingPokemonStatus.statsRank.spAtk,
+        defendingPokemonStatus.statsRank.spDef,
+        defendingPokemonStatus.statsRank.speed
+      ),
+      defendingPokemonStatus.teraType,
+      defendingPokemonStatus.ability,
+      defendingPokemonStatus.item,
+      defendingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
   const onDefenseRankUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = new DefendingPokemonStatus(
       defendingPokemonStatus.pokemon,
@@ -473,7 +497,73 @@ const DefendingPokemon: React.FC<Props> = ({
     onUpdate(newValue);
   };
 
-  const onTeraTypeUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onSpAtkRankUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new DefendingPokemonStatus(
+      defendingPokemonStatus.pokemon,
+      defendingPokemonStatus.level,
+      defendingPokemonStatus.iv,
+      defendingPokemonStatus.ev,
+      defendingPokemonStatus.nature,
+      new StatsRank(
+        defendingPokemonStatus.statsRank.attack,
+        defendingPokemonStatus.statsRank.defense,
+        parseInt(e.target.value),
+        defendingPokemonStatus.statsRank.spDef,
+        defendingPokemonStatus.statsRank.speed
+      ),
+      defendingPokemonStatus.teraType,
+      defendingPokemonStatus.ability,
+      defendingPokemonStatus.item,
+      defendingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpDefRankUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new DefendingPokemonStatus(
+      defendingPokemonStatus.pokemon,
+      defendingPokemonStatus.level,
+      defendingPokemonStatus.iv,
+      defendingPokemonStatus.ev,
+      defendingPokemonStatus.nature,
+      new StatsRank(
+        defendingPokemonStatus.statsRank.attack,
+        defendingPokemonStatus.statsRank.defense,
+        defendingPokemonStatus.statsRank.spAtk,
+        parseInt(e.target.value),
+        defendingPokemonStatus.statsRank.speed
+      ),
+      defendingPokemonStatus.teraType,
+      defendingPokemonStatus.ability,
+      defendingPokemonStatus.item,
+      defendingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpeedRankUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new DefendingPokemonStatus(
+      defendingPokemonStatus.pokemon,
+      defendingPokemonStatus.level,
+      defendingPokemonStatus.iv,
+      defendingPokemonStatus.ev,
+      defendingPokemonStatus.nature,
+      new StatsRank(
+        defendingPokemonStatus.statsRank.attack,
+        defendingPokemonStatus.statsRank.defense,
+        defendingPokemonStatus.statsRank.spAtk,
+        defendingPokemonStatus.statsRank.spDef,
+        parseInt(e.target.value)
+      ),
+      defendingPokemonStatus.teraType,
+      defendingPokemonStatus.ability,
+      defendingPokemonStatus.item,
+      defendingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onTeraTypeUpdate = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = new DefendingPokemonStatus(
       defendingPokemonStatus.pokemon,
       defendingPokemonStatus.level,
@@ -574,6 +664,10 @@ const DefendingPokemon: React.FC<Props> = ({
 
   const onExpandStatsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setExpandStats(!expandStats);
+  };
+
+  const onExpandRankClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setExpandRank(!expandRank);
   };
 
   const stats = defendingPokemonStatus.calculateStats();
@@ -1102,30 +1196,133 @@ const DefendingPokemon: React.FC<Props> = ({
             </div>
           </div>
           <div className="space-y-1">
-            <div>
-              <label
-                htmlFor="defending_pokemon_defense_rank"
-                className="text-sm"
-              >
-                防御ランク
-              </label>
-              <input
-                type="number"
-                id="defending_pokemon_defense_rank"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                onChange={onDefenseRankUpdate}
-              ></input>
+            <div className="space-y-2">
+              <div className="flex flex-col">
+                <div className="flex items-center justify-between">
+                  <h6 className="text-sm font-bold leading-none text-gray-900">
+                    ランク
+                  </h6>
+                </div>
+                {expandRank ||
+                attackingPokemonStatus.move.category.equals(
+                  MoveCategory.fromNameEn("Physical")
+                ) ? (
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="defending_pokemon_attack_rank"
+                      className="text-sm"
+                    >
+                      攻撃
+                    </label>
+                    <input
+                      type="number"
+                      id="defending_pokemon_attack_rank"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onAttackRankUpdate}
+                      value={defendingPokemonStatus.statsRank.attack.toString()}
+                    ></input>
+                  </div>
+                ) : null}
+                {expandRank ? (
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="defending_pokemon_defense_rank"
+                      className="text-sm"
+                    >
+                      防御
+                    </label>
+                    <input
+                      type="number"
+                      id="defending_pokemon_defense_rank"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onDefenseRankUpdate}
+                      value={defendingPokemonStatus.statsRank.defense.toString()}
+                    ></input>
+                  </div>
+                ) : null}
+                {expandRank ||
+                attackingPokemonStatus.move.category.equals(
+                  MoveCategory.fromNameEn("Special")
+                ) ? (
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="defending_pokemon_sp_atk_rank"
+                      className="text-sm"
+                    >
+                      特攻
+                    </label>
+                    <input
+                      type="number"
+                      id="defending_pokemon_sp_atk_rank"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onSpAtkRankUpdate}
+                      value={defendingPokemonStatus.statsRank.spAtk.toString()}
+                    ></input>
+                  </div>
+                ) : null}
+                {expandRank ? (
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="defending_pokemon_sp_def_rank"
+                      className="text-sm"
+                    >
+                      特防
+                    </label>
+                    <input
+                      type="number"
+                      id="defending_pokemon_sp_def_rank"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onSpDefRankUpdate}
+                      value={defendingPokemonStatus.statsRank.spDef.toString()}
+                    ></input>
+                  </div>
+                ) : null}
+                {expandRank ? (
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="defending_pokemon_attack_rank"
+                      className="text-sm"
+                    >
+                      素早さ
+                    </label>
+                    <input
+                      type="number"
+                      id="defending_pokemon_speed_rank"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onSpeedRankUpdate}
+                      value={defendingPokemonStatus.statsRank.speed.toString()}
+                    ></input>
+                  </div>
+                ) : null}
+              </div>
+              <div className="flex flex-row-reverse">
+                <button
+                  type="button"
+                  id="expand_stats"
+                  className="bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded"
+                  onClick={onExpandRankClick}
+                >
+                  {expandRank ? "隠す" : "他のランクを変更する"}
+                </button>
+              </div>
             </div>
             <div>
               <label htmlFor="defending_pokemon_tera_type" className="text-sm">
                 テラスタイプ
               </label>
-              <input
-                type="text"
+              <select
                 id="defending_pokemon_tera_type"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full text-gray-700 py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 onChange={onTeraTypeUpdate}
-              ></input>
+                defaultValue={"0"}
+              >
+                <option value="0">無効</option>
+                {Type.listAllTypes().map((e) => (
+                  <option key={e.id} value={e.id}>
+                    {e.nameJp}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <label htmlFor="defending_pokemon_ability" className="text-sm">

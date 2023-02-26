@@ -136,4 +136,12 @@ export class Type {
         return new Type(0);
     }
   }
+
+  static listAllTypes(): Type[] {
+    let res = []
+    for (let i = 1; i <= 18; i++) {
+      res.push(new Type(i));
+    }
+    return res;
+  }
 }

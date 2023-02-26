@@ -1,7 +1,9 @@
+import { Type } from "./type";
+
 export class TeraType {
-  id: number;
+  type: Type;
 
   constructor(id: number) {
-    this.id = id;
+    this.type = new Type(id);
   }
 }

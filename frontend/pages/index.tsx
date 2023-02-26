@@ -9,6 +9,7 @@ import { CalculationResources } from "../models/calculation-resources";
 import { DefendingPokemonStatus } from "../models/defending-pokemon-status";
 import { Move } from "../models/move";
 import { Pokemon } from "../models/pokemon";
+import { TeraType } from "../models/tera-type";
 import { NextPageWithLayout } from "./_app";
 
 const Home: NextPageWithLayout = () => {
@@ -51,9 +52,7 @@ const Home: NextPageWithLayout = () => {
       new Move(
         900
       ),
-      {
-        id: 1,
-      },
+      new TeraType(16),
       {
         id: 1,
       },
@@ -98,9 +97,7 @@ const Home: NextPageWithLayout = () => {
         spDef: 0,
         speed: 0,
       },
-      {
-        id: 1,
-      },
+      new TeraType(16),
       {
         id: 1,
       },

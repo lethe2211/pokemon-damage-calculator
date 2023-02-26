@@ -11,26 +11,32 @@ export class Move {
   accuracy: number;
   pp: number;
 
-  constructor(
-    id: number
-  ) {
+  constructor(id: number) {
     this.id = id;
 
-    const data = moveDataSv.filter(e => e["id"] === id)[0]
+    const data = moveDataSv.filter((e) => e["id"] === id)[0];
 
-    this.nameJp = data["nameJp"]
-    this.nameEn = data["nameEn"]
-    this.type = Type.fromNameEn(data["type"][0].toUpperCase() + data["type"].substring(1))
-    this.category = MoveCategory.fromNameEn(data["damage_class"][0].toUpperCase() + data["damage_class"].substring(1))
-    this.power = data["power"] ?? -1
+    this.nameJp = data["nameJp"];
+    this.nameEn = data["nameEn"];
+    this.type = Type.fromNameEn(
+      data["type"][0].toUpperCase() + data["type"].substring(1)
+    );
+    this.category = MoveCategory.fromNameEn(
+      data["damage_class"][0].toUpperCase() + data["damage_class"].substring(1)
+    );
+    this.power = data["power"] ?? -1;
     this.accuracy = data["accuracy"] ?? -1;
     this.pp = data["pp"] ?? -1;
   }
 
   static listAllValidSVMoves(): Move[] {
     return moveDataSv
-    .filter(e => e.sv === true && (e.damage_class === "physical" || e.damage_class === "special"))
-    .map(e => new Move(e.id));
+      .filter(
+        (e) =>
+          e.sv === true &&
+          (e.damage_class === "physical" || e.damage_class === "special")
+      )
+      .map((e) => new Move(e.id));
   }
 }
 
@@ -53,12 +59,20 @@ export class MoveCategory {
         break;
       case 2:
         this.nameEn = "Status";
-        this.nameJp = "変化"
+        this.nameJp = "変化";
       default:
         this.nameEn = "Physical";
         this.nameJp = "物理";
         break;
     }
+  }
+
+  public equals(others: MoveCategory): boolean {
+    return (
+      this.id === others.id &&
+      this.nameEn === others.nameEn &&
+      this.nameJp === others.nameJp
+    );
   }
 
   static fromNameEn(nameEn: string): MoveCategory {

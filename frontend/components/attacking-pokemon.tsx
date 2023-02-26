@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { Ability } from "../models/ability";
 import { AttackingPokemonStatus } from "../models/attacking-pokemon-status";
 import { EV } from "../models/ev";
 import { IV } from "../models/iv";
-import { Move } from "../models/move";
+import { Move, MoveCategory } from "../models/move";
 import { Nature } from "../models/nature";
 import { Pokemon } from "../models/pokemon";
 import { StatsRank } from "../models/stats-rank";
@@ -21,86 +21,21 @@ const AttackingPokemon: React.FC<Props> = ({
 }) => {
   const [showPokemonModal, setShowPokemonModal] = useState(false);
   const [showMoveModal, setShowMoveModal] = useState(false);
+  const [expandStats, setExpandStats] = useState(false);
 
-  const [pokemonList, setPokemonList] = useState(Pokemon.listAllValidSVPokemons())
+  const [pokemonList, setPokemonList] = useState(
+    Pokemon.listAllValidSVPokemons()
+  );
   const [moveList, setMoveList] = useState(Move.listAllValidSVMoves());
 
   const onNameFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setShowPokemonModal(true);
-
-    // const newValue = new AttackingPokemonStatus(
-    //   150,
-    //   "ミュウ",
-    //   "Mew",
-    //   new Type(14),
-    //   null,
-    //   {
-    //     hp: 91,
-    //     attack: 134,
-    //     defense: 95,
-    //     spAtk: 100,
-    //     spDef: 100,
-    //     speed: 80,
-    //   },
-    //   50,
-    //   {
-    //     hp: 31,
-    //     attack: 31,
-    //     defense: 31,
-    //     spAtk: 31,
-    //     spDef: 31,
-    //     speed: 31,
-    //   },
-    //   {
-    //     hp: 252,
-    //     attack: 252,
-    //     defense: 0,
-    //     spAtk: 0,
-    //     spDef: 0,
-    //     speed: 4,
-    //   },
-    //   {
-    //     attack: 1.0,
-    //     defense: 1.0,
-    //     spAtk: 1.0,
-    //     spDef: 1.0,
-    //     speed: 1.0,
-    //   },
-    //   {
-    //     attack: 0,
-    //     defense: 0,
-    //     spAtk: 0,
-    //     spDef: 0,
-    //     speed: 0,
-    //   },
-    //   new Move(1),
-    //   {
-    //     id: 1,
-    //   },
-    //   {
-    //     id: 1,
-    //   },
-    //   {
-    //     id: 1,
-    //   },
-    //   false,
-    //   {
-    //     id: 0,
-    //   }
-    // );
-    // onUpdate(newValue);
   };
 
   const onLevelUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       parseInt(e.target.value),
       attackingPokemonStatus.iv,
       attackingPokemonStatus.ev,
@@ -116,15 +51,59 @@ const AttackingPokemon: React.FC<Props> = ({
     onUpdate(newValue);
   };
 
+  const onHpIVUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      new IV(
+        parseInt(e.target.value),
+        attackingPokemonStatus.iv.attack,
+        attackingPokemonStatus.iv.defense,
+        attackingPokemonStatus.iv.spAtk,
+        attackingPokemonStatus.iv.spDef,
+        attackingPokemonStatus.iv.speed
+      ),
+      attackingPokemonStatus.ev,
+      attackingPokemonStatus.nature,
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onHpEVUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      new EV(
+        parseInt(e.target.value),
+        attackingPokemonStatus.ev.attack,
+        attackingPokemonStatus.ev.defense,
+        attackingPokemonStatus.ev.spAtk,
+        attackingPokemonStatus.ev.spDef,
+        attackingPokemonStatus.ev.speed
+      ),
+      attackingPokemonStatus.nature,
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
   const onAttackIVUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       attackingPokemonStatus.level,
       new IV(
         attackingPokemonStatus.iv.hp,
@@ -150,21 +129,15 @@ const AttackingPokemon: React.FC<Props> = ({
   const onAttackEVUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       attackingPokemonStatus.level,
       attackingPokemonStatus.iv,
       new EV(
-        attackingPokemonStatus.iv.hp,
+        attackingPokemonStatus.ev.hp,
         parseInt(e.target.value),
-        attackingPokemonStatus.iv.defense,
-        attackingPokemonStatus.iv.spAtk,
-        attackingPokemonStatus.iv.spDef,
-        attackingPokemonStatus.iv.speed
+        attackingPokemonStatus.ev.defense,
+        attackingPokemonStatus.ev.spAtk,
+        attackingPokemonStatus.ev.spDef,
+        attackingPokemonStatus.ev.speed
       ),
       attackingPokemonStatus.nature,
       attackingPokemonStatus.statsRank,
@@ -184,12 +157,6 @@ const AttackingPokemon: React.FC<Props> = ({
   ) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       attackingPokemonStatus.level,
       attackingPokemonStatus.iv,
       attackingPokemonStatus.ev,
@@ -211,15 +178,317 @@ const AttackingPokemon: React.FC<Props> = ({
     onUpdate(newValue);
   };
 
+  const onDefenseIVUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      new IV(
+        attackingPokemonStatus.iv.hp,
+        attackingPokemonStatus.iv.attack,
+        parseInt(e.target.value),
+        attackingPokemonStatus.iv.spAtk,
+        attackingPokemonStatus.iv.spDef,
+        attackingPokemonStatus.iv.speed
+      ),
+      attackingPokemonStatus.ev,
+      attackingPokemonStatus.nature,
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onDefenseEVUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      new EV(
+        attackingPokemonStatus.ev.hp,
+        attackingPokemonStatus.ev.attack,
+        parseInt(e.target.value),
+        attackingPokemonStatus.ev.spAtk,
+        attackingPokemonStatus.ev.spDef,
+        attackingPokemonStatus.ev.speed
+      ),
+      attackingPokemonStatus.nature,
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onDefenseNatureUpdate = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    newDefenseNature: number
+  ) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      attackingPokemonStatus.ev,
+      new Nature(
+        attackingPokemonStatus.nature.attack,
+        newDefenseNature,
+        attackingPokemonStatus.nature.spAtk,
+        attackingPokemonStatus.nature.spDef,
+        attackingPokemonStatus.nature.speed
+      ),
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpAtkIVUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      new IV(
+        attackingPokemonStatus.iv.hp,
+        attackingPokemonStatus.iv.attack,
+        attackingPokemonStatus.iv.defense,
+        parseInt(e.target.value),
+        attackingPokemonStatus.iv.spDef,
+        attackingPokemonStatus.iv.speed
+      ),
+      attackingPokemonStatus.ev,
+      attackingPokemonStatus.nature,
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpAtkEVUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      new EV(
+        attackingPokemonStatus.ev.hp,
+        attackingPokemonStatus.ev.attack,
+        attackingPokemonStatus.ev.defense,
+        parseInt(e.target.value),
+        attackingPokemonStatus.ev.spDef,
+        attackingPokemonStatus.ev.speed
+      ),
+      attackingPokemonStatus.nature,
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpAtkNatureUpdate = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    newSpAtkNature: number
+  ) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      attackingPokemonStatus.ev,
+      new Nature(
+        attackingPokemonStatus.nature.attack,
+        attackingPokemonStatus.nature.defense,
+        newSpAtkNature,
+        attackingPokemonStatus.nature.spDef,
+        attackingPokemonStatus.nature.speed
+      ),
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpDefIVUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      new IV(
+        attackingPokemonStatus.iv.hp,
+        attackingPokemonStatus.iv.attack,
+        attackingPokemonStatus.iv.defense,
+        attackingPokemonStatus.iv.spAtk,
+        parseInt(e.target.value),
+        attackingPokemonStatus.iv.speed
+      ),
+      attackingPokemonStatus.ev,
+      attackingPokemonStatus.nature,
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpDefEVUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      new EV(
+        attackingPokemonStatus.ev.hp,
+        attackingPokemonStatus.ev.attack,
+        attackingPokemonStatus.ev.defense,
+        attackingPokemonStatus.ev.spAtk,
+        parseInt(e.target.value),
+        attackingPokemonStatus.ev.speed
+      ),
+      attackingPokemonStatus.nature,
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpDefNatureUpdate = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    newSpDefNature: number
+  ) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      attackingPokemonStatus.ev,
+      new Nature(
+        attackingPokemonStatus.nature.attack,
+        attackingPokemonStatus.nature.defense,
+        attackingPokemonStatus.nature.spAtk,
+        newSpDefNature,
+        attackingPokemonStatus.nature.speed
+      ),
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpeedIVUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      new IV(
+        attackingPokemonStatus.iv.hp,
+        attackingPokemonStatus.iv.attack,
+        attackingPokemonStatus.iv.defense,
+        attackingPokemonStatus.iv.spAtk,
+        attackingPokemonStatus.iv.spDef,
+        parseInt(e.target.value)
+      ),
+      attackingPokemonStatus.ev,
+      attackingPokemonStatus.nature,
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpeedEVUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      new EV(
+        attackingPokemonStatus.ev.hp,
+        attackingPokemonStatus.ev.attack,
+        attackingPokemonStatus.ev.defense,
+        attackingPokemonStatus.ev.spAtk,
+        attackingPokemonStatus.ev.spDef,
+        parseInt(e.target.value)
+      ),
+      attackingPokemonStatus.nature,
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onSpeedNatureUpdate = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    newSpeedNature: number
+  ) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      attackingPokemonStatus.ev,
+      new Nature(
+        attackingPokemonStatus.nature.attack,
+        attackingPokemonStatus.nature.defense,
+        attackingPokemonStatus.nature.spAtk,
+        attackingPokemonStatus.nature.spDef,
+        newSpeedNature
+      ),
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
   const onAttackRankUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       attackingPokemonStatus.level,
       attackingPokemonStatus.iv,
       attackingPokemonStatus.ev,
@@ -249,12 +518,6 @@ const AttackingPokemon: React.FC<Props> = ({
   const onTeraTypeUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       attackingPokemonStatus.level,
       attackingPokemonStatus.iv,
       attackingPokemonStatus.ev,
@@ -273,12 +536,6 @@ const AttackingPokemon: React.FC<Props> = ({
   const onAbilityUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       attackingPokemonStatus.level,
       attackingPokemonStatus.iv,
       attackingPokemonStatus.ev,
@@ -297,12 +554,6 @@ const AttackingPokemon: React.FC<Props> = ({
   const onItemUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       attackingPokemonStatus.level,
       attackingPokemonStatus.iv,
       attackingPokemonStatus.ev,
@@ -321,12 +572,6 @@ const AttackingPokemon: React.FC<Props> = ({
   const onIsCriticalUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       attackingPokemonStatus.level,
       attackingPokemonStatus.iv,
       attackingPokemonStatus.ev,
@@ -345,12 +590,6 @@ const AttackingPokemon: React.FC<Props> = ({
   const onStatusAilmentUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       attackingPokemonStatus.level,
       attackingPokemonStatus.iv,
       attackingPokemonStatus.ev,
@@ -369,12 +608,6 @@ const AttackingPokemon: React.FC<Props> = ({
   const onSelectPokemonUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       attackingPokemonStatus.level,
       attackingPokemonStatus.iv,
       attackingPokemonStatus.ev,
@@ -391,15 +624,8 @@ const AttackingPokemon: React.FC<Props> = ({
   };
 
   const onSelectPokemonSubmit = (newPokemon: Pokemon) => {
-    // TODO
     const newValue = new AttackingPokemonStatus(
       newPokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       attackingPokemonStatus.level,
       attackingPokemonStatus.iv,
       attackingPokemonStatus.ev,
@@ -417,6 +643,10 @@ const AttackingPokemon: React.FC<Props> = ({
     setShowPokemonModal(false);
   };
 
+  const onExpandStatsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setExpandStats(!expandStats);
+  };
+
   const onSelectMoveUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     // TODO
   };
@@ -424,12 +654,6 @@ const AttackingPokemon: React.FC<Props> = ({
   const onSelectMoveSubmit = (newMove: Move) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
-      // attackingPokemonStatus.id,
-      // attackingPokemonStatus.nameJp,
-      // attackingPokemonStatus.nameEn,
-      // attackingPokemonStatus.type1,
-      // attackingPokemonStatus.type2,
-      // attackingPokemonStatus.baseStats,
       attackingPokemonStatus.level,
       attackingPokemonStatus.iv,
       attackingPokemonStatus.ev,
@@ -458,13 +682,14 @@ const AttackingPokemon: React.FC<Props> = ({
           </h5>
         </div>
         <form className="space-y-8">
-          <div className="space-y-1">
+          <div className="space-y-2">
             <div>
               <label htmlFor="attacking_pokemon_name" className="text-sm">
                 攻撃側ポケモン
               </label>
               <input
                 type="text"
+                readOnly
                 id="attacking_pokemon_name"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 onFocus={onNameFocus}
@@ -479,7 +704,9 @@ const AttackingPokemon: React.FC<Props> = ({
               </div>
               <div className="flex space-x-1 text-xs">
                 <span>種族値</span>
-                <span>H{attackingPokemonStatus.pokemon.baseStats.hp.toString()}</span>
+                <span>
+                  H{attackingPokemonStatus.pokemon.baseStats.hp.toString()}
+                </span>
                 <span>
                   A{attackingPokemonStatus.pokemon.baseStats.attack.toString()}
                 </span>
@@ -509,67 +736,447 @@ const AttackingPokemon: React.FC<Props> = ({
                 value={attackingPokemonStatus.level.toString()}
               ></input>
             </div>
-            <div>
-              <label htmlFor="attacking_pokemon_attack_iv" className="text-sm">
-                攻撃個体値
-              </label>
-              <input
-                type="number"
-                id="attacking_pokemon_attack_iv"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                onChange={onAttackIVUpdate}
-                value={attackingPokemonStatus.iv.attack.toString()}
-              ></input>
+            <div className="space-y-2">
+              {expandStats ? (
+                <div className="flex flex-col">
+                  <div className="flex items-center justify-between">
+                    <h6 className="text-sm font-bold leading-none text-gray-900">
+                      HP
+                    </h6>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_hp_iv"
+                      className="text-sm"
+                    >
+                      個体値
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_hp_iv"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onHpIVUpdate}
+                      value={attackingPokemonStatus.iv.hp.toString()}
+                    ></input>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_hp_ev"
+                      className="text-sm"
+                    >
+                      努力値
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_hp_ev"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onHpEVUpdate}
+                      value={attackingPokemonStatus.ev.hp.toString()}
+                    ></input>
+                  </div>
+                </div>
+              ) : null}
+              {expandStats ||
+              attackingPokemonStatus.move.category.equals(
+                MoveCategory.fromNameEn("Physical")
+              ) ? (
+                <div className="flex flex-col">
+                  <div className="flex items-center justify-between">
+                    <h6 className="text-sm font-bold leading-none text-gray-900">
+                      攻撃
+                    </h6>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_attack_iv"
+                      className="text-sm"
+                    >
+                      個体値
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_attack_iv"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onAttackIVUpdate}
+                      value={attackingPokemonStatus.iv.attack.toString()}
+                    ></input>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_attack_ev"
+                      className="text-sm"
+                    >
+                      努力値
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_attack_ev"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onAttackEVUpdate}
+                      value={attackingPokemonStatus.ev.attack.toString()}
+                    ></input>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label className="text-sm">性格補正</label>
+                    <span>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.attack === 0.9
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onAttackNatureUpdate(event, 0.9)}
+                      >
+                        0.9
+                      </button>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.attack === 1.0
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onAttackNatureUpdate(event, 1.0)}
+                      >
+                        1.0
+                      </button>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.attack === 1.1
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onAttackNatureUpdate(event, 1.1)}
+                      >
+                        1.1
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              ) : null}
+              {expandStats ? (
+                <div className="flex flex-col">
+                  <div className="flex items-center justify-between">
+                    <h6 className="text-sm font-bold leading-none text-gray-900">
+                      防御
+                    </h6>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_defense_iv"
+                      className="text-sm"
+                    >
+                      個体値
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_defense_iv"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onDefenseIVUpdate}
+                      value={attackingPokemonStatus.iv.defense.toString()}
+                    ></input>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_defense_ev"
+                      className="text-sm"
+                    >
+                      努力値
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_defense_ev"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onDefenseEVUpdate}
+                      value={attackingPokemonStatus.ev.defense.toString()}
+                    ></input>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label className="text-sm">性格補正</label>
+                    <span>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.defense === 0.9
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onDefenseNatureUpdate(event, 0.9)}
+                      >
+                        0.9
+                      </button>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.defense === 1.0
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onDefenseNatureUpdate(event, 1.0)}
+                      >
+                        1.0
+                      </button>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.defense === 1.1
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onDefenseNatureUpdate(event, 1.1)}
+                      >
+                        1.1
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              ) : null}
+              {expandStats ||
+              attackingPokemonStatus.move.category.equals(
+                MoveCategory.fromNameEn("Special")
+              ) ? (
+                <div className="flex flex-col">
+                  <div className="flex items-center justify-between">
+                    <h6 className="text-sm font-bold leading-none text-gray-900">
+                      特攻
+                    </h6>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_sp_atk_iv"
+                      className="text-sm"
+                    >
+                      個体値
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_sp_atk_iv"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onSpAtkIVUpdate}
+                      value={attackingPokemonStatus.iv.spAtk.toString()}
+                    ></input>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_sp_atk_ev"
+                      className="text-sm"
+                    >
+                      努力値
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_sp_atk_ev"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onSpAtkEVUpdate}
+                      value={attackingPokemonStatus.ev.spAtk.toString()}
+                    ></input>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label className="text-sm">性格補正</label>
+                    <span>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.spAtk === 0.9
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onSpAtkNatureUpdate(event, 0.9)}
+                      >
+                        0.9
+                      </button>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.spAtk === 1.0
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onSpAtkNatureUpdate(event, 1.0)}
+                      >
+                        1.0
+                      </button>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.spAtk === 1.1
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onSpAtkNatureUpdate(event, 1.1)}
+                      >
+                        1.1
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              ) : null}
+              {expandStats ? (
+                <div className="flex flex-col">
+                  <div className="flex items-center justify-between">
+                    <h6 className="text-sm font-bold leading-none text-gray-900">
+                      特防
+                    </h6>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_sp_def_iv"
+                      className="text-sm"
+                    >
+                      個体値
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_sp_def_iv"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onSpDefIVUpdate}
+                      value={attackingPokemonStatus.iv.spDef.toString()}
+                    ></input>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_sp_def_ev"
+                      className="text-sm"
+                    >
+                      努力値
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_sp_def_ev"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onSpDefEVUpdate}
+                      value={attackingPokemonStatus.ev.spDef.toString()}
+                    ></input>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label className="text-sm">性格補正</label>
+                    <span>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.spDef === 0.9
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onSpDefNatureUpdate(event, 0.9)}
+                      >
+                        0.9
+                      </button>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.spDef === 1.0
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onSpDefNatureUpdate(event, 1.0)}
+                      >
+                        1.0
+                      </button>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.spDef === 1.1
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onSpDefNatureUpdate(event, 1.1)}
+                      >
+                        1.1
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              ) : null}
+              {expandStats ? (
+                <div className="flex flex-col">
+                  <div className="flex items-center justify-between">
+                    <h6 className="text-sm font-bold leading-none text-gray-900">
+                      素早さ
+                    </h6>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_speed_iv"
+                      className="text-sm"
+                    >
+                      個体値
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_speed_iv"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onSpeedIVUpdate}
+                      value={attackingPokemonStatus.iv.speed.toString()}
+                    ></input>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label
+                      htmlFor="attacking_pokemon_speed_ev"
+                      className="text-sm"
+                    >
+                      努力値
+                    </label>
+                    <input
+                      type="number"
+                      id="attacking_pokemon_speed_ev"
+                      className="items-center shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={onSpeedEVUpdate}
+                      value={attackingPokemonStatus.ev.speed.toString()}
+                    ></input>
+                  </div>
+                  <div className="flex flex-row justify-between items-center my-1">
+                    <label className="text-sm">性格補正</label>
+                    <span>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.speed === 0.9
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onSpeedNatureUpdate(event, 0.9)}
+                      >
+                        0.9
+                      </button>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.speed === 1.0
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onSpeedNatureUpdate(event, 1.0)}
+                      >
+                        1.0
+                      </button>
+                      <button
+                        type="button"
+                        className={
+                          attackingPokemonStatus.nature.speed === 1.1
+                            ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                            : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                        }
+                        onClick={(event) => onSpeedNatureUpdate(event, 1.1)}
+                      >
+                        1.1
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              ) : null}
             </div>
-            <div>
-              <label htmlFor="attacking_pokemon_attack_ev" className="text-sm">
-                攻撃努力値
-              </label>
-              <input
-                type="number"
-                id="attacking_pokemon_attack_ev"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                onChange={onAttackEVUpdate}
-                value={attackingPokemonStatus.ev.attack.toString()}
-              ></input>
-            </div>
-            <div>
-              <label className="text-sm">攻撃性格補正</label>
-              <div className="flex">
-                <button
-                  type="button"
-                  className={
-                    attackingPokemonStatus.nature.attack === 0.9
-                      ? "bg-blue-800 hover:bg-blue-900 text-white py-1 px-4 rounded-l"
-                      : "bg-gray-300 hover:bg-gray-400 text-gray-800 py-1 px-4 rounded-l"
-                  }
-                  onClick={(event) => onAttackNatureUpdate(event, 0.9)}
-                >
-                  0.9
-                </button>
-                <button
-                  type="button"
-                  className={
-                    attackingPokemonStatus.nature.attack === 1.0
-                      ? "bg-blue-800 hover:bg-blue-900 text-white py-1 px-4 rounded-l"
-                      : "bg-gray-300 hover:bg-gray-400 text-gray-800 py-1 px-4 rounded-l"
-                  }
-                  onClick={(event) => onAttackNatureUpdate(event, 1.0)}
-                >
-                  1.0
-                </button>
-                <button
-                  type="button"
-                  className={
-                    attackingPokemonStatus.nature.attack === 1.1
-                      ? "bg-blue-800 hover:bg-blue-900 text-white py-1 px-4 rounded-l"
-                      : "bg-gray-300 hover:bg-gray-400 text-gray-800 py-1 px-4 rounded-l"
-                  }
-                  onClick={(event) => onAttackNatureUpdate(event, 1.1)}
-                >
-                  1.1
-                </button>
-              </div>
+            <div className="flex flex-row-reverse">
+              <button
+                type="button"
+                id="expand_stats"
+                className="bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded"
+                onClick={onExpandStatsClick}
+              >
+                {expandStats ? "隠す" : "他の能力値を変更する"}
+              </button>
             </div>
             <div>
               <label className="text-sm">実数値（補正前）</label>

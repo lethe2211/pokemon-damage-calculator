@@ -129,6 +129,7 @@ const Home: NextPageWithLayout = () => {
         }}
       ></AttackingPokemon>
       <DefendingPokemon
+        attackingPokemonStatus={calculationResources.attackingPokemonStatus}
         defendingPokemonStatus={calculationResources.defendingPokemonStatus}
         onUpdate={(defendingPokemonStatus) => {
           const newValue = new CalculationResources(

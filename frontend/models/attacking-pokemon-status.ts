@@ -8,6 +8,7 @@ import { Stats } from "./stats";
 import { StatusAilment } from "./status-ailment";
 import { TeraType } from "./tera-type";
 import { Pokemon } from "./pokemon";
+import { Item } from "./item";
 
 export class AttackingPokemonStatus {
   pokemon: Pokemon

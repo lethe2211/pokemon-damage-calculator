@@ -3,6 +3,7 @@ import { Ability } from "../models/ability";
 import { AttackingPokemonStatus } from "../models/attacking-pokemon-status";
 import { DefendingPokemonStatus } from "../models/defending-pokemon-status";
 import { EV } from "../models/ev";
+import { Item } from "../models/item";
 import { IV } from "../models/iv";
 import { MoveCategory } from "../models/move";
 import { Nature } from "../models/nature";
@@ -24,11 +25,15 @@ const DefendingPokemon: React.FC<Props> = ({
   onUpdate,
 }) => {
   const [showPokemonModal, setShowPokemonModal] = useState(false);
+  const [showAbilityModal, setShowAbilityModal] = useState(false);
   const [expandStats, setExpandStats] = useState(false);
   const [expandRank, setExpandRank] = useState(false);
 
   const [pokemonList, setPokemonList] = useState(
     Pokemon.listAllValidSVPokemons()
+  );
+  const [abilityList, setAbilityList] = useState(
+    Ability.listAllValidSVAbilities()
   );
 
   const onNameFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -579,23 +584,12 @@ const DefendingPokemon: React.FC<Props> = ({
     onUpdate(newValue);
   };
 
-  const onAbilityUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = new DefendingPokemonStatus(
-      defendingPokemonStatus.pokemon,
-      defendingPokemonStatus.level,
-      defendingPokemonStatus.iv,
-      defendingPokemonStatus.ev,
-      defendingPokemonStatus.nature,
-      defendingPokemonStatus.statsRank,
-      defendingPokemonStatus.teraType,
-      new Ability(parseInt(e.target.value)),
-      defendingPokemonStatus.item,
-      defendingPokemonStatus.statusAilment
-    );
-    onUpdate(newValue);
+  const onAbilityFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setShowAbilityModal(true);
   };
 
-  const onItemUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onItemUpdate = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = new DefendingPokemonStatus(
       defendingPokemonStatus.pokemon,
       defendingPokemonStatus.level,
@@ -605,13 +599,13 @@ const DefendingPokemon: React.FC<Props> = ({
       defendingPokemonStatus.statsRank,
       defendingPokemonStatus.teraType,
       defendingPokemonStatus.ability,
-      parseInt(e.target.value),
+      new Item(parseInt(e.target.value)),
       defendingPokemonStatus.statusAilment
     );
     onUpdate(newValue);
   };
 
-  const onStatusAilmentUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onStatusAilmentUpdate = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = new DefendingPokemonStatus(
       defendingPokemonStatus.pokemon,
       defendingPokemonStatus.level,
@@ -668,6 +662,28 @@ const DefendingPokemon: React.FC<Props> = ({
 
   const onExpandRankClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setExpandRank(!expandRank);
+  };
+
+  const onSelectAbilityUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // TODO
+  };
+
+  const onSelectAbilitySubmit = (newAbility: Ability) => {
+    const newValue = new DefendingPokemonStatus(
+      defendingPokemonStatus.pokemon,
+      defendingPokemonStatus.level,
+      defendingPokemonStatus.iv,
+      defendingPokemonStatus.ev,
+      defendingPokemonStatus.nature,
+      defendingPokemonStatus.statsRank,
+      defendingPokemonStatus.teraType,
+      newAbility,
+      defendingPokemonStatus.item,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+
+    setShowAbilityModal(false);
   };
 
   const stats = defendingPokemonStatus.calculateStats();
@@ -1332,19 +1348,26 @@ const DefendingPokemon: React.FC<Props> = ({
                 type="text"
                 id="defending_pokemon_ability"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                onChange={onAbilityUpdate}
+                onFocus={onAbilityFocus}
+                defaultValue={defendingPokemonStatus.ability.nameJp}
               ></input>
             </div>
             <div>
               <label htmlFor="defending_pokemon_tool" className="text-sm">
                 道具
               </label>
-              <input
-                type="text"
+              <select
                 id="defending_pokemon_tool"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full text-gray-700 py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 onChange={onItemUpdate}
-              ></input>
+                defaultValue={"0"}
+              >
+                {Item.listAllValidItemsForDefender().map((e) => (
+                  <option key={e.id} value={e.id}>
+                    {e.nameJp}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
           <div className="space-y-1">
@@ -1355,12 +1378,19 @@ const DefendingPokemon: React.FC<Props> = ({
               >
                 状態異常
               </label>
-              <input
-                type="text"
+
+              <select
                 id="defending_pokemon_status_ailment"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full text-gray-700 py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 onChange={onStatusAilmentUpdate}
-              ></input>
+                defaultValue={"0"}
+              >
+                {StatusAilment.listAllTypes().map((e) => (
+                  <option key={e.id} value={e.id}>
+                    {e.nameJp}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
         </form>
@@ -1393,6 +1423,46 @@ const DefendingPokemon: React.FC<Props> = ({
                         <li
                           key={e.id}
                           onClick={(event) => onSelectPokemonSubmit(e)}
+                        >
+                          {e.nameJp}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : null}
+
+      {showAbilityModal ? (
+        <>
+          <div className="fixed inset-0 z-50 overflow-y-auto">
+            <div
+              className="fixed inset-0 w-full h-full bg-black opacity-40"
+              onClick={() => setShowAbilityModal(false)}
+            ></div>
+            <div className="flex items-center min-h-screen px-4 py-8">
+              <div className="relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg">
+                <div className="mt-3 flex flex-col">
+                  <div className="mt-2 text-center sm:ml-4 sm:text-left">
+                    <form>
+                      <input
+                        type="text"
+                        id="defending_pokemon_select_pokemon"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        onChange={onSelectAbilityUpdate}
+                        placeholder="特性を入力"
+                      ></input>
+                    </form>
+                  </div>
+                  <div className="mt-2 text-left">
+                    <ul>
+                      {abilityList.map((e) => (
+                        <li
+                          key={e.id}
+                          onClick={(event) => onSelectAbilitySubmit(e)}
                         >
                           {e.nameJp}
                         </li>

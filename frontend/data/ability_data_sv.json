@@ -1,0 +1,2962 @@
+[
+  {
+    "id": 1,
+    "name_en": "Stench",
+    "name_jp": "あくしゅう",
+    "pokemons": [44, 88, 89, 109, 110, 434, 435, 568, 569, 10207],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 2,
+    "name_en": "Drizzle",
+    "name_jp": "あめふらし",
+    "pokemons": [186, 279, 382],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 3,
+    "name_en": "Speed Boost",
+    "name_jp": "かそく",
+    "pokemons": [
+      193, 255, 256, 257, 291, 318, 319, 469, 543, 544, 545, 955, 956, 10050
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 4,
+    "name_en": "Battle Armor",
+    "name_jp": "カブトアーマー",
+    "pokemons": [104, 105, 140, 141, 347, 348, 451, 452, 772, 863, 870],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 5,
+    "name_en": "Sturdy",
+    "name_jp": "がんじょう",
+    "pokemons": [
+      74, 75, 76, 81, 82, 95, 185, 204, 205, 208, 213, 227, 232, 299, 304, 305,
+      306, 369, 377, 410, 411, 438, 462, 476, 524, 525, 526, 539, 557, 558, 564,
+      565, 696, 703, 712, 713, 777, 790, 932, 933, 934, 10109, 10110, 10111,
+      10154, 10243
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 6,
+    "name_en": "Damp",
+    "name_jp": "しめりけ",
+    "pokemons": [
+      46, 47, 54, 55, 60, 61, 62, 116, 117, 186, 194, 195, 230, 258, 259, 260,
+      592, 593, 938, 939
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 7,
+    "name_en": "Limber",
+    "name_jp": "じゅうなん",
+    "pokemons": [
+      53, 106, 132, 427, 428, 431, 509, 510, 618, 701, 747, 748, 852, 853
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 8,
+    "name_en": "Sand Veil",
+    "name_jp": "すながくれ",
+    "pokemons": [
+      27, 28, 50, 51, 74, 75, 76, 207, 231, 232, 246, 331, 332, 443, 444, 445,
+      472, 618, 694, 695, 769, 770, 843, 844, 960, 961, 968, 10105, 10106, 10218
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 9,
+    "name_en": "Static",
+    "name_jp": "せいでんき",
+    "pokemons": [
+      25, 26, 100, 101, 125, 145, 172, 179, 180, 181, 239, 309, 310, 587, 618,
+      848, 881, 921, 938, 939, 10080, 10081, 10082, 10083, 10084, 10085, 10094,
+      10095, 10096, 10097, 10098, 10099, 10148, 10158, 10160, 10199, 10231,
+      10232
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 10,
+    "name_en": "Volt Absorb",
+    "name_jp": "ちくでん",
+    "pokemons": [
+      135, 170, 171, 312, 417, 807, 880, 881, 922, 923, 940, 941, 10020
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 11,
+    "name_en": "Water Absorb",
+    "name_jp": "ちょすい",
+    "pokemons": [
+      60, 61, 62, 131, 134, 170, 171, 186, 194, 195, 226, 331, 332, 458, 535,
+      536, 537, 556, 592, 593, 721, 751, 752, 882, 883, 980, 10153, 10204, 10253
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 12,
+    "name_en": "Oblivious",
+    "name_jp": "どんかん",
+    "pokemons": [
+      79, 80, 108, 124, 199, 220, 221, 238, 314, 320, 321, 322, 339, 340, 349,
+      363, 364, 365, 463, 473, 757, 758, 761, 762, 977, 10129
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 13,
+    "name_en": "Cloud Nine",
+    "name_jp": "ノーてんき",
+    "pokemons": [54, 55, 108, 333, 334, 463, 780],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 14,
+    "name_en": "Compound Eyes",
+    "name_jp": "ふくがん",
+    "pokemons": [
+      12, 48, 193, 269, 290, 595, 596, 664, 666, 824, 825, 953, 10198
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 15,
+    "name_en": "Insomnia",
+    "name_jp": "ふみん",
+    "pokemons": [
+      96, 97, 163, 164, 167, 168, 198, 225, 353, 354, 430, 710, 711, 917, 918,
+      951, 952, 10027, 10028, 10029, 10030, 10031, 10032, 10044
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 16,
+    "name_en": "Color Change",
+    "name_jp": "へんしょく",
+    "pokemons": [352],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 17,
+    "name_en": "Immunity",
+    "name_jp": "めんえき",
+    "pokemons": [143, 207, 335, 10206],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 18,
+    "name_en": "Flash Fire",
+    "name_jp": "もらいび",
+    "pokemons": [
+      37, 38, 58, 59, 77, 78, 136, 155, 156, 157, 228, 229, 485, 607, 608, 609,
+      631, 837, 838, 839, 850, 851, 935, 936, 937, 10215, 10220, 10229, 10230,
+      10233
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 19,
+    "name_en": "Shield Dust",
+    "name_jp": "りんぷん",
+    "pokemons": [10, 13, 49, 265, 269, 664, 666, 742, 743, 872, 873, 10150],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 20,
+    "name_en": "Own Tempo",
+    "name_jp": "マイペース",
+    "pokemons": [
+      79, 80, 108, 199, 235, 270, 271, 272, 322, 325, 326, 327, 431, 432, 463,
+      548, 549, 677, 712, 713, 749, 750, 924, 926, 938, 957, 958, 959, 10151,
+      10164, 10165, 10172, 10186
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 21,
+    "name_en": "Suction Cups",
+    "name_jp": "きゅうばん",
+    "pokemons": [224, 345, 346, 686, 687],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 22,
+    "name_en": "Intimidate",
+    "name_jp": "いかく",
+    "pokemons": [
+      23, 24, 58, 59, 128, 130, 209, 210, 211, 234, 237, 262, 284, 303, 373,
+      397, 398, 403, 404, 405, 507, 508, 551, 552, 553, 559, 560, 725, 726, 727,
+      899, 904, 931, 942, 943, 10021, 10055, 10229, 10230, 10234, 10250, 10251,
+      10252, 10260, 10261, 10262
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 23,
+    "name_en": "Shadow Tag",
+    "name_jp": "かげふみ",
+    "pokemons": [202, 360, 574, 575, 576, 10038],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 24,
+    "name_en": "Rough Skin",
+    "name_jp": "さめはだ",
+    "pokemons": [318, 319, 443, 444, 445, 621],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 25,
+    "name_en": "Wonder Guard",
+    "name_jp": "ふしぎなまもり",
+    "pokemons": [292],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 26,
+    "name_en": "Levitate",
+    "name_jp": "ふゆう",
+    "pokemons": [
+      92, 93, 109, 110, 200, 201, 329, 330, 337, 338, 343, 344, 355, 358, 380,
+      381, 429, 433, 436, 437, 455, 479, 480, 481, 482, 488, 602, 603, 604, 615,
+      635, 738, 10007, 10008, 10009, 10010, 10011, 10012, 10062, 10063, 10122,
+      10167
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 27,
+    "name_en": "Effect Spore",
+    "name_jp": "ほうし",
+    "pokemons": [45, 46, 47, 285, 286, 590, 591, 755, 756, 829, 830],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 28,
+    "name_en": "Synchronize",
+    "name_jp": "シンクロ",
+    "pokemons": [
+      63, 64, 65, 151, 177, 178, 196, 197, 280, 281, 282, 517, 518, 605, 606,
+      876, 954, 10186
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 29,
+    "name_en": "Clear Body",
+    "name_jp": "クリアボディ",
+    "pokemons": [
+      72, 73, 374, 375, 376, 377, 378, 379, 599, 600, 601, 703, 719, 885, 886,
+      887, 932, 933, 934
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 30,
+    "name_en": "Natural Cure",
+    "name_jp": "しぜんかいふく",
+    "pokemons": [
+      113, 120, 121, 222, 242, 251, 315, 333, 334, 406, 407, 440, 492, 708, 709,
+      764, 921, 922, 923
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 31,
+    "name_en": "Lightning Rod",
+    "name_jp": "ひらいしん",
+    "pokemons": [
+      25, 26, 104, 105, 111, 112, 118, 119, 172, 309, 310, 311, 464, 522, 523,
+      777, 871, 10065, 10080, 10081, 10082, 10083, 10084, 10085, 10094, 10095,
+      10096, 10097, 10098, 10099, 10115, 10148, 10149, 10154, 10158, 10160,
+      10199
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 32,
+    "name_en": "Serene Grace",
+    "name_jp": "てんのめぐみ",
+    "pokemons": [
+      113, 175, 176, 206, 242, 385, 440, 468, 585, 586, 648, 982, 10006, 10018,
+      10255
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 33,
+    "name_en": "Swift Swim",
+    "name_jp": "すいすい",
+    "pokemons": [
+      54, 55, 60, 61, 62, 116, 118, 119, 129, 138, 139, 140, 141, 211, 226, 230,
+      270, 271, 272, 283, 347, 348, 349, 367, 368, 369, 370, 418, 419, 456, 457,
+      458, 535, 536, 537, 564, 565, 614, 833, 834, 846, 847, 904, 10064, 10214,
+      10234
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 34,
+    "name_en": "Chlorophyll",
+    "name_jp": "ようりょくそ",
+    "pokemons": [
+      1, 2, 3, 43, 44, 45, 69, 70, 71, 102, 103, 114, 182, 187, 188, 189, 191,
+      192, 273, 274, 275, 357, 420, 465, 470, 540, 541, 542, 546, 547, 548, 549,
+      556, 585, 586, 951, 952, 10195, 10237
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 35,
+    "name_en": "Illuminate",
+    "name_jp": "はっこう",
+    "pokemons": [120, 121, 170, 171, 313, 505, 755, 756],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 36,
+    "name_en": "Trace",
+    "name_jp": "トレース",
+    "pokemons": [137, 233, 280, 281, 282, 10037],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 37,
+    "name_en": "Huge Power",
+    "name_jp": "ちからもち",
+    "pokemons": [183, 184, 298, 659, 660, 10052],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 38,
+    "name_en": "Poison Point",
+    "name_jp": "どくのトゲ",
+    "pokemons": [
+      29, 30, 31, 32, 33, 34, 117, 211, 315, 406, 407, 543, 544, 545, 690, 691,
+      904, 980, 10234, 10253
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 39,
+    "name_en": "Inner Focus",
+    "name_jp": "せいしんりょく",
+    "pokemons": [
+      41, 42, 63, 64, 65, 83, 96, 97, 107, 115, 149, 169, 197, 203, 215, 243,
+      244, 245, 361, 362, 447, 448, 538, 539, 554, 619, 620, 624, 625, 749, 750,
+      765, 876, 891, 979, 10068, 10176, 10235
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 40,
+    "name_en": "Magma Armor",
+    "name_jp": "マグマのよろい",
+    "pokemons": [218, 219, 323],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 41,
+    "name_en": "Water Veil",
+    "name_jp": "みずのベール",
+    "pokemons": [
+      118, 119, 226, 320, 321, 367, 418, 419, 456, 457, 458, 963, 963, 977
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 42,
+    "name_en": "Magnet Pull",
+    "name_jp": "じりょく",
+    "pokemons": [81, 82, 299, 462, 476, 808, 10109, 10110, 10111],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 43,
+    "name_en": "Soundproof",
+    "name_jp": "ぼうおん",
+    "pokemons": [
+      100, 101, 122, 293, 294, 295, 410, 411, 439, 459, 460, 626, 782, 783, 784,
+      10146, 10231, 10232
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 44,
+    "name_en": "Rain Dish",
+    "name_jp": "あめうけざら",
+    "pokemons": [
+      7, 8, 9, 72, 73, 270, 271, 272, 278, 279, 283, 755, 756, 10197
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 45,
+    "name_en": "Sand Stream",
+    "name_jp": "すなおこし",
+    "pokemons": [248, 449, 450, 526, 10049],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 46,
+    "name_en": "Pressure",
+    "name_jp": "プレッシャー",
+    "pokemons": [
+      142, 144, 145, 146, 150, 243, 244, 245, 249, 250, 320, 321, 356, 359, 386,
+      416, 442, 461, 477, 483, 484, 487, 624, 625, 646, 823, 890, 903, 983,
+      10001, 10002, 10003, 10190, 10212, 10245, 10246
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 47,
+    "name_en": "Thick Fat",
+    "name_jp": "あついしぼう",
+    "pokemons": [
+      86, 87, 143, 183, 184, 220, 221, 241, 296, 297, 298, 325, 326, 363, 364,
+      365, 432, 446, 473, 498, 499, 842, 915, 916, 974, 975, 10033, 10091,
+      10092, 10093, 10206, 10217, 10254
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 48,
+    "name_en": "Early Bird",
+    "name_jp": "はやおき",
+    "pokemons": [
+      84, 85, 115, 165, 166, 177, 178, 191, 192, 203, 228, 229, 273, 274, 275,
+      928, 929
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 49,
+    "name_en": "Flame Body",
+    "name_jp": "ほのおのからだ",
+    "pokemons": [
+      77, 78, 126, 146, 218, 219, 240, 467, 485, 607, 608, 609, 636, 637, 662,
+      663, 838, 839, 850, 851, 935, 10215, 10220
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 50,
+    "name_en": "Run Away",
+    "name_jp": "にげあし",
+    "pokemons": [
+      10, 13, 19, 20, 43, 48, 77, 78, 84, 85, 133, 161, 162, 190, 206, 209, 261,
+      265, 290, 401, 417, 427, 504, 506, 827, 828, 831, 924, 942, 982, 10159,
+      10162, 10163, 10205, 10255, 10263, 10263
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 51,
+    "name_en": "Keen Eye",
+    "name_jp": "するどいめ",
+    "pokemons": [
+      16, 17, 18, 21, 22, 83, 107, 161, 162, 163, 164, 215, 227, 278, 279, 302,
+      396, 431, 434, 435, 441, 451, 452, 504, 505, 580, 581, 627, 628, 677, 678,
+      731, 732, 733, 744, 745, 821, 822, 962, 10025, 10126, 10235, 10240
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 52,
+    "name_en": "Hyper Cutter",
+    "name_jp": "かいりきバサミ",
+    "pokemons": [98, 99, 127, 207, 303, 328, 341, 342, 472, 739, 740, 10203],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 53,
+    "name_en": "Pickup",
+    "name_jp": "ものひろい",
+    "pokemons": [
+      52, 190, 216, 231, 263, 264, 417, 424, 446, 506, 659, 660, 702, 710, 711,
+      731, 732, 924, 971, 10027, 10028, 10029, 10030, 10031, 10032, 10107,
+      10161, 10174, 10175, 10200
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 54,
+    "name_en": "Truant",
+    "name_jp": "なまけ",
+    "pokemons": [287, 289, 632],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 55,
+    "name_en": "Hustle",
+    "name_jp": "はりきり",
+    "pokemons": [
+      19, 20, 29, 30, 32, 33, 175, 176, 222, 223, 225, 415, 468, 554, 627, 632,
+      633, 634, 841, 880, 931, 10091, 10092, 10093, 10176, 10216, 10237, 10260,
+      10261, 10262
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 56,
+    "name_en": "Cute Charm",
+    "name_jp": "メロメロボディ",
+    "pokemons": [
+      35, 36, 39, 40, 173, 174, 300, 301, 350, 428, 572, 573, 700, 759, 905
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 57,
+    "name_en": "Plus",
+    "name_jp": "プラス",
+    "pokemons": [179, 180, 181, 311, 599, 600, 601, 702, 849, 10219],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 58,
+    "name_en": "Minus",
+    "name_jp": "マイナス",
+    "pokemons": [309, 310, 312, 599, 600, 601, 10184, 10228],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 59,
+    "name_en": "Forecast",
+    "name_jp": "てんきや",
+    "pokemons": [351, 10013, 10014, 10015],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 60,
+    "name_en": "Sticky Hold",
+    "name_jp": "ねんちゃく",
+    "pokemons": [88, 89, 316, 317, 422, 423, 568, 617],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 61,
+    "name_en": "Shed Skin",
+    "name_jp": "だっぴ",
+    "pokemons": [
+      11, 14, 23, 24, 147, 148, 247, 266, 268, 336, 401, 412, 559, 560, 588,
+      665, 843, 844, 953, 967, 10218
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 62,
+    "name_en": "Guts",
+    "name_jp": "こんじょう",
+    "pokemons": [
+      19, 20, 66, 67, 68, 136, 214, 217, 236, 246, 276, 277, 296, 297, 403, 404,
+      405, 532, 533, 534, 538, 862, 901, 931, 10201, 10260
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 63,
+    "name_en": "Marvel Scale",
+    "name_jp": "ふしぎなうろこ",
+    "pokemons": [147, 148, 350],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 64,
+    "name_en": "Liquid Ooze",
+    "name_jp": "ヘドロえき",
+    "pokemons": [72, 73, 316, 317],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 65,
+    "name_en": "Overgrow",
+    "name_jp": "しんりょく",
+    "pokemons": [
+      1, 2, 3, 152, 153, 154, 252, 253, 254, 387, 388, 389, 495, 496, 497, 511,
+      512, 650, 651, 652, 722, 723, 724, 810, 811, 812, 906, 907, 908, 10195,
+      10209, 10244
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 66,
+    "name_en": "Blaze",
+    "name_jp": "もうか",
+    "pokemons": [
+      4, 5, 6, 155, 156, 157, 255, 256, 257, 390, 391, 392, 498, 499, 500, 513,
+      514, 653, 654, 655, 725, 726, 727, 813, 814, 815, 909, 910, 911, 10196,
+      10210, 10233
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 67,
+    "name_en": "Torrent",
+    "name_jp": "げきりゅう",
+    "pokemons": [
+      7, 8, 9, 158, 159, 160, 258, 259, 260, 393, 394, 395, 501, 502, 503, 515,
+      516, 656, 657, 658, 728, 729, 730, 816, 817, 818, 912, 913, 914, 10197,
+      10211, 10236
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 68,
+    "name_en": "Swarm",
+    "name_jp": "むしのしらせ",
+    "pokemons": [
+      15, 123, 165, 166, 167, 168, 212, 214, 267, 313, 402, 414, 540, 542, 543,
+      544, 545, 588, 589, 595, 596, 632, 636, 637, 736, 824, 825, 826, 900, 919,
+      920, 10213
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 69,
+    "name_en": "Rock Head",
+    "name_jp": "いしあたま",
+    "pokemons": [
+      74, 75, 76, 95, 104, 105, 111, 112, 142, 185, 208, 304, 305, 306, 369,
+      371, 372, 438, 697, 10016, 10115, 10149
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 70,
+    "name_en": "Drought",
+    "name_jp": "ひでり",
+    "pokemons": [37, 38, 324, 383, 10035],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 71,
+    "name_en": "Arena Trap",
+    "name_jp": "ありじごく",
+    "pokemons": [50, 51, 328],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 72,
+    "name_en": "Vital Spirit",
+    "name_jp": "やるき",
+    "pokemons": [
+      56, 57, 125, 126, 225, 236, 239, 240, 288, 466, 467, 506, 744, 979, 10126,
+      10168
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 73,
+    "name_en": "White Smoke",
+    "name_jp": "しろいけむり",
+    "pokemons": [324, 631, 850, 851, 10220],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 74,
+    "name_en": "Pure Power",
+    "name_jp": "ヨガパワー",
+    "pokemons": [307, 308, 10054],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 75,
+    "name_en": "Shell Armor",
+    "name_jp": "シェルアーマー",
+    "pokemons": [
+      90, 91, 98, 99, 131, 138, 139, 324, 341, 342, 366, 387, 388, 389, 501,
+      502, 503, 557, 558, 589, 616, 776, 833, 834, 950, 10071, 10203, 10204,
+      10214, 10236
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 76,
+    "name_en": "Air Lock",
+    "name_jp": "エアロック",
+    "pokemons": [384],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 77,
+    "name_en": "Tangled Feet",
+    "name_jp": "ちどりあし",
+    "pokemons": [16, 17, 18, 84, 85, 327, 441, 866, 973],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 78,
+    "name_en": "Motor Drive",
+    "name_jp": "でんきエンジン",
+    "pokemons": [466, 522, 523, 587],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 79,
+    "name_en": "Rivalry",
+    "name_jp": "とうそうしん",
+    "pokemons": [
+      29, 30, 31, 32, 33, 34, 267, 403, 404, 405, 519, 520, 521, 610, 611, 612,
+      667, 668
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 80,
+    "name_en": "Steadfast",
+    "name_jp": "ふくつのこころ",
+    "pokemons": [
+      66, 67, 68, 123, 236, 237, 447, 448, 475, 744, 745, 832, 865, 900, 10043,
+      10166, 10201
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 81,
+    "name_en": "Snow Cloak",
+    "name_jp": "ゆきがくれ",
+    "pokemons": [
+      144, 220, 221, 471, 473, 478, 582, 583, 613, 614, 974, 10101, 10102,
+      10103, 10104
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 82,
+    "name_en": "Gluttony",
+    "name_jp": "くいしんぼう",
+    "pokemons": [
+      69, 70, 71, 143, 213, 263, 264, 316, 317, 325, 326, 446, 511, 512, 513,
+      514, 515, 516, 631, 819, 820, 840, 841, 842, 915, 916, 10091, 10092,
+      10093, 10112, 10113, 10164, 10174, 10175, 10206, 10216, 10217, 10254
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 83,
+    "name_en": "Anger Point",
+    "name_jp": "いかりのつぼ",
+    "pokemons": [
+      56, 57, 128, 323, 551, 552, 553, 739, 740, 10250, 10251, 10252
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 84,
+    "name_en": "Unburden",
+    "name_jp": "かるわざ",
+    "pokemons": [
+      106, 252, 253, 254, 425, 426, 509, 510, 617, 684, 685, 701, 827, 828, 944,
+      945
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 85,
+    "name_en": "Heatproof",
+    "name_jp": "たいねつ",
+    "pokemons": [436, 437, 837],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 86,
+    "name_en": "Simple",
+    "name_jp": "たんじゅん",
+    "pokemons": [322, 399, 400, 527, 528],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 87,
+    "name_en": "Dry Skin",
+    "name_jp": "かんそうはだ",
+    "pokemons": [46, 47, 124, 453, 454, 694, 695],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 88,
+    "name_en": "Download",
+    "name_jp": "ダウンロード",
+    "pokemons": [137, 233, 474, 649],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 89,
+    "name_en": "Iron Fist",
+    "name_jp": "てつのこぶし",
+    "pokemons": [
+      107, 166, 390, 391, 392, 532, 533, 534, 622, 623, 674, 675, 739, 740, 809,
+      921, 922, 923, 10208
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 90,
+    "name_en": "Poison Heal",
+    "name_jp": "ポイズンヒール",
+    "pokemons": [285, 286, 472],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 91,
+    "name_en": "Adaptability",
+    "name_jp": "てきおうりょく",
+    "pokemons": [
+      133, 341, 342, 349, 474, 550, 690, 691, 734, 735, 902, 10016, 10059,
+      10090, 10121, 10159, 10205, 10247, 10248
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 92,
+    "name_en": "Skill Link",
+    "name_jp": "スキルリンク",
+    "pokemons": [90, 91, 190, 424, 572, 573, 731, 732, 733, 10047],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 93,
+    "name_en": "Hydration",
+    "name_jp": "うるおいボディ",
+    "pokemons": [
+      86, 87, 131, 134, 238, 278, 339, 340, 368, 370, 489, 490, 535, 536, 580,
+      581, 594, 616, 617, 704, 705, 706, 10204
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 94,
+    "name_en": "Solar Power",
+    "name_jp": "サンパワー",
+    "pokemons": [4, 5, 6, 191, 192, 357, 694, 695, 10048, 10196],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 95,
+    "name_en": "Quick Feet",
+    "name_jp": "はやあし",
+    "pokemons": [135, 210, 216, 217, 261, 262, 263, 264, 285, 10174, 10175],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 96,
+    "name_en": "Normalize",
+    "name_jp": "ノーマルスキン",
+    "pokemons": [300, 301],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 97,
+    "name_en": "Sniper",
+    "name_jp": "スナイパー",
+    "pokemons": [
+      15, 21, 22, 116, 117, 167, 168, 223, 224, 230, 451, 452, 688, 689, 816,
+      817, 818, 10211
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 98,
+    "name_en": "Magic Guard",
+    "name_jp": "マジックガード",
+    "pokemons": [35, 36, 63, 64, 65, 173, 561, 577, 578, 579],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 99,
+    "name_en": "No Guard",
+    "name_jp": "ノーガード",
+    "pokemons": [66, 67, 68, 588, 622, 623, 679, 680, 10073, 10126, 10201],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 100,
+    "name_en": "Stall",
+    "name_jp": "あとだし",
+    "pokemons": [302],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 101,
+    "name_en": "Technician",
+    "name_jp": "テクニシャン",
+    "pokemons": [
+      52, 53, 122, 123, 212, 235, 237, 286, 402, 407, 424, 439, 572, 573, 802,
+      849, 852, 853, 925, 10046, 10107, 10108, 10184, 10200, 10219, 10228, 10257
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 102,
+    "name_en": "Leaf Guard",
+    "name_jp": "リーフガード",
+    "pokemons": [
+      114, 152, 153, 154, 187, 188, 189, 315, 406, 465, 470, 541, 548, 549, 753,
+      754, 761, 762, 763, 893, 10128, 10192, 10237
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 103,
+    "name_en": "Klutz",
+    "name_jp": "ぶきよう",
+    "pokemons": [427, 428, 527, 528, 531, 622, 623, 759, 760, 848, 926, 951],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 104,
+    "name_en": "Mold Breaker",
+    "name_jp": "かたやぶり",
+    "pokemons": [
+      127, 408, 409, 529, 530, 538, 539, 550, 610, 611, 612, 621, 674, 675, 701,
+      902, 957, 958, 959, 976, 10016, 10041, 10045, 10247, 10248
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 105,
+    "name_en": "Super Luck",
+    "name_jp": "きょううん",
+    "pokemons": [175, 176, 198, 359, 430, 468, 519, 520, 521],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 106,
+    "name_en": "Aftermath",
+    "name_jp": "ゆうばく",
+    "pokemons": [100, 101, 425, 426, 434, 435, 568, 569, 10207, 10231, 10232],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 107,
+    "name_en": "Anticipation",
+    "name_jp": "きけんよち",
+    "pokemons": [
+      133, 339, 340, 413, 453, 454, 598, 856, 857, 858, 955, 10004, 10005,
+      10159, 10162, 10163, 10205, 10221
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 108,
+    "name_en": "Forewarn",
+    "name_jp": "よちむ",
+    "pokemons": [96, 97, 124, 238, 517, 518],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 109,
+    "name_en": "Unaware",
+    "name_jp": "てんねん",
+    "pokemons": [
+      36, 194, 195, 399, 400, 527, 528, 771, 789, 909, 910, 911, 977, 980, 10253
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 110,
+    "name_en": "Tinted Lens",
+    "name_jp": "いろめがね",
+    "pokemons": [12, 48, 49, 163, 164, 314, 414, 469, 561, 919, 920, 10198],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 111,
+    "name_en": "Filter",
+    "name_jp": "フィルター",
+    "pokemons": [122, 439, 966, 10053],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 112,
+    "name_en": "Slow Start",
+    "name_jp": "スロースタート",
+    "pokemons": [486, 965],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 113,
+    "name_en": "Scrappy",
+    "name_jp": "きもったま",
+    "pokemons": [
+      115, 241, 276, 277, 294, 295, 507, 508, 674, 675, 865, 973, 10088, 10166
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 114,
+    "name_en": "Storm Drain",
+    "name_jp": "よびみず",
+    "pokemons": [345, 346, 422, 423, 456, 457, 556, 978, 10258, 10259],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 115,
+    "name_en": "Ice Body",
+    "name_jp": "アイスボディ",
+    "pokemons": [
+      86, 87, 361, 362, 363, 364, 365, 378, 471, 582, 583, 584, 712, 713, 866,
+      883, 996, 997, 998, 10168, 10243
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 116,
+    "name_en": "Solid Rock",
+    "name_jp": "ハードロック",
+    "pokemons": [323, 464, 564, 565],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 117,
+    "name_en": "Snow Warning",
+    "name_jp": "ゆきふらし",
+    "pokemons": [459, 460, 584, 698, 699, 10060, 10103, 10104],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 118,
+    "name_en": "Honey Gather",
+    "name_jp": "みつあつめ",
+    "pokemons": [216, 415, 742, 743, 10150],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 119,
+    "name_en": "Frisk",
+    "name_jp": "おみとおし",
+    "pokemons": [
+      40, 161, 162, 193, 234, 353, 354, 355, 356, 469, 477, 574, 575, 576, 708,
+      709, 710, 711, 714, 715, 826, 859, 860, 861, 899, 955, 956, 10027, 10028,
+      10029, 10030, 10031, 10032, 10114, 10213, 10222
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 120,
+    "name_en": "Reckless",
+    "name_jp": "すてみ",
+    "pokemons": [
+      106, 111, 112, 396, 397, 398, 464, 500, 550, 619, 620, 626, 862
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 121,
+    "name_en": "Multitype",
+    "name_jp": "マルチタイプ",
+    "pokemons": [493],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 122,
+    "name_en": "Flower Gift",
+    "name_jp": "フラワーギフト",
+    "pokemons": [421],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 123,
+    "name_en": "Bad Dreams",
+    "name_jp": "ナイトメア",
+    "pokemons": [491],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 124,
+    "name_en": "Pickpocket",
+    "name_jp": "わるいてぐせ",
+    "pokemons": [
+      215, 273, 274, 275, 461, 688, 689, 859, 860, 861, 944, 957, 958, 959,
+      10222
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 125,
+    "name_en": "Sheer Force",
+    "name_jp": "ちからずく",
+    "pokemons": [
+      31, 34, 98, 99, 128, 158, 159, 160, 208, 296, 297, 303, 328, 371, 408,
+      409, 532, 533, 534, 555, 621, 627, 628, 645, 733, 878, 879, 900, 974, 975,
+      10017, 10087, 10203, 10224, 10240, 10261, 10262
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 126,
+    "name_en": "Contrary",
+    "name_jp": "あまのじゃく",
+    "pokemons": [213, 327, 495, 496, 497, 686, 687, 753, 754, 905, 10128],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 127,
+    "name_en": "Unnerve",
+    "name_jp": "きんちょうかん",
+    "pokemons": [
+      23, 24, 52, 53, 142, 150, 217, 228, 229, 248, 284, 416, 595, 596, 610,
+      611, 612, 667, 668, 760, 821, 822, 823, 898, 901, 10161, 10200, 10212
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 128,
+    "name_en": "Defiant",
+    "name_jp": "まけんき",
+    "pokemons": [
+      56, 57, 83, 393, 394, 395, 432, 624, 625, 628, 641, 642, 766, 862, 870,
+      979, 983, 10170, 10240
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 129,
+    "name_en": "Defeatist",
+    "name_jp": "よわき",
+    "pokemons": [566, 567],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 130,
+    "name_en": "Cursed Body",
+    "name_jp": "のろわれボディ",
+    "pokemons": [
+      94, 353, 354, 478, 592, 593, 854, 855, 885, 886, 887, 10115, 10149, 10173,
+      10202
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 131,
+    "name_en": "Healer",
+    "name_jp": "いやしのこころ",
+    "pokemons": [
+      113, 182, 242, 531, 594, 682, 683, 856, 857, 858, 10069, 10221
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 132,
+    "name_en": "Friend Guard",
+    "name_jp": "フレンドガード",
+    "pokemons": [35, 39, 173, 174, 440, 664, 665, 666, 925, 10257],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 133,
+    "name_en": "Weak Armor",
+    "name_jp": "くだけるよろい",
+    "pokemons": [
+      95, 138, 139, 140, 141, 218, 219, 227, 524, 525, 557, 558, 569, 582, 583,
+      584, 629, 630, 854, 855, 864, 936, 937, 10173, 10207
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 134,
+    "name_en": "Heavy Metal",
+    "name_jp": "ヘヴィメタル",
+    "pokemons": [304, 305, 306, 436, 437, 878, 879, 884, 10224, 10225],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 135,
+    "name_en": "Light Metal",
+    "name_jp": "ライトメタル",
+    "pokemons": [212, 374, 375, 376, 379, 884, 10225],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 136,
+    "name_en": "Multiscale",
+    "name_jp": "マルチスケイル",
+    "pokemons": [149, 249],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 137,
+    "name_en": "Toxic Boost",
+    "name_jp": "どくぼうそう",
+    "pokemons": [335],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 138,
+    "name_en": "Flare Boost",
+    "name_jp": "ねつぼうそう",
+    "pokemons": [425, 426],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 139,
+    "name_en": "Harvest",
+    "name_jp": "しゅうかく",
+    "pokemons": [102, 103, 357, 708, 709, 928, 929, 930, 10114],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 140,
+    "name_en": "Telepathy",
+    "name_jp": "テレパシー",
+    "pokemons": [
+      202, 280, 281, 282, 307, 308, 360, 483, 484, 487, 517, 518, 605, 606, 714,
+      715, 765, 785, 786, 787, 788, 824, 825, 826, 954, 10213, 10245, 10246
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 141,
+    "name_en": "Moody",
+    "name_jp": "ムラっけ",
+    "pokemons": [223, 224, 235, 361, 362, 399, 400, 952],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 142,
+    "name_en": "Overcoat",
+    "name_jp": "ぼうじん",
+    "pokemons": [
+      90, 91, 204, 205, 372, 412, 413, 540, 541, 542, 577, 578, 579, 589, 616,
+      629, 630, 782, 783, 784, 965, 966, 10004, 10005, 10146, 10241, 10242,
+      10249
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 143,
+    "name_en": "Poison Touch",
+    "name_jp": "どくしゅ",
+    "pokemons": [
+      88, 89, 453, 454, 537, 690, 691, 903, 945, 10112, 10113, 10235
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 144,
+    "name_en": "Regenerator",
+    "name_jp": "さいせいりょく",
+    "pokemons": [
+      79, 80, 114, 199, 222, 250, 465, 531, 577, 578, 579, 590, 591, 594, 619,
+      620, 747, 748, 829, 830, 950, 967, 10019, 10164, 10165, 10172
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 145,
+    "name_en": "Big Pecks",
+    "name_jp": "はとむね",
+    "pokemons": [
+      16, 17, 18, 441, 519, 520, 521, 580, 581, 629, 630, 661, 821, 822, 962
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 146,
+    "name_en": "Sand Rush",
+    "name_jp": "すなかき",
+    "pokemons": [27, 28, 507, 508, 529, 530, 745, 880, 882, 972],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 147,
+    "name_en": "Wonder Skin",
+    "name_jp": "ミラクルスキン",
+    "pokemons": [49, 300, 301, 561, 779],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 148,
+    "name_en": "Analytic",
+    "name_jp": "アナライズ",
+    "pokemons": [81, 82, 120, 121, 137, 233, 462, 474, 504, 505, 605, 606],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 149,
+    "name_en": "Illusion",
+    "name_jp": "イリュージョン",
+    "pokemons": [570, 571, 10238, 10239],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 150,
+    "name_en": "Imposter",
+    "name_jp": "かわりもの",
+    "pokemons": [132],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 151,
+    "name_en": "Infiltrator",
+    "name_jp": "すりぬけ",
+    "pokemons": [
+      41, 42, 169, 187, 188, 189, 291, 336, 442, 546, 547, 607, 608, 609, 677,
+      678, 686, 687, 714, 715, 885, 886, 887, 946, 947, 10025
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 152,
+    "name_en": "Mummy",
+    "name_jp": "ミイラ",
+    "pokemons": [562, 563],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 153,
+    "name_en": "Moxie",
+    "name_jp": "じしんかじょう",
+    "pokemons": [
+      127, 130, 214, 262, 373, 430, 551, 552, 553, 559, 560, 667, 668, 912, 913,
+      914
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 154,
+    "name_en": "Justified",
+    "name_jp": "せいぎのこころ",
+    "pokemons": [
+      58, 59, 359, 448, 475, 638, 639, 640, 647, 10024, 10229, 10230
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 155,
+    "name_en": "Rattled",
+    "name_jp": "びびり",
+    "pokemons": [
+      129, 165, 185, 206, 209, 210, 261, 293, 366, 438, 613, 835, 848, 902, 960,
+      961, 982, 999, 999, 10107, 10108, 10247, 10248, 10255
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 156,
+    "name_en": "Magic Bounce",
+    "name_jp": "マジックミラー",
+    "pokemons": [177, 178, 196, 856, 857, 858, 10057, 10066, 10075, 10221],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 157,
+    "name_en": "Sap Sipper",
+    "name_jp": "そうしょく",
+    "pokemons": [
+      183, 184, 203, 234, 241, 298, 522, 523, 585, 586, 626, 672, 673, 704, 705,
+      706, 780, 899, 981, 10241, 10242
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 158,
+    "name_en": "Prankster",
+    "name_jp": "いたずらごころ",
+    "pokemons": [
+      198, 302, 313, 314, 447, 509, 510, 546, 547, 641, 642, 678, 707, 859, 860,
+      861, 944, 945, 10056, 10222
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 159,
+    "name_en": "Sand Force",
+    "name_jp": "すなのちから",
+    "pokemons": [
+      50, 51, 299, 422, 423, 449, 450, 476, 524, 525, 526, 529, 530, 645, 10058,
+      10072, 10105, 10106
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 160,
+    "name_en": "Iron Barbs",
+    "name_jp": "てつのトゲ",
+    "pokemons": [597, 598, 777, 10154],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 161,
+    "name_en": "Zen Mode",
+    "name_jp": "ダルマモード",
+    "pokemons": [555, 10017, 10177, 10178],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 162,
+    "name_en": "Victory Star",
+    "name_jp": "しょうりのほし",
+    "pokemons": [494],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 163,
+    "name_en": "Turboblaze",
+    "name_jp": "ターボブレイズ",
+    "pokemons": [643, 10023],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 164,
+    "name_en": "Teravolt",
+    "name_jp": "テラボルテージ",
+    "pokemons": [644, 10022],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 165,
+    "name_en": "Aroma Veil",
+    "name_jp": "アロマベール",
+    "pokemons": [682, 683, 868, 869, 915, 927, 10223, 10254],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 166,
+    "name_en": "Flower Veil",
+    "name_jp": "フラワーベール",
+    "pokemons": [669, 670, 671, 764, 10061],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 167,
+    "name_en": "Cheek Pouch",
+    "name_jp": "ほおぶくろ",
+    "pokemons": [659, 660, 702, 819, 820, 925, 10257],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 168,
+    "name_en": "Protean",
+    "name_jp": "へんげんじざい",
+    "pokemons": [352, 656, 657, 658, 906, 907, 908],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 169,
+    "name_en": "Fur Coat",
+    "name_jp": "ファーコート",
+    "pokemons": [676, 10108],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 170,
+    "name_en": "Magician",
+    "name_jp": "マジシャン",
+    "pokemons": [653, 654, 655, 707, 720, 10086],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 171,
+    "name_en": "Bulletproof",
+    "name_jp": "ぼうだん",
+    "pokemons": [650, 651, 652, 782, 783, 784, 831, 832, 840, 901, 10146],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 172,
+    "name_en": "Competitive",
+    "name_jp": "かちき",
+    "pokemons": [39, 40, 174, 350, 574, 575, 576, 836, 940, 941, 10025, 10169],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 173,
+    "name_en": "Strong Jaw",
+    "name_jp": "がんじょうあご",
+    "pokemons": [
+      696, 697, 734, 735, 779, 833, 834, 836, 882, 10070, 10121, 10214, 10243
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 174,
+    "name_en": "Refrigerate",
+    "name_jp": "フリーズスキン",
+    "pokemons": [698, 699, 10074],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 175,
+    "name_en": "Sweet Veil",
+    "name_jp": "スイートベール",
+    "pokemons": [684, 685, 742, 743, 761, 762, 763, 868, 869, 10150, 10223],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 176,
+    "name_en": "Stance Change",
+    "name_jp": "バトルスイッチ",
+    "pokemons": [681, 10026],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 177,
+    "name_en": "Gale Wings",
+    "name_jp": "はやてのつばさ",
+    "pokemons": [661, 662, 663],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 178,
+    "name_en": "Mega Launcher",
+    "name_jp": "メガランチャー",
+    "pokemons": [692, 693, 10036],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 179,
+    "name_en": "Grass Pelt",
+    "name_jp": "くさのけがわ",
+    "pokemons": [672, 673],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 180,
+    "name_en": "Symbiosis",
+    "name_jp": "きょうせい",
+    "pokemons": [669, 670, 671, 765, 10061],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 181,
+    "name_en": "Tough Claws",
+    "name_jp": "かたいツメ",
+    "pokemons": [688, 689, 863, 10034, 10042, 10076, 10152, 10161],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 182,
+    "name_en": "Pixilate",
+    "name_jp": "フェアリースキン",
+    "pokemons": [700, 10051, 10067],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 183,
+    "name_en": "Gooey",
+    "name_jp": "ぬめぬめ",
+    "pokemons": [704, 705, 706, 960, 961, 10241, 10242],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 184,
+    "name_en": "Aerilate",
+    "name_jp": "スカイスキン",
+    "pokemons": [10040, 10089],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 185,
+    "name_en": "Parental Bond",
+    "name_jp": "おやこあい",
+    "pokemons": [10039],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 186,
+    "name_en": "Dark Aura",
+    "name_jp": "ダークオーラ",
+    "pokemons": [717],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 187,
+    "name_en": "Fairy Aura",
+    "name_jp": "フェアリーオーラ",
+    "pokemons": [716],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 188,
+    "name_en": "Aura Break",
+    "name_jp": "オーラブレイク",
+    "pokemons": [718, 10181],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 189,
+    "name_en": "Primordial Sea",
+    "name_jp": "はじまりのうみ",
+    "pokemons": [10077],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 190,
+    "name_en": "Desolate Land",
+    "name_jp": "おわりのだいち",
+    "pokemons": [10078],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 191,
+    "name_en": "Delta Stream",
+    "name_jp": "デルタストリーム",
+    "pokemons": [10079],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 192,
+    "name_en": "Stamina",
+    "name_jp": "じきゅうりょく",
+    "pokemons": [749, 750],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 193,
+    "name_en": "Wimp Out",
+    "name_jp": "にげごし",
+    "pokemons": [767],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 194,
+    "name_en": "Emergency Exit",
+    "name_jp": "ききかいひ",
+    "pokemons": [768],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 195,
+    "name_en": "Water Compaction",
+    "name_jp": "みずがため",
+    "pokemons": [769, 770],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 196,
+    "name_en": "Merciless",
+    "name_jp": "ひとでなし",
+    "pokemons": [747, 748],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 197,
+    "name_en": "Shields Down",
+    "name_jp": "リミットシールド",
+    "pokemons": [
+      774, 10130, 10131, 10132, 10133, 10134, 10135, 10136, 10137, 10138, 10139,
+      10140, 10141, 10142
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 198,
+    "name_en": "Stakeout",
+    "name_jp": "はりこみ",
+    "pokemons": [734, 735, 827, 828, 917, 918, 942, 943, 10121],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 199,
+    "name_en": "Water Bubble",
+    "name_jp": "すいほう",
+    "pokemons": [751, 752, 10153],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 200,
+    "name_en": "Steelworker",
+    "name_jp": "はがねつかい",
+    "pokemons": [781],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 201,
+    "name_en": "Berserk",
+    "name_jp": "ぎゃくじょう",
+    "pokemons": [780, 10171],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 202,
+    "name_en": "Slush Rush",
+    "name_jp": "ゆきかき",
+    "pokemons": [613, 614, 881, 883, 975, 10101, 10102],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 203,
+    "name_en": "Long Reach",
+    "name_jp": "えんかく",
+    "pokemons": [722, 723, 724, 10244],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 204,
+    "name_en": "Liquid Voice",
+    "name_jp": "うるおいボイス",
+    "pokemons": [728, 729, 730],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 205,
+    "name_en": "Triage",
+    "name_jp": "ヒーリングシフト",
+    "pokemons": [764],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 206,
+    "name_en": "Galvanize",
+    "name_jp": "エレキスキン",
+    "pokemons": [10109, 10110, 10111],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 207,
+    "name_en": "Surge Surfer",
+    "name_jp": "サーフテール",
+    "pokemons": [10100],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 208,
+    "name_en": "Schooling",
+    "name_jp": "ぎょぐん",
+    "pokemons": [746, 10127],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 209,
+    "name_en": "Disguise",
+    "name_jp": "ばけのかわ",
+    "pokemons": [778, 10143, 10144, 10145],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 210,
+    "name_en": "Battle Bond",
+    "name_jp": "きずなへんげ",
+    "pokemons": [10116, 10117],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 211,
+    "name_en": "Power Construct",
+    "name_jp": "スワームチェンジ",
+    "pokemons": [10118, 10119, 10120],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 212,
+    "name_en": "Corrosion",
+    "name_jp": "ふしょく",
+    "pokemons": [757, 758, 969, 970, 10129],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 213,
+    "name_en": "Comatose",
+    "name_jp": "ぜったいねむり",
+    "pokemons": [775],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 214,
+    "name_en": "Queenly Majesty",
+    "name_jp": "じょおうのいげん",
+    "pokemons": [763],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 215,
+    "name_en": "Innards Out",
+    "name_jp": "とびだすなかみ",
+    "pokemons": [771],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 216,
+    "name_en": "Dancer",
+    "name_jp": "おどりこ",
+    "pokemons": [741, 10123, 10124, 10125],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 217,
+    "name_en": "Battery",
+    "name_jp": "バッテリー",
+    "pokemons": [737],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 218,
+    "name_en": "Fluffy",
+    "name_jp": "もふもふ",
+    "pokemons": [759, 760, 831, 832, 971, 972],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 219,
+    "name_en": "Dazzling",
+    "name_jp": "ビビッドボディ",
+    "pokemons": [779],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 220,
+    "name_en": "Soul-Heart",
+    "name_jp": "ソウルハート",
+    "pokemons": [801, 10147],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 221,
+    "name_en": "Tangling Hair",
+    "name_jp": "カーリーヘアー",
+    "pokemons": [10105, 10106],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 222,
+    "name_en": "Receiver",
+    "name_jp": "レシーバー",
+    "pokemons": [766],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 223,
+    "name_en": "Power of Alchemy",
+    "name_jp": "かがくのちから",
+    "pokemons": [10112, 10113],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 224,
+    "name_en": "Beast Boost",
+    "name_jp": "ビーストブースト",
+    "pokemons": [793, 794, 795, 796, 797, 798, 799, 803, 804, 805, 806],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 225,
+    "name_en": "RKS System",
+    "name_jp": "ＡＲシステム",
+    "pokemons": [773],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 226,
+    "name_en": "Electric Surge",
+    "name_jp": "エレキメイカー",
+    "pokemons": [785, 871],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 227,
+    "name_en": "Psychic Surge",
+    "name_jp": "サイコメイカー",
+    "pokemons": [786, 876, 10186],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 228,
+    "name_en": "Misty Surge",
+    "name_jp": "ミストメイカー",
+    "pokemons": [788, 10167],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 229,
+    "name_en": "Grassy Surge",
+    "name_jp": "グラスメイカー",
+    "pokemons": [787, 810, 811, 812, 10209],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 230,
+    "name_en": "Full Metal Body",
+    "name_jp": "メタルプロテクト",
+    "pokemons": [791],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 231,
+    "name_en": "Shadow Shield",
+    "name_jp": "ファントムガード",
+    "pokemons": [792],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 232,
+    "name_en": "Prism Armor",
+    "name_jp": "プリズムアーマー",
+    "pokemons": [800, 10155, 10156],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 233,
+    "name_en": "Neuroforce",
+    "name_jp": "ブレインフォース",
+    "pokemons": [10157],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 234,
+    "name_en": "Intrepid Sword",
+    "name_jp": "ふとうのけん",
+    "pokemons": [888, 10188],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 235,
+    "name_en": "Dauntless Shield",
+    "name_jp": "ふくつのたて",
+    "pokemons": [889, 10189],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 236,
+    "name_en": "Libero",
+    "name_jp": "リベロ",
+    "pokemons": [813, 814, 815, 10210],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 237,
+    "name_en": "Ball Fetch",
+    "name_jp": "たまひろい",
+    "pokemons": [835],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 238,
+    "name_en": "Cotton Down",
+    "name_jp": "わたげ",
+    "pokemons": [829, 830],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 239,
+    "name_en": "Propeller Tail",
+    "name_jp": "スクリューおびれ",
+    "pokemons": [846, 847],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 240,
+    "name_en": "Mirror Armor",
+    "name_jp": "ミラーアーマー",
+    "pokemons": [823, 10212],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 241,
+    "name_en": "Gulp Missile",
+    "name_jp": "うのミサイル",
+    "pokemons": [845, 10182, 10183],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 242,
+    "name_en": "Stalwart",
+    "name_jp": "すじがねいり",
+    "pokemons": [884, 10225],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 243,
+    "name_en": "Steam Engine",
+    "name_jp": "じょうききかん",
+    "pokemons": [837, 838, 839, 10215],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 244,
+    "name_en": "Punk Rock",
+    "name_jp": "パンクロック",
+    "pokemons": [849, 10184, 10219, 10228],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 245,
+    "name_en": "Sand Spit",
+    "name_jp": "すなはき",
+    "pokemons": [843, 844, 10218],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 246,
+    "name_en": "Ice Scales",
+    "name_jp": "こおりのりんぷん",
+    "pokemons": [872, 873],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 247,
+    "name_en": "Ripen",
+    "name_jp": "じゅくせい",
+    "pokemons": [840, 841, 842, 10216, 10217],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 248,
+    "name_en": "Ice Face",
+    "name_jp": "アイスフェイス",
+    "pokemons": [875, 10185],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 249,
+    "name_en": "Power Spot",
+    "name_jp": "パワースポット",
+    "pokemons": [874],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 250,
+    "name_en": "Mimicry",
+    "name_jp": "ぎたい",
+    "pokemons": [10180],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 251,
+    "name_en": "Screen Cleaner",
+    "name_jp": "バリアフリー",
+    "pokemons": [866, 10168],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 252,
+    "name_en": "Steely Spirit",
+    "name_jp": "はがねのせいしん",
+    "pokemons": [863],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 253,
+    "name_en": "Perish Body",
+    "name_jp": "ほろびのボディ",
+    "pokemons": [864],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 254,
+    "name_en": "Wandering Spirit",
+    "name_jp": "さまようたましい",
+    "pokemons": [867, 10179],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 255,
+    "name_en": "Gorilla Tactics",
+    "name_jp": "ごりむちゅう",
+    "pokemons": [10177, 10178],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 256,
+    "name_en": "Neutralizing Gas",
+    "name_jp": "かがくへんかガス",
+    "pokemons": [109, 110, 10167],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 257,
+    "name_en": "Pastel Veil",
+    "name_jp": "パステルベール",
+    "pokemons": [10162, 10163],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 258,
+    "name_en": "Hunger Switch",
+    "name_jp": "はらぺこスイッチ",
+    "pokemons": [877, 10187],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 259,
+    "name_en": "Quick Draw",
+    "name_jp": "クイックドロウ",
+    "pokemons": [10165],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 260,
+    "name_en": "Unseen Fist",
+    "name_jp": "ふかしのこぶし",
+    "pokemons": [892, 10191, 10226, 10227],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 261,
+    "name_en": "Curious Medicine",
+    "name_jp": "きみょうなくすり",
+    "pokemons": [10172],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 262,
+    "name_en": "Transistor",
+    "name_jp": "トランジスタ",
+    "pokemons": [894],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 263,
+    "name_en": "Dragon’s Maw",
+    "name_jp": "りゅうのあぎと",
+    "pokemons": [895],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 264,
+    "name_en": "Chilling Neigh",
+    "name_jp": "しろのいななき",
+    "pokemons": [896],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 265,
+    "name_en": "Grim Neigh",
+    "name_jp": "くろのいななき",
+    "pokemons": [897],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 266,
+    "name_en": "As One",
+    "name_jp": "じんばいったい",
+    "pokemons": [10193],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 267,
+    "name_en": "As One",
+    "name_jp": "じんばいったい",
+    "pokemons": [10194],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 268,
+    "name_en": "Lingering Aroma",
+    "name_jp": "とれないにおい",
+    "pokemons": [916],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 269,
+    "name_en": "Seed Sower",
+    "name_jp": "こぼれダネ",
+    "pokemons": [930],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 270,
+    "name_en": "Thermal Exchange",
+    "name_jp": "ねつこうかん",
+    "pokemons": [996, 997, 998],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 271,
+    "name_en": "Anger Shell",
+    "name_jp": "いかりのこうら",
+    "pokemons": [950],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 272,
+    "name_en": "Purifying Salt",
+    "name_jp": "きよめのしお",
+    "pokemons": [932, 933, 934],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 273,
+    "name_en": "Well-Baked Body",
+    "name_jp": "こんがりボディ",
+    "pokemons": [927],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 274,
+    "name_en": "Wind Rider",
+    "name_jp": "かぜのり",
+    "pokemons": [946, 947],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 275,
+    "name_en": "Guard Dog",
+    "name_jp": "ばんけん",
+    "pokemons": [943],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 276,
+    "name_en": "Rocky Payload",
+    "name_jp": "いわはこび",
+    "pokemons": [962],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 277,
+    "name_en": "Wind Power",
+    "name_jp": "ふうりょくでんき",
+    "pokemons": [940, 941],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 278,
+    "name_en": "Zero to Hero",
+    "name_jp": "マイティチェンジ",
+    "pokemons": [964, 964, 10256, 10256],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 279,
+    "name_en": "Commander",
+    "name_jp": "しれいとう",
+    "pokemons": [978, 10258, 10259],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 280,
+    "name_en": "Electromorphosis",
+    "name_jp": "でんきにかえる",
+    "pokemons": [939],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 281,
+    "name_en": "Protosynthesis",
+    "name_jp": "こだいかっせい",
+    "pokemons": [
+      984, 984, 985, 985, 986, 986, 987, 987, 988, 988, 989, 989, 1005, 1005
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 282,
+    "name_en": "Quark Drive",
+    "name_jp": "クォークチャージ",
+    "pokemons": [
+      990, 990, 991, 991, 992, 992, 993, 993, 994, 994, 995, 995, 1006, 1006
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 283,
+    "name_en": "Good as Gold",
+    "name_jp": "おうごんのからだ",
+    "pokemons": [1000, 1000],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 284,
+    "name_en": "Vessel of Ruin",
+    "name_jp": "わざわいのうつわ",
+    "pokemons": [1003, 1003],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 285,
+    "name_en": "Sword of Ruin",
+    "name_jp": "わざわいのつるぎ",
+    "pokemons": [1002, 1002],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 286,
+    "name_en": "Tablets of Ruin",
+    "name_jp": "わざわいのおふだ",
+    "pokemons": [1001, 1001],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 287,
+    "name_en": "Beads of Ruin",
+    "name_jp": "わざわいのたま",
+    "pokemons": [1004, 1004],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 288,
+    "name_en": "Orichalcum Pulse",
+    "name_jp": "ひひいろのこどう",
+    "pokemons": [
+      1007, 1007, 10264, 10264, 10265, 10265, 10266, 10266, 10267, 10267
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 289,
+    "name_en": "Hadron Engine",
+    "name_jp": "ハドロンエンジン",
+    "pokemons": [
+      1008, 1008, 10268, 10268, 10269, 10269, 10270, 10270, 10271, 10271
+    ],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 290,
+    "name_en": "Opportunist",
+    "name_jp": "びんじょう",
+    "pokemons": [956],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 291,
+    "name_en": "Cud Chew",
+    "name_jp": "はんすう",
+    "pokemons": [981, 10250, 10251, 10252],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 292,
+    "name_en": "Sharpness",
+    "name_jp": "きれあじ",
+    "pokemons": [475, 976],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 293,
+    "name_en": "Supreme Overlord",
+    "name_jp": "そうだいしょう",
+    "pokemons": [983],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 294,
+    "name_en": "Costar",
+    "name_jp": "きょうえん",
+    "pokemons": [973],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 295,
+    "name_en": "Toxic Debris",
+    "name_jp": "どくげしょう",
+    "pokemons": [969, 970],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 296,
+    "name_en": "Armor Tail",
+    "name_jp": "テイルアーマー",
+    "pokemons": [981],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 297,
+    "name_en": "Earth Eater",
+    "name_jp": "どしょく",
+    "pokemons": [968],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  },
+  {
+    "id": 298,
+    "name_en": "Mycelium Might",
+    "name_jp": "きんしのちから",
+    "pokemons": [948, 948, 949, 949],
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "sv": true
+  }
+]

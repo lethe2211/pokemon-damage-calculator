@@ -2,6 +2,7 @@ import { useReducer, useState } from "react";
 import { Ability } from "../models/ability";
 import { AttackingPokemonStatus } from "../models/attacking-pokemon-status";
 import { EV } from "../models/ev";
+import { Item } from "../models/item";
 import { IV } from "../models/iv";
 import { Move, MoveCategory } from "../models/move";
 import { Nature } from "../models/nature";
@@ -22,6 +23,7 @@ const AttackingPokemon: React.FC<Props> = ({
 }) => {
   const [showPokemonModal, setShowPokemonModal] = useState(false);
   const [showMoveModal, setShowMoveModal] = useState(false);
+  const [showAbilityModal, setShowAbilityModal] = useState(false);
   const [expandStats, setExpandStats] = useState(false);
   const [expandRank, setExpandRank] = useState(false);
 
@@ -29,6 +31,9 @@ const AttackingPokemon: React.FC<Props> = ({
     Pokemon.listAllValidSVPokemons()
   );
   const [moveList, setMoveList] = useState(Move.listAllValidSVMoves());
+  const [abilityList, setAbilityList] = useState(
+    Ability.listAllValidSVAbilities()
+  );
 
   const onNameFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -631,25 +636,12 @@ const AttackingPokemon: React.FC<Props> = ({
     onUpdate(newValue);
   };
 
-  const onAbilityUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = new AttackingPokemonStatus(
-      attackingPokemonStatus.pokemon,
-      attackingPokemonStatus.level,
-      attackingPokemonStatus.iv,
-      attackingPokemonStatus.ev,
-      attackingPokemonStatus.nature,
-      attackingPokemonStatus.statsRank,
-      attackingPokemonStatus.move,
-      attackingPokemonStatus.teraType,
-      new Ability(parseInt(e.target.value)),
-      attackingPokemonStatus.item,
-      attackingPokemonStatus.isCriticalHit,
-      attackingPokemonStatus.statusAilment
-    );
-    onUpdate(newValue);
+  const onAbilityFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setShowAbilityModal(true);
   };
 
-  const onItemUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onItemUpdate = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
       attackingPokemonStatus.level,
@@ -660,7 +652,7 @@ const AttackingPokemon: React.FC<Props> = ({
       attackingPokemonStatus.move,
       attackingPokemonStatus.teraType,
       attackingPokemonStatus.ability,
-      attackingPokemonStatus.item,
+      new Item(parseInt(e.target.value)),
       attackingPokemonStatus.isCriticalHit,
       attackingPokemonStatus.statusAilment
     );
@@ -679,13 +671,13 @@ const AttackingPokemon: React.FC<Props> = ({
       attackingPokemonStatus.teraType,
       attackingPokemonStatus.ability,
       attackingPokemonStatus.item,
-      attackingPokemonStatus.isCriticalHit,
+      e.target.checked,
       attackingPokemonStatus.statusAilment
     );
     onUpdate(newValue);
   };
 
-  const onStatusAilmentUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onStatusAilmentUpdate = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = new AttackingPokemonStatus(
       attackingPokemonStatus.pokemon,
       attackingPokemonStatus.level,
@@ -747,6 +739,30 @@ const AttackingPokemon: React.FC<Props> = ({
 
   const onExpandRankClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setExpandRank(!expandRank);
+  };
+
+  const onSelectAbilityUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // TODO
+  }
+
+  const onSelectAbilitySubmit = (newAbility: Ability) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      attackingPokemonStatus.ev,
+      attackingPokemonStatus.nature,
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      attackingPokemonStatus.teraType,
+      newAbility,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+
+    setShowAbilityModal(false);
   };
 
   const onSelectMoveUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1412,7 +1428,7 @@ const AttackingPokemon: React.FC<Props> = ({
                 id="attacking_pokemon_move"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 onFocus={onMoveFocus}
-                defaultValue={attackingPokemonStatus.move.nameJp.toString()}
+                defaultValue={attackingPokemonStatus.move.nameJp}
               ></input>
               <div className="flex space-x-1 text-xs">
                 <span>{attackingPokemonStatus.move.category.nameJp}</span>
@@ -1447,20 +1463,26 @@ const AttackingPokemon: React.FC<Props> = ({
                 type="text"
                 id="attacking_pokemon_ability"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                onChange={onAbilityUpdate}
-                value={attackingPokemonStatus.ability.id.toString()}
+                onFocus={onAbilityFocus}
+                defaultValue={attackingPokemonStatus.ability.nameJp}
               ></input>
             </div>
             <div>
               <label htmlFor="attacking_pokemon_item" className="text-sm">
                 道具
               </label>
-              <input
-                type="text"
+              <select
                 id="attacking_pokemon_item"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full text-gray-700 py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 onChange={onItemUpdate}
-              ></input>
+                defaultValue={"0"}
+              >
+                {Item.listAllValidItemsForAttacker().map((e) => (
+                  <option key={e.id} value={e.id}>
+                    {e.nameJp}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
           <div className="space-y-1">
@@ -1485,12 +1507,18 @@ const AttackingPokemon: React.FC<Props> = ({
               >
                 状態異常
               </label>
-              <input
-                type="text"
+              <select
                 id="attacking_pokemon_status_ailment"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full text-gray-700 py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 onChange={onStatusAilmentUpdate}
-              ></input>
+                defaultValue={"0"}
+              >
+                {StatusAilment.listAllTypes().map((e) => (
+                  <option key={e.id} value={e.id}>
+                    {e.nameJp}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
         </form>
@@ -1563,6 +1591,46 @@ const AttackingPokemon: React.FC<Props> = ({
                         <li
                           key={e.id}
                           onClick={(event) => onSelectMoveSubmit(e)}
+                        >
+                          {e.nameJp}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : null}
+
+      {showAbilityModal ? (
+        <>
+          <div className="fixed inset-0 z-50 overflow-y-auto">
+            <div
+              className="fixed inset-0 w-full h-full bg-black opacity-40"
+              onClick={() => setShowAbilityModal(false)}
+            ></div>
+            <div className="flex items-center min-h-screen px-4 py-8">
+              <div className="relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg">
+                <div className="mt-3 flex flex-col">
+                  <div className="mt-2 text-center sm:ml-4 sm:text-left">
+                    <form>
+                      <input
+                        type="text"
+                        id="attacking_pokemon_select_pokemon"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        onChange={onSelectAbilityUpdate}
+                        placeholder="特性を入力"
+                      ></input>
+                    </form>
+                  </div>
+                  <div className="mt-2 text-left">
+                    <ul>
+                      {abilityList.map((e) => (
+                        <li
+                          key={e.id}
+                          onClick={(event) => onSelectAbilitySubmit(e)}
                         >
                           {e.nameJp}
                         </li>

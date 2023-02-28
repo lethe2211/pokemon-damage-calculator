@@ -1,0 +1,182 @@
+[
+  {
+    "id": 0,
+    "poke_api_id": 0,
+    "name_en": "No items",
+    "name_jp": "アイテムなし",
+    "description_en": "No effects",
+    "description_jp": "効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": true
+  },
+  {
+    "id": 1,
+    "poke_api_id": 1702,
+    "name_en": "Loaded Dice",
+    "name_jp": "いかさまダイス",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 2,
+    "poke_api_id": 247,
+    "name_en": "Life Orb",
+    "name_jp": "いのちのたま",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 3,
+    "poke_api_id": 202,
+    "name_en": "Soul Dew",
+    "name_jp": "こころのしずく",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 4,
+    "poke_api_id": 197,
+    "name_en": "Choice Band",
+    "name_jp": "こだわりハチマキ",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 5,
+    "poke_api_id": 274,
+    "name_en": "Choice Specs",
+    "name_jp": "こだわりメガネ",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 6,
+    "poke_api_id": -1,
+    "name_en": "Items to enpower a specific type of moves",
+    "name_jp": "タイプ強化系",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 7,
+    "poke_api_id": 245,
+    "name_en": "Expert Belt",
+    "name_jp": "たつじんのおび",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 8,
+    "poke_api_id": 213,
+    "name_en": "Light Ball",
+    "name_jp": "でんきだま",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 9,
+    "poke_api_id": 243,
+    "name_en": "Muscle Band",
+    "name_jp": "ちからのハチマキ",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 10,
+    "poke_api_id": 669,
+    "name_en": "Normal Gem",
+    "name_jp": "ノーマルジュエル",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 11,
+    "poke_api_id": 1181,
+    "name_en": "Utility Umbrella",
+    "name_jp": "ばんのうがさ",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": true
+  },
+  {
+    "id": 12,
+    "poke_api_id": 235,
+    "name_en": "Thick Club",
+    "name_jp": "ふといホネ",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 13,
+    "poke_api_id": 244,
+    "name_en": "Wise Glasses",
+    "name_jp": "ものしりメガネ",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 14,
+    "poke_api_id": -1,
+    "name_en": "Berries that reduce the damage",
+    "name_jp": "半減きのみ",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": false,
+    "valid_in_defending_pokemon": true
+  },
+  {
+    "id": 15,
+    "poke_api_id": 581,
+    "name_en": "Eviolite",
+    "name_jp": "しんかのきせき",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": false,
+    "valid_in_defending_pokemon": true
+  },
+  {
+    "id": 16,
+    "poke_api_id": 683,
+    "name_en": "Assault Vest",
+    "name_jp": "とつげきチョッキ",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": false,
+    "valid_in_defending_pokemon": true
+  },
+  {
+    "id": 17,
+    "poke_api_id": -1,
+    "name_en": "Other Items",
+    "name_jp": "その他アイテム",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": false,
+    "valid_in_defending_pokemon": true
+  }
+]

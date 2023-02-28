@@ -4,11 +4,18 @@ import DefendingPokemon from "../components/defending-pokemon";
 import Environment from "../components/environment";
 import Layout from "../components/layout";
 import Result from "../components/result";
+import { Ability } from "../models/ability";
 import { AttackingPokemonStatus } from "../models/attacking-pokemon-status";
 import { CalculationResources } from "../models/calculation-resources";
 import { DefendingPokemonStatus } from "../models/defending-pokemon-status";
+import { EV } from "../models/ev";
+import { Item } from "../models/item";
+import { IV } from "../models/iv";
 import { Move } from "../models/move";
+import { Nature } from "../models/nature";
 import { Pokemon } from "../models/pokemon";
+import { StatsRank } from "../models/stats-rank";
+import { StatusAilment } from "../models/status-ailment";
 import { TeraType } from "../models/tera-type";
 import { NextPageWithLayout } from "./_app";
 
@@ -19,94 +26,94 @@ const Home: NextPageWithLayout = () => {
         149
       ),
       50,
-      {
-        hp: 31,
-        attack: 31,
-        defense: 31,
-        spAtk: 31,
-        spDef: 31,
-        speed: 31,
-      },
-      {
-        hp: 252,
-        attack: 252,
-        defense: 0,
-        spAtk: 0,
-        spDef: 0,
-        speed: 4,
-      },
-      {
-        attack: 1.0,
-        defense: 1.0,
-        spAtk: 1.0,
-        spDef: 1.0,
-        speed: 1.0,
-      },
-      {
-        attack: 0,
-        defense: 0,
-        spAtk: 0,
-        spDef: 0,
-        speed: 0,
-      },
+      new IV(
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+      ),
+      new EV(
+        252,
+        252,
+        0,
+        0,
+        0,
+        4,
+      ),
+      new Nature(
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+      ),
+      new StatsRank(
+        0,
+        0,
+        0,
+        0,
+        0,
+      ),
       new Move(
         900
       ),
-      new TeraType(16),
-      {
-        id: 1,
-      },
-      {
-        id: 1,
-      },
+      new TeraType(0),
+      new Ability(
+        1
+      ),
+      new Item(
+        1
+      ),
       false,
-      {
-        id: 0,
-      }
+      new StatusAilment(
+        0
+      )
     ),
     new DefendingPokemonStatus(
       new Pokemon(149),
       50,
-      {
-        hp: 31,
-        attack: 31,
-        defense: 31,
-        spAtk: 31,
-        spDef: 31,
-        speed: 31,
-      },
-      {
-        hp: 252,
-        attack: 252,
-        defense: 0,
-        spAtk: 0,
-        spDef: 0,
-        speed: 4,
-      },
-      {
-        attack: 1.0,
-        defense: 1.0,
-        spAtk: 1.0,
-        spDef: 1.0,
-        speed: 1.0,
-      },
-      {
-        attack: 0,
-        defense: 0,
-        spAtk: 0,
-        spDef: 0,
-        speed: 0,
-      },
-      new TeraType(16),
-      {
-        id: 1,
-      },
-      {
-        id: 1,
-      },
-      {
-        id: 1,
-      }
+      new IV(
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+      ),
+      new EV(
+        252,
+        252,
+        0,
+        0,
+        0,
+        4,
+      ),
+      new Nature(
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+      ),
+      new StatsRank(
+        0,
+        0,
+        0,
+        0,
+        0,
+      ),
+      new TeraType(0),
+      new Ability(
+        1
+      ),
+      new Item(
+        1
+      ),
+      new StatusAilment(
+        0
+      )
     ),
     {}
   );

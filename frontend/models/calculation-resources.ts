@@ -496,11 +496,15 @@ export class CalculationResources {
       roundDown((maxFinalDamage / defenderStats.hp) * 100 * 10) / 10;
 
     const maxKakutei =
-      roundDown(defenderStats.hp / minFinalDamage) +
-      (defenderStats.hp % minFinalDamage > 0 ? 1 : 0);
+      minFinalDamage === 0
+        ? -1
+        : roundDown(defenderStats.hp / minFinalDamage) +
+          (defenderStats.hp % minFinalDamage > 0 ? 1 : 0);
     const minKakutei =
-      roundDown(defenderStats.hp / maxFinalDamage) +
-      (defenderStats.hp % maxFinalDamage > 0 ? 1 : 0);
+      maxFinalDamage === 0
+        ? -1
+        : roundDown(defenderStats.hp / maxFinalDamage) +
+          (defenderStats.hp % maxFinalDamage > 0 ? 1 : 0);
 
     return new DamageResult(
       minFinalDamage,

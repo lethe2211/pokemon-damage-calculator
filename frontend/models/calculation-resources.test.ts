@@ -16,7 +16,7 @@ import { TeraType } from "./tera-type";
 
 describe("CalculationResources#calculateDamage", () => {
   describe("Normal cases", () => {
-    test('Dragapult uses "Draco Meteor" against Gholdengo', () => {
+    test('ドラパルト ->（りゅうせいぐん）-> サーフゴー', () => {
       const calculationResources = new CalculationResources(
         new AttackingPokemonStatus(
           new Pokemon(887),
@@ -52,7 +52,7 @@ describe("CalculationResources#calculateDamage", () => {
       expect(actual).toEqual(expected);
     });
 
-    test('Dragapult uses "Draco Meteor" against Gholdengo 2', () => {
+    test('ドラパルト ->（りゅうせいぐん）-> サーフゴー 2', () => {
       const calculationResources = new CalculationResources(
         new AttackingPokemonStatus(
           new Pokemon(887),
@@ -90,6 +90,40 @@ describe("CalculationResources#calculateDamage", () => {
   });
 
   describe('Moves that have no effects', () => {
-    // TODO
+    test('エーフィ ->（サイコキネシス）-> ドドゲザン', () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(196),
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(0.9, 1.0, 1.0, 1.0, 1.1),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(94),
+          new TeraType(0),
+          new Ability(29),
+          new Item(1),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(983),
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 252, 0, 0, 0, 4),
+          new Nature(1.1, 1.0, 0.9, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0),
+          new Ability(283),
+          new Item(1),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus()
+      );
+
+      const expected = new DamageResult(0, 0, 0, 0, -1, -1);
+      const actual = calculationResources.calculateDamage();
+      expect(actual).toEqual(expected);
+    })
   });
 });

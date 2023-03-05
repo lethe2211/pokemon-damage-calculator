@@ -8,6 +8,7 @@ import { Ability } from "../models/ability";
 import { AttackingPokemonStatus } from "../models/attacking-pokemon-status";
 import { CalculationResources } from "../models/calculation-resources";
 import { DefendingPokemonStatus } from "../models/defending-pokemon-status";
+import { EnvironmentStatus } from "../models/environment-status";
 import { EV } from "../models/ev";
 import { Item } from "../models/item";
 import { IV } from "../models/iv";
@@ -22,100 +23,32 @@ import { NextPageWithLayout } from "./_app";
 const Home: NextPageWithLayout = () => {
   const defaultCalculationResource = new CalculationResources(
     new AttackingPokemonStatus(
-      new Pokemon(
-        149
-      ),
+      new Pokemon(887),
       50,
-      new IV(
-        31,
-        31,
-        31,
-        31,
-        31,
-        31,
-      ),
-      new EV(
-        252,
-        252,
-        0,
-        0,
-        0,
-        4,
-      ),
-      new Nature(
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-      ),
-      new StatsRank(
-        0,
-        0,
-        0,
-        0,
-        0,
-      ),
-      new Move(
-        900
-      ),
+      new IV(31, 31, 31, 31, 31, 31),
+      new EV(4, 0, 0, 252, 0, 252),
+      new Nature(0.9, 1.0, 1.0, 1.0, 1.1),
+      new StatsRank(0, 0, 0, 0, 0),
+      new Move(434),
       new TeraType(0),
-      new Ability(
-        1
-      ),
-      new Item(
-        1
-      ),
+      new Ability(29),
+      new Item(1),
       false,
-      new StatusAilment(
-        0
-      )
+      new StatusAilment(0)
     ),
     new DefendingPokemonStatus(
-      new Pokemon(149),
+      new Pokemon(1000),
       50,
-      new IV(
-        31,
-        31,
-        31,
-        31,
-        31,
-        31,
-      ),
-      new EV(
-        252,
-        252,
-        0,
-        0,
-        0,
-        4,
-      ),
-      new Nature(
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-        1.0,
-      ),
-      new StatsRank(
-        0,
-        0,
-        0,
-        0,
-        0,
-      ),
+      new IV(31, 31, 31, 31, 31, 31),
+      new EV(0, 0, 4, 252, 0, 252),
+      new Nature(0.9, 1.0, 1.0, 1.0, 1.1),
+      new StatsRank(0, 0, 0, 0, 0),
       new TeraType(0),
-      new Ability(
-        1
-      ),
-      new Item(
-        1
-      ),
-      new StatusAilment(
-        0
-      )
+      new Ability(283),
+      new Item(1),
+      new StatusAilment(0)
     ),
-    {}
+    new EnvironmentStatus()
   );
 
   const [calculationResources, setCalculationResources] =

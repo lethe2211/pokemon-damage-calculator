@@ -86,8 +86,352 @@ export class Type {
       default:
         this.nameEn = "None";
         this.nameJp = "タイプなし";
-        console.error(`Error: ${this.id} is not registered`);
+        console.error(`Error: Type ${this.id} is not registered`);
         break;
+    }
+  }
+
+  public equals(other: Type): boolean {
+    return (
+      this.id === other.id &&
+      this.nameEn === other.nameEn &&
+      this.nameJp === other.nameJp
+    );
+  }
+
+  public hasTypeCompatibilityWith(other: Type): TypeCompatibility {
+    switch (this.id) {
+      case 0: // None
+        return new TypeCompatibility(0);
+      case 1: // Normal
+        switch (other.id) {
+          case 6:
+            return new TypeCompatibility(3);
+          case 8:
+            return new TypeCompatibility(1);
+          case 9:
+            return new TypeCompatibility(3);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 2: // Fighting
+        switch (other.id) {
+          case 1:
+            return new TypeCompatibility(2);
+          case 3:
+            return new TypeCompatibility(3);
+          case 4:
+            return new TypeCompatibility(3);
+          case 6:
+            return new TypeCompatibility(2);
+          case 7:
+            return new TypeCompatibility(3);
+          case 8:
+            return new TypeCompatibility(1);
+          case 9:
+            return new TypeCompatibility(2);
+          case 14:
+            return new TypeCompatibility(3);
+          case 15:
+            return new TypeCompatibility(2);
+          case 17:
+            return new TypeCompatibility(2);
+          case 18:
+            return new TypeCompatibility(3);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 3: // Flying
+        switch (other.id) {
+          case 2:
+            return new TypeCompatibility(2);
+          case 6:
+            return new TypeCompatibility(3);
+          case 7:
+            return new TypeCompatibility(2);
+          case 9:
+            return new TypeCompatibility(3);
+          case 12:
+            return new TypeCompatibility(2);
+          case 13:
+            return new TypeCompatibility(3);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 4: // Poison
+        switch (other.id) {
+          case 4:
+            return new TypeCompatibility(3);
+          case 5:
+            return new TypeCompatibility(3);
+          case 6:
+            return new TypeCompatibility(3);
+          case 8:
+            return new TypeCompatibility(3);
+          case 9:
+            return new TypeCompatibility(1);
+          case 12:
+            return new TypeCompatibility(2);
+          case 18:
+            return new TypeCompatibility(2);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 5: // Ground
+        switch (other.id) {
+          case 3:
+            return new TypeCompatibility(1);
+          case 4:
+            return new TypeCompatibility(2);
+          case 6:
+            return new TypeCompatibility(2);
+          case 7:
+            return new TypeCompatibility(3);
+          case 9:
+            return new TypeCompatibility(2);
+          case 10:
+            return new TypeCompatibility(2);
+          case 12:
+            return new TypeCompatibility(3);
+          case 13:
+            return new TypeCompatibility(2);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 6: // Rock
+        switch (other.id) {
+          case 2:
+            return new TypeCompatibility(3);
+          case 3:
+            return new TypeCompatibility(2);
+          case 5:
+            return new TypeCompatibility(3);
+          case 7:
+            return new TypeCompatibility(2);
+          case 9:
+            return new TypeCompatibility(3);
+          case 10:
+            return new TypeCompatibility(2);
+          case 15:
+            return new TypeCompatibility(2);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 7: // Bug
+        switch (other.id) {
+          case 2:
+            return new TypeCompatibility(3);
+          case 3:
+            return new TypeCompatibility(3);
+          case 4:
+            return new TypeCompatibility(3);
+          case 8:
+            return new TypeCompatibility(3);
+          case 9:
+            return new TypeCompatibility(3);
+          case 10:
+            return new TypeCompatibility(3);
+          case 12:
+            return new TypeCompatibility(2);
+          case 14:
+            return new TypeCompatibility(2);
+          case 17:
+            return new TypeCompatibility(2);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 8: // Ghost
+        switch (other.id) {
+          case 1:
+            return new TypeCompatibility(1);
+          case 8:
+            return new TypeCompatibility(2);
+          case 14:
+            return new TypeCompatibility(2);
+          case 17:
+            return new TypeCompatibility(3);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 9: // Steel
+        switch (other.id) {
+          case 6:
+            return new TypeCompatibility(2);
+          case 9:
+            return new TypeCompatibility(3);
+          case 10:
+            return new TypeCompatibility(3);
+          case 11:
+            return new TypeCompatibility(3);
+          case 13:
+            return new TypeCompatibility(3);
+          case 15:
+            return new TypeCompatibility(2);
+          case 18:
+            return new TypeCompatibility(2);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 10: // Fire
+        switch (other.id) {
+          case 6:
+            return new TypeCompatibility(3);
+          case 7:
+            return new TypeCompatibility(2);
+          case 9:
+            return new TypeCompatibility(2);
+          case 10:
+            return new TypeCompatibility(3);
+          case 11:
+            return new TypeCompatibility(3);
+          case 12:
+            return new TypeCompatibility(2);
+          case 15:
+            return new TypeCompatibility(2);
+          case 16:
+            return new TypeCompatibility(3);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 11: // Water
+        switch (other.id) {
+          case 5:
+            return new TypeCompatibility(2);
+          case 6:
+            return new TypeCompatibility(2);
+          case 10:
+            return new TypeCompatibility(2);
+          case 11:
+            return new TypeCompatibility(3);
+          case 12:
+            return new TypeCompatibility(3);
+          case 16:
+            return new TypeCompatibility(3);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 12: // Grass
+        switch (other.id) {
+          case 3:
+            return new TypeCompatibility(3);
+          case 4:
+            return new TypeCompatibility(3);
+          case 5:
+            return new TypeCompatibility(2);
+          case 6:
+            return new TypeCompatibility(2);
+          case 9:
+            return new TypeCompatibility(3);
+          case 7:
+            return new TypeCompatibility(3);
+          case 10:
+            return new TypeCompatibility(3);
+          case 11:
+            return new TypeCompatibility(2);
+          case 12:
+            return new TypeCompatibility(3);
+          case 16:
+            return new TypeCompatibility(3);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 13: // Electric
+        switch (other.id) {
+          case 3:
+            return new TypeCompatibility(2);
+          case 5:
+            return new TypeCompatibility(1);
+          case 11:
+            return new TypeCompatibility(2);
+          case 12:
+            return new TypeCompatibility(3);
+          case 13:
+            return new TypeCompatibility(3);
+          case 16:
+            return new TypeCompatibility(3);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 14: // Psychic
+        switch (other.id) {
+          case 2:
+            return new TypeCompatibility(2);
+          case 4:
+            return new TypeCompatibility(2);
+          case 9:
+            return new TypeCompatibility(3);
+          case 14:
+            return new TypeCompatibility(3);
+          case 17:
+            return new TypeCompatibility(1);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 15: // Ice
+        switch (other.id) {
+          case 3:
+            return new TypeCompatibility(2);
+          case 5:
+            return new TypeCompatibility(2);
+          case 9:
+            return new TypeCompatibility(3);
+          case 10:
+            return new TypeCompatibility(3);
+          case 11:
+            return new TypeCompatibility(3);
+          case 12:
+            return new TypeCompatibility(2);
+          case 15:
+            return new TypeCompatibility(3);
+          case 16:
+            return new TypeCompatibility(2);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 16: // Dragon
+        switch (other.id) {
+          case 9:
+            return new TypeCompatibility(3);
+          case 16:
+            return new TypeCompatibility(2);
+          case 18:
+            return new TypeCompatibility(1);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 17: // Dark
+        switch (other.id) {
+          case 2:
+            return new TypeCompatibility(3);
+          case 8:
+            return new TypeCompatibility(2);
+          case 14:
+            return new TypeCompatibility(2);
+          case 17:
+            return new TypeCompatibility(3);
+          default:
+            return new TypeCompatibility(0);
+        }
+      case 18: // Fairy
+        switch (other.id) {
+          case 2:
+            return new TypeCompatibility(2);
+          case 4:
+            return new TypeCompatibility(3);
+          case 9:
+            return new TypeCompatibility(3);
+          case 10:
+            return new TypeCompatibility(3);
+          case 16:
+            return new TypeCompatibility(2);
+          case 17:
+            return new TypeCompatibility(2);
+          default:
+            return new TypeCompatibility(0);
+        }
+      default:
+        console.error(`Error: Type ${this.id} is not registered`);
+        return new TypeCompatibility(0);
     }
   }
 
@@ -132,16 +476,74 @@ export class Type {
       case "Fairy":
         return new Type(18);
       default:
-        console.error(`Error: ${nameEn} is not registered`);
+        console.error(`Error: Type ${nameEn} is not registered`);
         return new Type(0);
     }
   }
 
   static listAllTypes(): Type[] {
-    let res = []
+    let res = [];
     for (let i = 1; i <= 18; i++) {
       res.push(new Type(i));
     }
     return res;
+  }
+}
+
+export class TypeCompatibility {
+  id: number;
+  descriptionEn: string;
+  descriptionJp: string;
+
+  constructor(id: number) {
+    this.id = id;
+
+    switch (this.id) {
+      case 0:
+        this.descriptionEn = "Effective";
+        this.descriptionJp = "効果あり";
+        break;
+      case 1:
+        this.descriptionEn = "No effect";
+        this.descriptionJp = "効果なし";
+        break;
+      case 2:
+        this.descriptionEn = "Super effective";
+        this.descriptionJp = "効果抜群";
+        break;
+      case 3:
+        this.descriptionEn = "Not very effective";
+        this.descriptionJp = "効果いまひとつ";
+        break;
+      default:
+        console.error(`Error: Type Compatibility ${this.id} is not registered`);
+        this.descriptionEn = "Effective";
+        this.descriptionJp = "効果あり";
+        break;
+    }
+  }
+
+  public equals(other: TypeCompatibility): boolean {
+    return (
+      this.id === other.id &&
+      this.descriptionEn === other.descriptionEn &&
+      this.descriptionJp === other.descriptionJp
+    );
+  }
+
+  static fromDescriptionEn(descriptionEn: string): TypeCompatibility {
+    switch (descriptionEn) {
+      case "Effective":
+        return new TypeCompatibility(0);
+      case "No effect":
+        return new TypeCompatibility(1);
+      case "Super effective":
+        return new TypeCompatibility(2);
+      case "Not very effective":
+        return new TypeCompatibility(3);
+      default:
+        console.error(`Error: Type Compatibility ${descriptionEn} is not registered`);
+        return new TypeCompatibility(0);
+    }
   }
 }

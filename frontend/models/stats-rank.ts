@@ -1,16 +1,16 @@
 export class StatsRank {
-  attack: Number;
-  defense: Number;
-  spAtk: Number;
-  spDef: Number;
-  speed: Number;
+  attack: number;
+  defense: number;
+  spAtk: number;
+  spDef: number;
+  speed: number;
 
   constructor(
-    attack: Number,
-    defense: Number,
-    spAtk: Number,
-    spDef: Number,
-    speed: Number
+    attack: number,
+    defense: number,
+    spAtk: number,
+    spDef: number,
+    speed: number
   ) {
     this.attack = attack;
     this.defense = defense;

@@ -60,18 +60,20 @@ export class MoveCategory {
       case 2:
         this.nameEn = "Status";
         this.nameJp = "変化";
+        break;
       default:
+        console.log(`Error111: MoveCategory ${this.id} is not registered`);
         this.nameEn = "Physical";
         this.nameJp = "物理";
         break;
     }
   }
 
-  public equals(others: MoveCategory): boolean {
+  public equals(other: MoveCategory): boolean {
     return (
-      this.id === others.id &&
-      this.nameEn === others.nameEn &&
-      this.nameJp === others.nameJp
+      this.id === other.id &&
+      this.nameEn === other.nameEn &&
+      this.nameJp === other.nameJp
     );
   }
 
@@ -84,7 +86,7 @@ export class MoveCategory {
       case "Status":
         return new MoveCategory(2);
       default:
-        console.error(`Error: ${nameEn} is not registered`);
+        console.error(`Error: MoveCategory ${nameEn} is not registered`);
         return new MoveCategory(0);
     }
   }

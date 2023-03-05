@@ -34,7 +34,7 @@ export class StatusAilment {
       default:
         this.nameEn = "None";
         this.nameJp = "なし";
-        console.error(`Error: ${this.id} is not registered`);
+        console.error(`Error: Status Ailment ${this.id} is not registered`);
         break;
     }
   }
@@ -54,7 +54,7 @@ export class StatusAilment {
       case "Poison":
         return new StatusAilment(5);
       default:
-        console.error(`Error: ${nameEn} is not registered`);
+        console.error(`Error: Status Ailment ${nameEn} is not registered`);
         return new StatusAilment(0);
     }
   }

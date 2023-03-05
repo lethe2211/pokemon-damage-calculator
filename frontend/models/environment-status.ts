@@ -1,2 +1,4 @@
-export interface EnvironmentStatus {}
+export class EnvironmentStatus {
+  constructor() {}
+}
 

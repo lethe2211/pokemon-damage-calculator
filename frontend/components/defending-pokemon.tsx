@@ -1406,25 +1406,47 @@ const DefendingPokemon: React.FC<Props> = ({
             <div className="flex items-center min-h-screen px-4 py-8">
               <div className="relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg">
                 <div className="mt-3 flex flex-col">
-                  <div className="mt-2 text-center sm:ml-4 sm:text-left">
-                    <form>
+                  <div className="mt-2 text-center">
+                    <form className="flex flex-row justify-between">
+                      <button
+                        className="h-14 w-14 mr-4"
+                        onClick={() => setShowPokemonModal(false)}
+                      >
+                        <svg
+                          className="h-12 w-12 text-gray-300"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          {" "}
+                          <path stroke="none" d="M0 0h24v24H0z" />{" "}
+                          <line x1="18" y1="6" x2="6" y2="18" />{" "}
+                          <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                      </button>
                       <input
                         type="text"
-                        id="attacking_pokemon_select_pokemon"
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="defending_pokemon_select_pokemon"
+                        className="shadow appearance-none border rounded h-14 py-2 px-3 w-full text-lg text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         onChange={onSelectPokemonUpdate}
                         placeholder="ポケモン名を入力"
                       ></input>
                     </form>
                   </div>
-                  <div className="mt-2 text-left">
+                  <div className="mt-4 text-left">
                     <ul>
                       {pokemonList.map((e) => (
                         <li
                           key={e.id}
-                          onClick={(event) => onSelectPokemonSubmit(e)}
+                          onClick={() => onSelectPokemonSubmit(e)}
+                          className="h-8 p-2 flex items-center hover:bg-gray-200"
                         >
-                          {e.nameJp}
+                          <div>{e.nameJp}</div>
                         </li>
                       ))}
                     </ul>
@@ -1446,25 +1468,47 @@ const DefendingPokemon: React.FC<Props> = ({
             <div className="flex items-center min-h-screen px-4 py-8">
               <div className="relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg">
                 <div className="mt-3 flex flex-col">
-                  <div className="mt-2 text-center sm:ml-4 sm:text-left">
-                    <form>
+                  <div className="mt-2 text-center">
+                    <form className="flex flex-row justify-between">
+                      <button
+                        className="h-14 w-14 mr-4"
+                        onClick={() => setShowAbilityModal(false)}
+                      >
+                        <svg
+                          className="h-12 w-12 text-gray-300"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          {" "}
+                          <path stroke="none" d="M0 0h24v24H0z" />{" "}
+                          <line x1="18" y1="6" x2="6" y2="18" />{" "}
+                          <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                      </button>
                       <input
                         type="text"
-                        id="defending_pokemon_select_pokemon"
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="attacking_pokemon_select_ability"
+                        className="shadow appearance-none border rounded h-14 py-2 px-3 w-full text-lg text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         onChange={onSelectAbilityUpdate}
                         placeholder="特性を入力"
                       ></input>
                     </form>
                   </div>
-                  <div className="mt-2 text-left">
+                  <div className="mt-4 text-left">
                     <ul>
                       {abilityList.map((e) => (
                         <li
                           key={e.id}
-                          onClick={(event) => onSelectAbilitySubmit(e)}
+                          onClick={() => onSelectAbilitySubmit(e)}
+                          className="h-8 p-2 flex items-center hover:bg-gray-200"
                         >
-                          {e.nameJp}
+                          <div>{e.nameJp}</div>
                         </li>
                       ))}
                     </ul>

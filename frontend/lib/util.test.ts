@@ -1,6 +1,6 @@
-import { roundOffIncluding5 } from "./util";
+import { convertHiraganaToKatakana, roundOffIncluding5 } from "./util";
 
-describe("Util#roundOffIncluding5", () => {
+describe("roundOffIncluding5", () => {
   describe("Normal cases", () => {
     test("Round down in case of x.49", () => {
       const expected = 67;
@@ -20,4 +20,20 @@ describe("Util#roundOffIncluding5", () => {
       expect(actual).toBe(expected);
     });
   });
+});
+
+describe("convertHiraganaToKatakana", () => {
+  describe("Normal cases", () => {
+    test("Convert hiragana into Katakana", () => {
+      const expected = "リンゴ"
+      const actual = convertHiraganaToKatakana("りんご")
+      expect(actual).toBe(expected);
+    })
+
+    test("Convert only hiragana in the input string", () => {
+      const expected = "ヒラガナカタカナ漢字混ジリノ言葉"
+      const actual = convertHiraganaToKatakana("ひらがなカタカナ漢字混じりの言葉")
+      expect(actual).toBe(expected);
+    })
+  })
 });

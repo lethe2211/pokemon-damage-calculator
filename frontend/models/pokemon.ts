@@ -1,5 +1,5 @@
 import { Type } from "./type";
-import pokemonDataSv from "../data/pokemon_data_sv.json"
+import pokemonDataSv from "../data/pokemon_data_sv.json";
 import { BaseStats } from "./base-stats";
 import { Move } from "./move";
 
@@ -12,15 +12,17 @@ export class Pokemon {
   baseStats: BaseStats;
   moves: Move[];
 
+  static allValidSVPokemons: Pokemon[] | null = null;
+
   constructor(id: number) {
     this.id = id;
-    
-    const data = pokemonDataSv.filter(e => e["id"] == id)[0]
 
-    this.nameEn = data.name_en
-    this.nameJp = data.name_jp
-    this.type1 = new Type(data.type1)
-    this.type2 = data.type2 === null ? null : new Type(data.type2)
+    const data = pokemonDataSv.filter((e) => e["id"] == id)[0];
+
+    this.nameEn = data.name_en;
+    this.nameJp = data.name_jp;
+    this.type1 = new Type(data.type1);
+    this.type2 = data.type2 === null ? null : new Type(data.type2);
     this.baseStats = new BaseStats(
       data.base_stats.hp,
       data.base_stats.attack,
@@ -28,13 +30,19 @@ export class Pokemon {
       data.base_stats.sp_atk,
       data.base_stats.sp_def,
       data.base_stats.speed
-    )
-    this.moves = data.moves.map(e => new Move(e))
+    );
+    this.moves = data.moves.map((e) => new Move(e));
   }
 
   static listAllValidSVPokemons(): Pokemon[] {
-    return pokemonDataSv
-    .filter(e => e.sv == true)
-    .map(e => new Pokemon(e.id))
+    // Cache for performance
+    if (Pokemon.allValidSVPokemons === null) {
+      Pokemon.allValidSVPokemons = pokemonDataSv
+        .filter((e) => e.sv == true)
+        .map((e) => new Pokemon(e.id));
+      return Pokemon.allValidSVPokemons;
+    } else {
+      return Pokemon.allValidSVPokemons;
+    }
   }
 }

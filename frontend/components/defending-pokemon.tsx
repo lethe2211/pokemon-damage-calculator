@@ -1230,10 +1230,7 @@ const DefendingPokemon: React.FC<Props> = ({
                     ランク
                   </h6>
                 </div>
-                {expandRank ||
-                attackingPokemonStatus.move.category.equals(
-                  MoveCategory.fromNameEn("Physical")
-                ) ? (
+                {expandRank ? (
                   <div className="flex flex-row justify-between items-center my-1">
                     <label
                       htmlFor="defending_pokemon_attack_rank"
@@ -1250,7 +1247,10 @@ const DefendingPokemon: React.FC<Props> = ({
                     ></input>
                   </div>
                 ) : null}
-                {expandRank ? (
+                {expandRank ||
+                attackingPokemonStatus.move.category.equals(
+                  MoveCategory.fromNameEn("Physical")
+                ) ? (
                   <div className="flex flex-row justify-between items-center my-1">
                     <label
                       htmlFor="defending_pokemon_defense_rank"
@@ -1267,10 +1267,7 @@ const DefendingPokemon: React.FC<Props> = ({
                     ></input>
                   </div>
                 ) : null}
-                {expandRank ||
-                attackingPokemonStatus.move.category.equals(
-                  MoveCategory.fromNameEn("Special")
-                ) ? (
+                {expandRank ? (
                   <div className="flex flex-row justify-between items-center my-1">
                     <label
                       htmlFor="defending_pokemon_sp_atk_rank"
@@ -1287,7 +1284,10 @@ const DefendingPokemon: React.FC<Props> = ({
                     ></input>
                   </div>
                 ) : null}
-                {expandRank ? (
+                {expandRank ||
+                attackingPokemonStatus.move.category.equals(
+                  MoveCategory.fromNameEn("Special")
+                ) ? (
                   <div className="flex flex-row justify-between items-center my-1">
                     <label
                       htmlFor="defending_pokemon_sp_def_rank"

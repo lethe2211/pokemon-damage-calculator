@@ -312,20 +312,93 @@ export class CalculationResources {
     return 4096;
   }
 
+  calculateAdjustmentBySameTypeAttackBonus(): number {
+    // 1. テラスタル
+    // 2. 技のタイプ == もとのタイプ
+    // 3. 技のタイプ == テラスタイプ
+    // 4. てきおうりょく
+    //
+    // 1 && 2 && 3 && 4 -> 9216÷4096→五捨五超入
+    // 1 && 2 && 3 && (not 4) -> 8192÷4096→五捨五超入
+    // 1 && 2 && (not 3) && 4 -> 6144÷4096→五捨五超入
+    // 1 && 2 && (not 3) && (not 4) -> 6144÷4096→五捨五超入
+    // 1 && (not 2) && 3 && 4 -> 8192÷4096→五捨五超入
+    // 1 && (not 2) && 3 && (not 4) -> 6144÷4096→五捨五超入
+    // 1 && (not 2) && (not 3) && 4 -> 補正なし
+    // 1 && (not 2) && (not 3) && (not 4) -> 補正なし
+    // (not 1) && 2 && 3 && 4 -> 8192÷4096→五捨五超入
+    // (not 1) && 2 && 3 && (not 4) -> 6144÷4096→五捨五超入
+    // (not 1) && 2 && (not 3) && 4 -> 8192÷4096→五捨五超入
+    // (not 1) && 2 && (not 3) && (not 4) -> 6144÷4096→五捨五超入
+    // (not 1) && (not 2) && 3 && 4 -> 補正なし
+    // (not 1) && (not 2) && 3 && (not 4) -> 補正なし
+    // (not 1) && (not 2) && (not 3) && 4 -> 補正なし
+    // (not 1) && (not 2) && (not 3) && (not 4) -> 補正なし
+    const isTerastallized = this.attackingPokemonStatus.teraType.isEnabled;
+    const moveTypeHasSameTypeAsOriginalType =
+      this.attackingPokemonStatus.pokemon.type1.equals(
+        this.attackingPokemonStatus.move.type
+      ) ||
+      (this.attackingPokemonStatus.pokemon.type2 !== null &&
+        this.attackingPokemonStatus.pokemon.type2.equals(
+          this.attackingPokemonStatus.move.type
+        ));
+    const moveTypeHasSameTypeAsTeraType =
+      this.attackingPokemonStatus.teraType.type.equals(
+        this.attackingPokemonStatus.move.type
+      );
+    const abilityIsAdaptability = this.attackingPokemonStatus.ability.id === 91;
+
+    if (isTerastallized) {
+      if (moveTypeHasSameTypeAsOriginalType) {
+        if (moveTypeHasSameTypeAsTeraType) {
+          if (abilityIsAdaptability) {
+            return 9216;
+          } else {
+            return 8192;
+          }
+        } else {
+          return 6144;
+        }
+      } else {
+        if (moveTypeHasSameTypeAsTeraType) {
+          if (abilityIsAdaptability) {
+            return 8192;
+          } else {
+            return 6144;
+          }
+        } else {
+          return 4096;
+        }
+      }
+    } else {
+      if (moveTypeHasSameTypeAsOriginalType) {
+        if (abilityIsAdaptability) {
+          return 8192;
+        } else {
+          return 6144;
+        }
+      } else {
+        return 4096;
+      }
+    }
+  }
+
   calculateRateByTypeCompatibility(): number {
     const moveType = this.attackingPokemonStatus.move.type;
 
     let rate = 1;
 
-    const typeCompatibilityWithType1 = moveType.hasTypeCompatibilityWith(
-      this.defendingPokemonStatus.pokemon.type1
-    );
+    const type1 = this.defendingPokemonStatus.teraType.isEnabled
+      ? this.defendingPokemonStatus.teraType.type
+      : this.defendingPokemonStatus.pokemon.type1;
+    const type2 = this.defendingPokemonStatus.teraType.isEnabled
+      ? null
+      : this.defendingPokemonStatus.pokemon.type2;
+
+    const typeCompatibilityWithType1 = moveType.hasTypeCompatibilityWith(type1);
     const typeCompatibilityWithType2 =
-      this.defendingPokemonStatus.pokemon.type2 === null
-        ? null
-        : moveType.hasTypeCompatibilityWith(
-            this.defendingPokemonStatus.pokemon.type2
-          );
+      type2 === null ? null : moveType.hasTypeCompatibilityWith(type2);
 
     if (
       typeCompatibilityWithType1.equals(
@@ -418,22 +491,20 @@ export class CalculationResources {
     );
 
     // ×タイプ一致6144÷4096→五捨五超入
-    // TODO: または てきおうりょく8192÷4096→五捨五超入
-    // TODO: または てきおうりょく+テラスタル9216÷4096→五捨五超入
-    if (
-      this.attackingPokemonStatus.pokemon.type1.equals(
-        this.attackingPokemonStatus.move.type
-      ) ||
-      (this.attackingPokemonStatus.pokemon.type2 !== null &&
-        this.attackingPokemonStatus.pokemon.type2.equals(
-          this.attackingPokemonStatus.move.type
-        ))
-    ) {
-      minFinalDamage = roundOffIncluding5((minFinalDamage * 6144) / 4096);
-      maxFinalDamage = roundOffIncluding5((maxFinalDamage * 6144) / 4096);
+    // または てきおうりょく8192÷4096→五捨五超入
+    // または てきおうりょく+テラスタル9216÷4096→五捨五超入
+    const adjustmentBySameTypeAttackBonus =
+      this.calculateAdjustmentBySameTypeAttackBonus();
+    if (adjustmentBySameTypeAttackBonus !== 4096) {
+      minFinalDamage = roundOffIncluding5(
+        (minFinalDamage * adjustmentBySameTypeAttackBonus) / 4096
+      );
+      maxFinalDamage = roundOffIncluding5(
+        (maxFinalDamage * adjustmentBySameTypeAttackBonus) / 4096
+      );
     }
     console.log(
-      `×タイプ一致6144÷4096→五捨五超入: ${minFinalDamage} ${maxFinalDamage}`
+      `×タイプ一致6144÷4096→五捨五超入 または てきおうりょく8192÷4096→五捨五超入 または てきおうりょく+テラスタル9216÷4096→五捨五超入: ${minFinalDamage} ${maxFinalDamage}`
     );
 
     // ×タイプ相性→切り捨て

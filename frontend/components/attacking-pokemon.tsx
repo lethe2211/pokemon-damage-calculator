@@ -629,7 +629,7 @@ const AttackingPokemon: React.FC<Props> = ({
       attackingPokemonStatus.nature,
       attackingPokemonStatus.statsRank,
       attackingPokemonStatus.move,
-      new TeraType(parseInt(e.target.value)),
+      new TeraType(parseInt(e.target.value), false),
       attackingPokemonStatus.ability,
       attackingPokemonStatus.item,
       attackingPokemonStatus.isCriticalHit,
@@ -637,6 +637,24 @@ const AttackingPokemon: React.FC<Props> = ({
     );
     onUpdate(newValue);
   };
+
+  const onTeraTypeIsEnabledUpdate = (e: React.MouseEvent<HTMLButtonElement>, newIsEnabled: boolean) => {
+    const newValue = new AttackingPokemonStatus(
+      attackingPokemonStatus.pokemon,
+      attackingPokemonStatus.level,
+      attackingPokemonStatus.iv,
+      attackingPokemonStatus.ev,
+      attackingPokemonStatus.nature,
+      attackingPokemonStatus.statsRank,
+      attackingPokemonStatus.move,
+      new TeraType(attackingPokemonStatus.teraType.type.id, newIsEnabled),
+      attackingPokemonStatus.ability,
+      attackingPokemonStatus.item,
+      attackingPokemonStatus.isCriticalHit,
+      attackingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  }
 
   const onAbilityFocus = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -745,7 +763,9 @@ const AttackingPokemon: React.FC<Props> = ({
     const word = e.target.value;
     setAbilityList(
       Ability.listAllValidSVAbilities().filter((ability) =>
-      convertHiraganaToKatakana(ability.nameJp).startsWith(convertHiraganaToKatakana(word))
+        convertHiraganaToKatakana(ability.nameJp).startsWith(
+          convertHiraganaToKatakana(word)
+        )
       )
     );
   };
@@ -781,7 +801,9 @@ const AttackingPokemon: React.FC<Props> = ({
     const word = e.target.value;
     setMoveList(
       Move.listAllValidSVMoves().filter((move) =>
-      convertHiraganaToKatakana(move.nameJp).startsWith(convertHiraganaToKatakana(word))
+        convertHiraganaToKatakana(move.nameJp).startsWith(
+          convertHiraganaToKatakana(word)
+        )
       )
     );
   };
@@ -1465,19 +1487,43 @@ const AttackingPokemon: React.FC<Props> = ({
               <label htmlFor="attacking_pokemon_tera_type" className="text-sm">
                 テラスタイプ
               </label>
-              <select
-                id="attacking_pokemon_tera_type"
-                className="shadow appearance-none border rounded w-full text-gray-700 py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                onChange={onTeraTypeUpdate}
-                defaultValue={"0"}
-              >
-                <option value="0">無効</option>
-                {Type.listAllTypes().map((e) => (
-                  <option key={e.id} value={e.id}>
-                    {e.nameJp}
-                  </option>
-                ))}
-              </select>
+              <div className="flex flex-row justify-between items-center">
+                <select
+                  id="attacking_pokemon_tera_type"
+                  className="shadow appearance-none border rounded w-1/2 text-gray-700 py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  onChange={onTeraTypeUpdate}
+                >
+                  {Type.listAllTypes().map((e) => (
+                    <option key={e.id} value={e.id}>
+                      {e.nameJp}
+                    </option>
+                  ))}
+                </select>
+                <span>
+                  <button
+                    type="button"
+                    className={
+                      attackingPokemonStatus.teraType.isEnabled
+                        ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                        : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                    }
+                    onClick={(event) => onTeraTypeIsEnabledUpdate(event, true)}
+                  >
+                    有効
+                  </button>
+                  <button
+                    type="button"
+                    className={
+                      !attackingPokemonStatus.teraType.isEnabled
+                        ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                        : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                    }
+                    onClick={(event) => onTeraTypeIsEnabledUpdate(event, false)}
+                  >
+                    無効
+                  </button>
+                </span>
+              </div>
             </div>
             <div>
               <label htmlFor="attacking_pokemon_ability" className="text-sm">

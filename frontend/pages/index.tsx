@@ -30,7 +30,7 @@ const Home: NextPageWithLayout = () => {
       new Nature(0.9, 1.0, 1.0, 1.0, 1.1),
       new StatsRank(0, 0, 0, 0, 0),
       new Move(434),
-      new TeraType(0),
+      new TeraType(0, false),
       new Ability(29),
       new Item(1),
       false,
@@ -43,7 +43,7 @@ const Home: NextPageWithLayout = () => {
       new EV(0, 0, 4, 252, 0, 252),
       new Nature(0.9, 1.0, 1.0, 1.0, 1.1),
       new StatsRank(0, 0, 0, 0, 0),
-      new TeraType(0),
+      new TeraType(0, false),
       new Ability(283),
       new Item(1),
       new StatusAilment(0)

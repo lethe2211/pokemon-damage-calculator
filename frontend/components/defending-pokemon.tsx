@@ -578,7 +578,26 @@ const DefendingPokemon: React.FC<Props> = ({
       defendingPokemonStatus.ev,
       defendingPokemonStatus.nature,
       defendingPokemonStatus.statsRank,
-      new TeraType(parseInt(e.target.value)),
+      new TeraType(parseInt(e.target.value), false),
+      defendingPokemonStatus.ability,
+      defendingPokemonStatus.item,
+      defendingPokemonStatus.statusAilment
+    );
+    onUpdate(newValue);
+  };
+
+  const onTeraTypeIsEnabledUpdate = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    newIsEnabled: boolean
+  ) => {
+    const newValue = new DefendingPokemonStatus(
+      defendingPokemonStatus.pokemon,
+      defendingPokemonStatus.level,
+      defendingPokemonStatus.iv,
+      defendingPokemonStatus.ev,
+      defendingPokemonStatus.nature,
+      defendingPokemonStatus.statsRank,
+      new TeraType(defendingPokemonStatus.teraType.type.id, newIsEnabled),
       defendingPokemonStatus.ability,
       defendingPokemonStatus.item,
       defendingPokemonStatus.statusAilment
@@ -1339,19 +1358,43 @@ const DefendingPokemon: React.FC<Props> = ({
               <label htmlFor="defending_pokemon_tera_type" className="text-sm">
                 テラスタイプ
               </label>
-              <select
-                id="defending_pokemon_tera_type"
-                className="shadow appearance-none border rounded w-full text-gray-700 py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                onChange={onTeraTypeUpdate}
-                defaultValue={"0"}
-              >
-                <option value="0">無効</option>
-                {Type.listAllTypes().map((e) => (
-                  <option key={e.id} value={e.id}>
-                    {e.nameJp}
-                  </option>
-                ))}
-              </select>
+              <div className="flex flex-row justify-between items-center">
+                <select
+                  id="defending_pokemon_tera_type"
+                  className="shadow appearance-none border rounded w-1/2 text-gray-700 py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  onChange={onTeraTypeUpdate}
+                >
+                  {Type.listAllTypes().map((e) => (
+                    <option key={e.id} value={e.id}>
+                      {e.nameJp}
+                    </option>
+                  ))}
+                </select>
+                <span>
+                  <button
+                    type="button"
+                    className={
+                      defendingPokemonStatus.teraType.isEnabled
+                        ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                        : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                    }
+                    onClick={(event) => onTeraTypeIsEnabledUpdate(event, true)}
+                  >
+                    有効
+                  </button>
+                  <button
+                    type="button"
+                    className={
+                      !defendingPokemonStatus.teraType.isEnabled
+                        ? "bg-blue-800 hover:bg-blue-900 text-white text-sm py-1 px-4 rounded-l"
+                        : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-1 px-4 rounded-l"
+                    }
+                    onClick={(event) => onTeraTypeIsEnabledUpdate(event, false)}
+                  >
+                    無効
+                  </button>
+                </span>
+              </div>
             </div>
             <div>
               <label htmlFor="defending_pokemon_ability" className="text-sm">

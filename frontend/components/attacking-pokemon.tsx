@@ -727,7 +727,8 @@ const AttackingPokemon: React.FC<Props> = ({
     setShowPokemonModal(false);
   };
 
-  const onSelectPokemonClose = () => {
+  const onSelectPokemonClose = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
     setPokemonList(Pokemon.listAllValidSVPokemons());
     setShowPokemonModal(false);
   };
@@ -770,7 +771,8 @@ const AttackingPokemon: React.FC<Props> = ({
     setShowAbilityModal(false);
   };
 
-  const onSelectAbilityClose = () => {
+  const onSelectAbilityClose = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
     setAbilityList(Ability.listAllValidSVAbilities());
     setShowAbilityModal(false);
   };
@@ -805,7 +807,8 @@ const AttackingPokemon: React.FC<Props> = ({
     setShowMoveModal(false);
   };
 
-  const onSelectMoveClose = () => {
+  const onSelectMoveClose = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
     setMoveList(Move.listAllValidSVMoves());
     setShowMoveModal(false);
   };

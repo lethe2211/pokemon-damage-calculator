@@ -60,51 +60,13 @@ export class CalculationResources {
         MoveCategory.fromNameEn("Physical")
       )
     ) {
-      attackValue = attackerStats.attack;
-
-      switch (this.attackingPokemonStatus.statsRank.attack) {
-        case 6:
-          attackValue *= 8 / 2;
-          break;
-        case 5:
-          attackValue *= 7 / 2;
-          break;
-        case 4:
-          attackValue *= 6 / 2;
-          break;
-        case 3:
-          attackValue *= 5 / 2;
-          break;
-        case 2:
-          attackValue *= 4 / 2;
-          break;
-        case 1:
-          attackValue *= 3 / 2;
-          break;
-        case 0:
-          attackValue *= 1;
-          break;
-        case -1:
-          attackValue *= 2 / 3;
-          break;
-        case -2:
-          attackValue *= 2 / 4;
-          break;
-        case -3:
-          attackValue *= 2 / 5;
-          break;
-        case -4:
-          attackValue *= 2 / 6;
-          break;
-        case -5:
-          attackValue *= 2 / 7;
-          break;
-        case -6:
-          attackValue *= 2 / 8;
-          break;
-      }
-
-      attackValue = roundDown(attackValue);
+      // 攻撃側のこうげき × こうげきランク → 切り捨て
+      attackValue = roundDown(
+        attackerStats.attack *
+          this.calculateFinalAttackAdjustmentByStatsRank(
+            this.attackingPokemonStatus.statsRank.attack
+          )
+      );
 
       // TODO: はりきり 6144 ÷ 4096 → 切り捨て
       attackValue = attackValue;
@@ -112,59 +74,23 @@ export class CalculationResources {
       // TODO: Calculate this value
       const adjustment = 4096;
 
+      // ×【3】攻撃の補正値 ÷ 4096 → 五捨五超入
       attackValue = roundOffIncluding5((attackValue * adjustment) / 4096);
 
+      // 1より小さければ1にする
       if (attackValue < 1) attackValue = 1;
     } else if (
       this.attackingPokemonStatus.move.category.equals(
         MoveCategory.fromNameEn("Special")
       )
     ) {
-      attackValue = attackerStats.spAtk;
-
-      switch (this.attackingPokemonStatus.statsRank.spAtk) {
-        case 6:
-          attackValue *= 8 / 2;
-          break;
-        case 5:
-          attackValue *= 7 / 2;
-          break;
-        case 4:
-          attackValue *= 6 / 2;
-          break;
-        case 3:
-          attackValue *= 5 / 2;
-          break;
-        case 2:
-          attackValue *= 4 / 2;
-          break;
-        case 1:
-          attackValue *= 3 / 2;
-          break;
-        case 0:
-          attackValue *= 1;
-          break;
-        case -1:
-          attackValue *= 2 / 3;
-          break;
-        case -2:
-          attackValue *= 2 / 4;
-          break;
-        case -3:
-          attackValue *= 2 / 5;
-          break;
-        case -4:
-          attackValue *= 2 / 6;
-          break;
-        case -5:
-          attackValue *= 2 / 7;
-          break;
-        case -6:
-          attackValue *= 2 / 8;
-          break;
-      }
-
-      attackValue = roundDown(attackValue);
+      // 攻撃側のとくこう × とくこうランク → 切り捨て
+      attackValue = roundDown(
+        attackerStats.spAtk *
+          this.calculateFinalAttackAdjustmentByStatsRank(
+            this.attackingPokemonStatus.statsRank.spAtk
+          )
+      );
 
       // TODO: はりきり 6144 ÷ 4096 → 切り捨て
       attackValue = attackValue;
@@ -172,14 +98,85 @@ export class CalculationResources {
       // TODO: Calculate this value
       const adjustment = 4096;
 
+      // ×【3】攻撃の補正値 ÷ 4096 → 五捨五超入
       attackValue = roundOffIncluding5((attackValue * adjustment) / 4096);
 
+      // 1より小さければ1にする
       if (attackValue < 1) attackValue = 1;
     } else {
       console.error("Move is neither a physical one nor a special one");
     }
 
     return attackValue;
+  }
+
+  calculateFinalAttackAdjustmentByStatsRank(statsRankValue: number): number {
+    if (this.attackingPokemonStatus.isCriticalHit) {
+      // Ignore a negative attack stats rank if critical hit
+      switch (statsRankValue) {
+        case 6:
+          return 8 / 2;
+        case 5:
+          return 7 / 2;
+        case 4:
+          return 6 / 2;
+        case 3:
+          return 5 / 2;
+        case 2:
+          return 4 / 2;
+        case 1:
+          return 3 / 2;
+        case 0:
+          return 1;
+        case -1:
+          return 1;
+        case -2:
+          return 1;
+        case -3:
+          return 1;
+        case -4:
+          return 1;
+        case -5:
+          return 1;
+        case -6:
+          return 1;
+        default:
+          console.log(`Stats Rank must be -6 ~ 6: ${statsRankValue}`);
+          return 1;
+      }
+    } else {
+      switch (statsRankValue) {
+        case 6:
+          return 8 / 2;
+        case 5:
+          return 7 / 2;
+        case 4:
+          return 6 / 2;
+        case 3:
+          return 5 / 2;
+        case 2:
+          return 4 / 2;
+        case 1:
+          return 3 / 2;
+        case 0:
+          return 1;
+        case -1:
+          return 2 / 3;
+        case -2:
+          return 2 / 4;
+        case -3:
+          return 2 / 5;
+        case -4:
+          return 2 / 6;
+        case -5:
+          return 2 / 7;
+        case -6:
+          return 2 / 8;
+        default:
+          console.log(`Stats Rank must be -6 ~ 6: ${statsRankValue}`);
+          return 1;
+      }
+    }
   }
 
   calculateFinalDefense(defenderStats: Stats): number {
@@ -190,51 +187,13 @@ export class CalculationResources {
         MoveCategory.fromNameEn("Physical")
       )
     ) {
-      defenseValue = defenderStats.defense;
-
-      switch (this.attackingPokemonStatus.statsRank.defense) {
-        case 6:
-          defenseValue *= 8 / 2;
-          break;
-        case 5:
-          defenseValue *= 7 / 2;
-          break;
-        case 4:
-          defenseValue *= 6 / 2;
-          break;
-        case 3:
-          defenseValue *= 5 / 2;
-          break;
-        case 2:
-          defenseValue *= 4 / 2;
-          break;
-        case 1:
-          defenseValue *= 3 / 2;
-          break;
-        case 0:
-          defenseValue *= 1;
-          break;
-        case -1:
-          defenseValue *= 2 / 3;
-          break;
-        case -2:
-          defenseValue *= 2 / 4;
-          break;
-        case -3:
-          defenseValue *= 2 / 5;
-          break;
-        case -4:
-          defenseValue *= 2 / 6;
-          break;
-        case -5:
-          defenseValue *= 2 / 7;
-          break;
-        case -6:
-          defenseValue *= 2 / 8;
-          break;
-      }
-
-      defenseValue = roundDown(defenseValue);
+      // 防御側のぼうぎょ×ランク→切り捨て
+      defenseValue = roundDown(
+        defenderStats.defense *
+          this.calculateFinalDefenseAdjustmentByStatsRank(
+            this.defendingPokemonStatus.statsRank.defense
+          )
+      );
 
       // TODO: ゆき+こおりタイプでぼうぎょ強化6144÷4096→切り捨て
       defenseValue = defenseValue;
@@ -242,59 +201,23 @@ export class CalculationResources {
       // TODO: Calculate this value
       const adjustment = 4096;
 
+      // ×【5】防御の補正値 ÷ 4096→五捨五超入
       defenseValue = roundOffIncluding5((defenseValue * adjustment) / 4096);
 
+      // 1より小さければ1にする
       if (defenseValue < 1) defenseValue = 1;
     } else if (
       this.attackingPokemonStatus.move.category.equals(
         MoveCategory.fromNameEn("Special")
       )
     ) {
-      defenseValue = defenderStats.spDef;
-
-      switch (this.attackingPokemonStatus.statsRank.spDef) {
-        case 6:
-          defenseValue *= 8 / 2;
-          break;
-        case 5:
-          defenseValue *= 7 / 2;
-          break;
-        case 4:
-          defenseValue *= 6 / 2;
-          break;
-        case 3:
-          defenseValue *= 5 / 2;
-          break;
-        case 2:
-          defenseValue *= 4 / 2;
-          break;
-        case 1:
-          defenseValue *= 3 / 2;
-          break;
-        case 0:
-          defenseValue *= 1;
-          break;
-        case -1:
-          defenseValue *= 2 / 3;
-          break;
-        case -2:
-          defenseValue *= 2 / 4;
-          break;
-        case -3:
-          defenseValue *= 2 / 5;
-          break;
-        case -4:
-          defenseValue *= 2 / 6;
-          break;
-        case -5:
-          defenseValue *= 2 / 7;
-          break;
-        case -6:
-          defenseValue *= 2 / 8;
-          break;
-      }
-
-      defenseValue = roundDown(defenseValue);
+      // 防御側のとくぼう×ランク→切り捨て
+      defenseValue = roundDown(
+        defenderStats.spDef *
+          this.calculateFinalDefenseAdjustmentByStatsRank(
+            this.defendingPokemonStatus.statsRank.spDef
+          )
+      );
 
       // TODO: すなあらし+いわタイプでとくぼう強化6144÷4096→切り捨て
       defenseValue = defenseValue;
@@ -302,14 +225,85 @@ export class CalculationResources {
       // TODO: Calculate this value
       const adjustment = 4096;
 
+      // ×【5】防御の補正値 ÷ 4096→五捨五超入
       defenseValue = roundOffIncluding5((defenseValue * adjustment) / 4096);
 
+      // 1より小さければ1にする
       if (defenseValue < 1) defenseValue = 1;
     } else {
       console.error("Move is neither a physical one nor a special one");
     }
 
     return defenseValue;
+  }
+
+  calculateFinalDefenseAdjustmentByStatsRank(statsRankValue: number): number {
+    if (this.attackingPokemonStatus.isCriticalHit) {
+      // Ignore a postive defense stats rank if critical hit
+      switch (statsRankValue) {
+        case 6:
+          return 1;
+        case 5:
+          return 1;
+        case 4:
+          return 1;
+        case 3:
+          return 1;
+        case 2:
+          return 1;
+        case 1:
+          return 1;
+        case 0:
+          return 1;
+        case -1:
+          return 2 / 3;
+        case -2:
+          return 2 / 4;
+        case -3:
+          return 2 / 5;
+        case -4:
+          return 2 / 6;
+        case -5:
+          return 2 / 7;
+        case -6:
+          return 2 / 8;
+        default:
+          console.log(`Stats Rank must be -6 ~ 6: ${statsRankValue}`);
+          return 1;
+      }
+    } else {
+      switch (statsRankValue) {
+        case 6:
+          return 8 / 2;
+        case 5:
+          return 7 / 2;
+        case 4:
+          return 6 / 2;
+        case 3:
+          return 5 / 2;
+        case 2:
+          return 4 / 2;
+        case 1:
+          return 3 / 2;
+        case 0:
+          return 1;
+        case -1:
+          return 2 / 3;
+        case -2:
+          return 2 / 4;
+        case -3:
+          return 2 / 5;
+        case -4:
+          return 2 / 6;
+        case -5:
+          return 2 / 7;
+        case -6:
+          return 2 / 8;
+        default:
+          console.log(`Stats Rank must be -6 ~ 6: ${statsRankValue}`);
+          return 1;
+      }
+    }
   }
 
   calculateDamangeAdjustment(): number {
@@ -407,8 +401,13 @@ export class CalculationResources {
     // ×天気弱化 2048÷4096→五捨五超入
     // ×天気強化 6144÷4096→五捨五超入
     // ×きょけんとつげき 8192÷4096→五捨五超入
-    // ×急所 6144÷4096→五捨五超入
     finalDamage = finalDamage;
+
+    // ×急所 6144÷4096→五捨五超入
+    if (this.attackingPokemonStatus.isCriticalHit) {
+      finalDamage = roundOffIncluding5(finalDamage * 6144 / 4096);
+    }
+    console.log(`×急所 6144÷4096→五捨五超入: ${finalDamage}`)
 
     // ×乱数(0.85, 0.86, …… 0.99, 1.00 の何れか)→切り捨て
     let minFinalDamage = roundDown(finalDamage * 0.85);

@@ -5,6 +5,7 @@ import { DefendingPokemonStatus } from "./defending-pokemon-status";
 import { EnvironmentStatus } from "./environment-status";
 import { Move, MoveCategory } from "./move";
 import { Stats } from "./stats";
+import { StatusAilment } from "./status-ailment";
 import { TypeCompatibility } from "./type";
 
 export class CalculationResources {
@@ -405,9 +406,9 @@ export class CalculationResources {
 
     // ×急所 6144÷4096→五捨五超入
     if (this.attackingPokemonStatus.isCriticalHit) {
-      finalDamage = roundOffIncluding5(finalDamage * 6144 / 4096);
+      finalDamage = roundOffIncluding5((finalDamage * 6144) / 4096);
     }
-    console.log(`×急所 6144÷4096→五捨五超入: ${finalDamage}`)
+    console.log(`×急所 6144÷4096→五捨五超入: ${finalDamage}`);
 
     // ×乱数(0.85, 0.86, …… 0.99, 1.00 の何れか)→切り捨て
     let minFinalDamage = roundDown(finalDamage * 0.85);
@@ -444,9 +445,21 @@ export class CalculationResources {
     );
     console.log(`×タイプ相性→切り捨て: ${minFinalDamage} ${maxFinalDamage}`);
 
-    // TODO: ×やけど 2048÷4096→五捨五超入
-    minFinalDamage = minFinalDamage;
-    maxFinalDamage = maxFinalDamage;
+    // ×やけど 2048÷4096→五捨五超入
+    if (
+      this.attackingPokemonStatus.move.category.equals(
+        MoveCategory.fromNameEn("Physical")
+      ) &&
+      this.attackingPokemonStatus.statusAilment.equals(
+        StatusAilment.fromNameEn("Burn")
+      )
+    ) {
+      minFinalDamage = roundOffIncluding5((minFinalDamage * 2048) / 4096);
+      maxFinalDamage = roundOffIncluding5((maxFinalDamage * 2048) / 4096);
+    }
+    console.log(
+      `×やけど 2048÷4096→五捨五超入: ${minFinalDamage} ${maxFinalDamage}`
+    );
 
     // ×【7】ダメージの補正値÷4096→五捨五超入
     minFinalDamage = roundOffIncluding5(
@@ -464,9 +477,14 @@ export class CalculationResources {
     minFinalDamage = minFinalDamage;
     maxFinalDamage = maxFinalDamage;
 
-    // TODO: →タイプ相性が0ではないときダメージが1より小さければ1にする
-    minFinalDamage = minFinalDamage;
-    maxFinalDamage = maxFinalDamage;
+    // →タイプ相性が0ではないときダメージが1より小さければ1にする
+    if (this.calculateRateByTypeCompatibility() !== 0) {
+      minFinalDamage = Math.max(minFinalDamage, 1);
+      maxFinalDamage = Math.max(maxFinalDamage, 1);
+    }
+    console.log(
+      `→タイプ相性が0ではないときダメージが1より小さければ1にする: ${minFinalDamage} ${maxFinalDamage}`
+    );
 
     return [minFinalDamage, maxFinalDamage];
   }

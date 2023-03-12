@@ -39,6 +39,14 @@ export class StatusAilment {
     }
   }
 
+  public equals(other: StatusAilment): boolean {
+    return (
+      this.id === other.id &&
+      this.nameEn === other.nameEn &&
+      this.nameJp === other.nameJp
+    );
+  }
+
   static fromNameEn(nameEn: string): StatusAilment {
     switch (nameEn) {
       case "None":
@@ -60,7 +68,7 @@ export class StatusAilment {
   }
 
   static listAllTypes(): StatusAilment[] {
-    let res = []
+    let res = [];
     for (let i = 0; i <= 5; i++) {
       res.push(new StatusAilment(i));
     }

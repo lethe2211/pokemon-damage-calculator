@@ -127,6 +127,44 @@ describe("CalculationResources#calculateDamage", () => {
     });
   });
 
+  describe("Too few damage", () => {
+    test("イーブイ ->（たいあたり）-> ヘイラッシャ", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(133),
+          1,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(0, 0, 0, 0, 0, 0),
+          new Nature(0.9, 1.0, 1.0, 1.0, 1.1),
+          new StatsRank(-6, 0, 0, 0, 0),
+          new Move(33),
+          new TeraType(0),
+          new Ability(50),
+          new Item(1),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(977),
+          100,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 0, 4),
+          new Nature(1.0, 1.1, 0.9, 1.0, 1.0),
+          new StatsRank(0, 6, 0, 0, 0),
+          new TeraType(0),
+          new Ability(109),
+          new Item(1),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus()
+      );
+
+      const expected = new DamageResult(1, 3, 0.1, 0.5, 168, 504);
+      const actual = calculationResources.calculateDamage();
+      expect(actual).toEqual(expected);
+    });
+  });
+
   describe("Critical hit", () => {
     test("マスカーニャ -> （トリックフラワー） -> ウォッシュロトム", () => {
       const calculationResources = new CalculationResources(
@@ -139,7 +177,7 @@ describe("CalculationResources#calculateDamage", () => {
           new StatsRank(0, 0, 0, 0, 0),
           new Move(870),
           new TeraType(0),
-          new Ability(29),
+          new Ability(65),
           new Item(1),
           false,
           new StatusAilment(0)
@@ -152,7 +190,7 @@ describe("CalculationResources#calculateDamage", () => {
           new Nature(0.9, 1.1, 1.0, 1.0, 1.0),
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0),
-          new Ability(283),
+          new Ability(26),
           new Item(1),
           new StatusAilment(0)
         ),
@@ -175,7 +213,7 @@ describe("CalculationResources#calculateDamage", () => {
           new StatsRank(0, 0, 0, 0, 0),
           new Move(870),
           new TeraType(0),
-          new Ability(29),
+          new Ability(65),
           new Item(1),
           true,
           new StatusAilment(0)
@@ -188,7 +226,7 @@ describe("CalculationResources#calculateDamage", () => {
           new Nature(0.9, 1.1, 1.0, 1.0, 1.0),
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0),
-          new Ability(283),
+          new Ability(26),
           new Item(1),
           new StatusAilment(0)
         ),
@@ -211,7 +249,7 @@ describe("CalculationResources#calculateDamage", () => {
           new StatsRank(1, 0, 0, 0, 0),
           new Move(870),
           new TeraType(0),
-          new Ability(29),
+          new Ability(26),
           new Item(1),
           true,
           new StatusAilment(0)
@@ -224,7 +262,7 @@ describe("CalculationResources#calculateDamage", () => {
           new Nature(0.9, 1.1, 1.0, 1.0, 1.0),
           new StatsRank(0, 1, 0, 0, 0),
           new TeraType(0),
-          new Ability(283),
+          new Ability(65),
           new Item(1),
           new StatusAilment(0)
         ),
@@ -268,6 +306,151 @@ describe("CalculationResources#calculateDamage", () => {
       );
 
       const expected = new DamageResult(450, 530, 286.6, 337.5, 1, 1);
+      const actual = calculationResources.calculateDamage();
+      expect(actual).toEqual(expected);
+    });
+  });
+  describe("Status ailments", () => {
+    test("ボーマンダ -> （げきりん） -> ブラッキー", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(373),
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 252, 0, 0, 0, 252),
+          new Nature(1.0, 1.0, 0.9, 1.0, 1.1),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(200),
+          new TeraType(0),
+          new Ability(22),
+          new Item(1),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(197),
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0),
+          new Ability(39),
+          new Item(1),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus()
+      );
+
+      const expected = new DamageResult(72, 85, 35.6, 42.0, 3, 3);
+      const actual = calculationResources.calculateDamage();
+      expect(actual).toEqual(expected);
+    });
+
+    test("ボーマンダ（やけど） -> （げきりん） -> ブラッキー", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(373),
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 252, 0, 0, 0, 252),
+          new Nature(1.0, 1.0, 0.9, 1.0, 1.1),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(200),
+          new TeraType(0),
+          new Ability(22),
+          new Item(1),
+          false,
+          new StatusAilment(4)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(197),
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0),
+          new Ability(39),
+          new Item(1),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus()
+      );
+
+      const expected = new DamageResult(36, 42, 17.8, 20.7, 5, 6);
+      const actual = calculationResources.calculateDamage();
+      expect(actual).toEqual(expected);
+    });
+
+    test("ボーマンダ -> （だいもんじ） -> ブラッキー", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(373),
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 252, 0, 0, 0, 252),
+          new Nature(1.0, 1.0, 0.9, 1.0, 1.1),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(126),
+          new TeraType(0),
+          new Ability(22),
+          new Item(1),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(197),
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0),
+          new Ability(39),
+          new Item(1),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus()
+      );
+
+      const expected = new DamageResult(33, 39, 16.3, 19.3, 6, 7);
+      const actual = calculationResources.calculateDamage();
+      expect(actual).toEqual(expected);
+    });
+
+    test("ボーマンダ（やけど） -> （だいもんじ） -> ブラッキー", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(373),
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 252, 0, 0, 0, 252),
+          new Nature(1.0, 1.0, 0.9, 1.0, 1.1),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(126),
+          new TeraType(0),
+          new Ability(22),
+          new Item(1),
+          false,
+          new StatusAilment(4)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(197),
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0),
+          new Ability(39),
+          new Item(1),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus()
+      );
+
+      const expected = new DamageResult(33, 39, 16.3, 19.3, 6, 7);
       const actual = calculationResources.calculateDamage();
       expect(actual).toEqual(expected);
     });

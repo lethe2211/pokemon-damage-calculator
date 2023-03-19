@@ -4240,7 +4240,7 @@
     ],
     "target": "selected-pokemon",
     "type": "electric",
-    "sv": false
+    "sv": true
   },
   {
     "id": 86,

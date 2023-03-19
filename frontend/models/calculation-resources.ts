@@ -1,4 +1,5 @@
 import { roundDown, roundOff, roundOffIncluding5 } from "../lib/util";
+import { Ability } from "./ability";
 import { AttackingPokemonStatus } from "./attacking-pokemon-status";
 import { DamageResult } from "./damage-result";
 import { DefendingPokemonStatus } from "./defending-pokemon-status";
@@ -6,7 +7,9 @@ import { EnvironmentStatus } from "./environment-status";
 import { Move, MoveCategory } from "./move";
 import { Stats } from "./stats";
 import { StatusAilment } from "./status-ailment";
-import { TypeCompatibility } from "./type";
+import { Terrain } from "./terrain";
+import { Type, TypeCompatibility } from "./type";
+import { Weather } from "./weather";
 
 export class CalculationResources {
   attackingPokemonStatus: AttackingPokemonStatus;
@@ -33,24 +36,193 @@ export class CalculationResources {
     );
   }
 
+  // 【2】最終威力
   calculateFinalPower(): number {
     let power = this.attackingPokemonStatus.move.power;
 
-    // TODO: Calculate this value
-    const adjustment = 4096;
+    // TODO:
+    // オーラブレイク× 3072 ÷ 4096 → 四捨五入
+    // とうそうしん弱化× 3072 ÷ 4096 → 四捨五入
+    // そうだいしょう(1体)× 4506 ÷ 4096 → 四捨五入
+    // エレキスキン× 4915 ÷ 4096 → 四捨五入
+    // スカイスキン× 4915 ÷ 4096 → 四捨五入
+    // ノーマルスキン× 4915 ÷ 4096 → 四捨五入
+    // フェアリースキン× 4915 ÷ 4096 → 四捨五入
+    // フリーズスキン× 4915 ÷ 4096 → 四捨五入
+    // てつのこぶし× 4915 ÷ 4096 → 四捨五入
+    // すてみ× 4915 ÷ 4096 → 四捨五入
+    // そうだいしょう(2体)× 4915 ÷ 4096 → 四捨五入
+    // とうそうしん強化× 5120 ÷ 4096 → 四捨五入
+    // バッテリー× 5325 ÷ 4096 → 四捨五入
+    // ちからずく× 5325 ÷ 4096 → 四捨五入
+    // すなのちから× 5325 ÷ 4096 → 四捨五入
+    // アナライズ× 5325 ÷ 4096 → 四捨五入
+    // かたいツメ× 5325 ÷ 4096 → 四捨五入
+    // そうだいしょう(3体)× 5325 ÷ 4096 → 四捨五入
+    // パンクロック× 5325 ÷ 4096 → 四捨五入
+    // パワースポット× 5325 ÷ 4096 → 四捨五入
+    // フェアリーオーラ× 5448 ÷ 4096 → 四捨五入
+    // ダークオーラ× 5448 ÷ 4096 → 四捨五入
+    // そうだいしょう(4体)× 5734 ÷ 4096 → 四捨五入
+    // きれあじ× 6144 ÷ 4096 → 四捨五入
+    // テクニシャン× 6144 ÷ 4096 → 四捨五入
+    // ねつぼうそう× 6144 ÷ 4096 → 四捨五入
+    // どくぼうそう× 6144 ÷ 4096 → 四捨五入
+    // がんじょうあご× 6144 ÷ 4096 → 四捨五入
+    // メガランチャー× 6144 ÷ 4096 → 四捨五入
+    // はがねのせいしん× 6144 ÷ 4096 → 四捨五入
+    // そうだいしょう(5体)× 6144 ÷ 4096 → 四捨五入
+    // たいねつ× 2048 ÷ 4096 → 四捨五入
+    // かんそうはだ× 5120 ÷ 4096 → 四捨五入
+    // ちからのハチマキ× 4505 ÷ 4096 → 四捨五入
+    // ものしりメガネ× 4505 ÷ 4096 → 四捨五入
+    // パンチグローブ× 4506 ÷ 4096 → 四捨五入
+    // プレート、もくたん、おこう等× 4915 ÷ 4096 → 四捨五入
+    // こんごうだま× 4915 ÷ 4096 → 四捨五入
+    // しらたま× 4915 ÷ 4096 → 四捨五入
+    // はっきんだま× 4915 ÷ 4096 → 四捨五入
+    // こころのしずく※× 4915 ÷ 4096 → 四捨五入
+    // ノーマルジュエル× 5325 ÷ 4096 → 四捨五入
+    // ソーラービーム+雨等× 2048 ÷ 4096 → 四捨五入
+    // ソーラーブレード+雨等× 2048 ÷ 4096 → 四捨五入
+    // さきどり× 6144 ÷ 4096 → 四捨五入
+    // はたきおとす× 6144 ÷ 4096 → 四捨五入
+    // てだすけ× 6144 ÷ 4096 → 四捨五入
+    // Gのちから+じゅうりょく× 6144 ÷ 4096 → 四捨五入
+    // ワイドフォース+サイコフィールド× 6144 ÷ 4096 → 四捨五入
+    // じゅうでん× 8192 ÷ 4096 → 四捨五入
+    // からげんき+状態異常× 8192 ÷ 4096 → 四捨五入
+    // しおみず+HP半分以下× 8192 ÷ 4096 → 四捨五入
+    // ベノムショック+どく・もうどく× 8192 ÷ 4096 → 四捨五入
+    // かたきうち+前ターンに味方が倒されている× 8192 ÷ 4096 → 四捨五入
+    // クロスサンダー+クロスフレイムの後× 8192 ÷ 4096 → 四捨五入
+    // クロスフレイム+クロスサンダーの後× 8192 ÷ 4096 → 四捨五入
+    // ライジングボルト+エレキフィールド× 8192 ÷ 4096 → 四捨五入
 
-    const roundedPower = roundOffIncluding5((power * adjustment) / 4096);
+    // フィールド弱化	× 2048 ÷ 4096 → 四捨五入
+    power = roundOffIncluding5(
+      (power * this.calculateNegativeAdjustmentByTerrain()) / 4096
+    );
 
-    if (roundedPower < 1) {
+    // フィールド強化	× 5325 ÷ 4096 → 四捨五入
+    power = roundOffIncluding5(
+      (power * this.calculatePositiveAdjustmentByTerrain()) / 4096
+    );
+
+    // TODO:
+    // みずあそび× 1352 ÷ 4096 → 四捨五入
+    // どろあそび× 1352 ÷ 4096 → 四捨五入
+
+    if (power < 1) {
       return 1;
     } else if (
-      this.attackingPokemonStatus.move.type ===
-        this.attackingPokemonStatus.teraType.type &&
+      this.attackingPokemonStatus.move.type.equals(
+        this.attackingPokemonStatus.teraType.type
+      ) &&
       false // TODO: Need to exclude some moves that will not be the target of this adjustment
     ) {
       return 60;
     } else {
-      return roundedPower;
+      return power;
+    }
+  }
+
+  calculateNegativeAdjustmentByTerrain(): number {
+    const type1 = this.defendingPokemonStatus.teraType.isEnabled
+      ? this.defendingPokemonStatus.teraType.type
+      : this.defendingPokemonStatus.pokemon.type1;
+    const type2 = this.defendingPokemonStatus.teraType.isEnabled
+      ? null
+      : this.defendingPokemonStatus.pokemon.type2;
+
+    // 「浮いている」 := 以下のいずれか
+    // ひこうタイプのポケモン
+    // 特性がふゆうのポケモン
+    // TODO: ふうせんを持っているポケモン
+    // TODO: でんじふゆう状態・テレキネシス状態のポケモン
+    const defendingPokemonIsFloating =
+      type1.equals(Type.fromNameEn("Flying")) ||
+      (type2 !== null && type2.equals(Type.fromNameEn("Flying"))) ||
+      this.defendingPokemonStatus.ability.equals(new Ability(26));
+
+    if (!defendingPokemonIsFloating) {
+      if (
+        this.environmentStatus.terrain.equals(
+          Terrain.fromNameEn("Grassy Terrain")
+        )
+      ) {
+        return 4096;
+        // TODO: グラスフィールド下で「じしん」「じならし」の威力が0.5倍（<-どの値？）
+      } else if (
+        // ミストフィールド下でドラゴン技の威力が0.5倍
+        this.environmentStatus.terrain.equals(
+          Terrain.fromNameEn("Misty Terrain")
+        ) &&
+        this.attackingPokemonStatus.move.type.equals(Type.fromNameEn("Dragon"))
+      ) {
+        return 2048;
+      } else {
+        return 4096;
+      }
+    } else {
+      return 4096;
+    }
+  }
+
+  calculatePositiveAdjustmentByTerrain(): number {
+    const type1 = this.attackingPokemonStatus.teraType.isEnabled
+      ? this.attackingPokemonStatus.teraType.type
+      : this.attackingPokemonStatus.pokemon.type1;
+    const type2 = this.attackingPokemonStatus.teraType.isEnabled
+      ? null
+      : this.attackingPokemonStatus.pokemon.type2;
+
+    const attackingPokemonIsFloating =
+      type1.equals(Type.fromNameEn("Flying")) ||
+      (type2 !== null && type2.equals(Type.fromNameEn("Flying"))) ||
+      this.attackingPokemonStatus.ability.equals(new Ability(26));
+
+    if (!attackingPokemonIsFloating) {
+      if (
+        this.environmentStatus.terrain.equals(
+          Terrain.fromNameEn("Electric Terrain")
+        )
+      ) {
+        if (
+          this.attackingPokemonStatus.move.type.equals(
+            Type.fromNameEn("Electric")
+          )
+        ) {
+          return 5325;
+        } else {
+          return 4096;
+        }
+      } else if (
+        this.environmentStatus.terrain.equals(
+          Terrain.fromNameEn("Grassy Terrain")
+        ) &&
+        this.attackingPokemonStatus.move.type.equals(Type.fromNameEn("Grass"))
+      ) {
+        return 5325;
+      } else if (
+        this.environmentStatus.terrain.equals(
+          Terrain.fromNameEn("Misty Terrain")
+        )
+      ) {
+        return 4096;
+        // TODO: ミストフィールド下で「ミストバースト」の威力が1.5倍（<-どの値？）
+      } else if (
+        this.environmentStatus.terrain.equals(
+          Terrain.fromNameEn("Psychic Terrain")
+        ) &&
+        this.attackingPokemonStatus.move.type.equals(Type.fromNameEn("Psychic"))
+      ) {
+        return 5325;
+      } else {
+        return 4096;
+      }
+    } else {
+      return 4096;
     }
   }
 
@@ -183,6 +355,13 @@ export class CalculationResources {
   calculateFinalDefense(defenderStats: Stats): number {
     let defenseValue = 0;
 
+    const type1 = this.defendingPokemonStatus.teraType.isEnabled
+      ? this.defendingPokemonStatus.teraType.type
+      : this.defendingPokemonStatus.pokemon.type1;
+    const type2 = this.defendingPokemonStatus.teraType.isEnabled
+      ? null
+      : this.defendingPokemonStatus.pokemon.type2;
+
     if (
       this.attackingPokemonStatus.move.category.equals(
         MoveCategory.fromNameEn("Physical")
@@ -196,8 +375,14 @@ export class CalculationResources {
           )
       );
 
-      // TODO: ゆき+こおりタイプでぼうぎょ強化6144÷4096→切り捨て
-      defenseValue = defenseValue;
+      // ゆき+こおりタイプでぼうぎょ強化6144÷4096→切り捨て
+      if (
+        this.environmentStatus.weather.equals(Weather.fromNameEn("Snow")) &&
+        (type1.equals(Type.fromNameEn("Ice")) ||
+          (type2 !== null && type2.equals(Type.fromNameEn("Ice"))))
+      ) {
+        defenseValue = roundDown((defenseValue * 6144) / 4096);
+      }
 
       // TODO: Calculate this value
       const adjustment = 4096;
@@ -220,8 +405,16 @@ export class CalculationResources {
           )
       );
 
-      // TODO: すなあらし+いわタイプでとくぼう強化6144÷4096→切り捨て
-      defenseValue = defenseValue;
+      // すなあらし+いわタイプでとくぼう強化6144÷4096→切り捨て
+      if (
+        this.environmentStatus.weather.equals(
+          Weather.fromNameEn("Sandstorm")
+        ) &&
+        (type1.equals(Type.fromNameEn("Rock")) ||
+          (type2 !== null && type2.equals(Type.fromNameEn("Rock"))))
+      ) {
+        defenseValue = roundDown((defenseValue * 6144) / 4096);
+      }
 
       // TODO: Calculate this value
       const adjustment = 4096;
@@ -307,9 +500,45 @@ export class CalculationResources {
     }
   }
 
-  calculateDamangeAdjustment(): number {
+  calculateDamageAdjustment(): number {
     // TODO: Implement it
     return 4096;
+  }
+
+  calculateAdjustmentByWeather(): number {
+    if (
+      this.environmentStatus.weather.equals(
+        Weather.fromNameEn("Harsh sunlight")
+      )
+    ) {
+      if (
+        this.attackingPokemonStatus.move.type.equals(Type.fromNameEn("Fire"))
+      ) {
+        return 6144;
+      } else if (
+        this.attackingPokemonStatus.move.type.equals(Type.fromNameEn("Water"))
+      ) {
+        return 2048;
+      } else {
+        return 4096;
+      }
+    } else if (
+      this.environmentStatus.weather.equals(Weather.fromNameEn("Rain"))
+    ) {
+      if (
+        this.attackingPokemonStatus.move.type.equals(Type.fromNameEn("Fire"))
+      ) {
+        return 2048;
+      } else if (
+        this.attackingPokemonStatus.move.type.equals(Type.fromNameEn("Water"))
+      ) {
+        return 6144;
+      } else {
+        return 4096;
+      }
+    } else {
+      return 4096;
+    }
   }
 
   calculateAdjustmentBySameTypeAttackBonus(): number {
@@ -448,8 +677,7 @@ export class CalculationResources {
   calculateFinalDamage(
     finalPower: number,
     finalAttack: number,
-    finalDefense: number,
-    damageAdjustment: number
+    finalDefense: number
   ): [number, number] {
     let finalDamage = 0;
 
@@ -472,9 +700,19 @@ export class CalculationResources {
     // TODO:
     // ×複数対象3072÷4096→五捨五超入
     // ×おやこあい(2発目)1024÷4096→五捨五超入
+    finalDamage = finalDamage;
+
     // ×天気弱化 2048÷4096→五捨五超入
     // ×天気強化 6144÷4096→五捨五超入
-    // ×きょけんとつげき 8192÷4096→五捨五超入
+    const adjustmentByWeather = this.calculateAdjustmentByWeather();
+    finalDamage = roundOffIncluding5(
+      (finalDamage * adjustmentByWeather) / 4096
+    );
+    console.log(
+      `×天気弱化 2048÷4096→五捨五超入 ×天気強化 6144÷4096→五捨五超入: ${finalDamage}`
+    );
+
+    // TODO: ×きょけんとつげき 8192÷4096→五捨五超入
     finalDamage = finalDamage;
 
     // ×急所 6144÷4096→五捨五超入
@@ -532,16 +770,9 @@ export class CalculationResources {
       `×やけど 2048÷4096→五捨五超入: ${minFinalDamage} ${maxFinalDamage}`
     );
 
-    // ×【7】ダメージの補正値÷4096→五捨五超入
-    minFinalDamage = roundOffIncluding5(
-      (minFinalDamage * damageAdjustment) / 4096
-    );
-    maxFinalDamage = roundOffIncluding5(
-      (maxFinalDamage * damageAdjustment) / 4096
-    );
-    console.log(
-      `×【7】ダメージの補正値÷4096→五捨五超入: ${minFinalDamage} ${maxFinalDamage}`
-    );
+    // TODO: ×【7】ダメージの補正値÷4096→五捨五超入
+    minFinalDamage = roundOffIncluding5((minFinalDamage * 4096) / 4096);
+    maxFinalDamage = roundOffIncluding5((maxFinalDamage * 4096) / 4096);
 
     // TODO: ×Z技まもる1024÷4096→五捨五超入
     // TODO: ×ダイマックス技まもる1024÷4096→五捨五超入
@@ -569,13 +800,10 @@ export class CalculationResources {
     const finalAttack = this.calculateFinalAttack(attackerStats);
     const finalDefense = this.calculateFinalDefense(defenderStats);
 
-    const damageAdjustment = this.calculateDamangeAdjustment();
-
     const [minFinalDamage, maxFinalDamage] = this.calculateFinalDamage(
       finalPower,
       finalAttack,
-      finalDefense,
-      damageAdjustment
+      finalDefense
     );
 
     const minDamageRatio =

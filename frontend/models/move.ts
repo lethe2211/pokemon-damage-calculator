@@ -3,8 +3,8 @@ import moveDataSv from "../data/move_data_sv.json";
 
 export class Move {
   id: number;
-  nameJp: string;
   nameEn: string;
+  nameJp: string;
   type: Type;
   category: MoveCategory;
   power: number;
@@ -16,8 +16,8 @@ export class Move {
 
     const data = moveDataSv.filter((e) => e["id"] === id)[0];
 
-    this.nameJp = data["nameJp"];
     this.nameEn = data["nameEn"];
+    this.nameJp = data["nameJp"];
     this.type = Type.fromNameEn(
       data["type"][0].toUpperCase() + data["type"].substring(1)
     );
@@ -27,6 +27,19 @@ export class Move {
     this.power = data["power"] ?? -1;
     this.accuracy = data["accuracy"] ?? -1;
     this.pp = data["pp"] ?? -1;
+  }
+
+  public equals(other: Move): boolean {
+    return (
+      this.id === other.id &&
+      this.nameEn === other.nameEn &&
+      this.nameJp === other.nameJp &&
+      this.type.equals(other.type) &&
+      this.category.equals(other.category) &&
+      this.power === other.power &&
+      this.accuracy === other.accuracy &&
+      this.pp === other.pp
+    );
   }
 
   static listAllValidSVMoves(): Move[] {

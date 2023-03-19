@@ -18,6 +18,8 @@ import { Pokemon } from "../models/pokemon";
 import { StatsRank } from "../models/stats-rank";
 import { StatusAilment } from "../models/status-ailment";
 import { TeraType } from "../models/tera-type";
+import { Terrain } from "../models/terrain";
+import { Weather } from "../models/weather";
 import { NextPageWithLayout } from "./_app";
 
 const Home: NextPageWithLayout = () => {
@@ -48,7 +50,7 @@ const Home: NextPageWithLayout = () => {
       new Item(1),
       new StatusAilment(0)
     ),
-    new EnvironmentStatus()
+    new EnvironmentStatus(Weather.fromNameEn("None"), Terrain.fromNameEn("None"))
   );
 
   const [calculationResources, setCalculationResources] =
@@ -77,7 +79,17 @@ const Home: NextPageWithLayout = () => {
           setCalculationResources(newValue);
         }}
       ></DefendingPokemon>
-      <Environment></Environment>
+      <Environment
+        environmentStatus={calculationResources.environmentStatus}
+        onUpdate={(environmentStatus) => {
+          const newValue = new CalculationResources(
+            calculationResources.attackingPokemonStatus,
+            calculationResources.defendingPokemonStatus,
+            environmentStatus
+          );
+          setCalculationResources(newValue);
+        }}
+      ></Environment>
       <Result damageResult={calculationResources.calculateDamage()}></Result>
     </div>
   );

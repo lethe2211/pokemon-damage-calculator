@@ -18,6 +18,16 @@ export class Ability {
     this.descriptionJp = data.description_jp;
   }
 
+  public equals(other: Ability): boolean {
+    return (
+      this.id === other.id &&
+      this.nameEn == other.nameEn &&
+      this.nameJp === other.nameJp &&
+      this.descriptionEn === other.descriptionEn &&
+      this.descriptionJp === other.descriptionJp
+    );
+  }
+
   static listAllValidSVAbilities(): Ability[] {
     return abilityDataSv
       .filter((e) => e.sv === true)

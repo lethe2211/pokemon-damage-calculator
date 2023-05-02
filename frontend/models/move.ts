@@ -16,8 +16,8 @@ export class Move {
 
     const data = moveDataSv.filter((e) => e["id"] === id)[0];
 
-    this.nameEn = data["nameEn"];
-    this.nameJp = data["nameJp"];
+    this.nameEn = data["name_en"];
+    this.nameJp = data["name_jp"];
     this.type = Type.fromNameEn(
       data["type"][0].toUpperCase() + data["type"].substring(1)
     );
@@ -75,7 +75,7 @@ export class MoveCategory {
         this.nameJp = "変化";
         break;
       default:
-        console.log(`Error111: MoveCategory ${this.id} is not registered`);
+        console.log(`Error: MoveCategory ${this.id} is not registered`);
         this.nameEn = "Physical";
         this.nameJp = "物理";
         break;

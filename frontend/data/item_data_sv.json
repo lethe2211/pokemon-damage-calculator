@@ -61,6 +61,16 @@
   },
   {
     "id": 6,
+    "poke_api_id": 203,
+    "name_en": "Deep Sea Tooth",
+    "name_jp": "しんかいのキバ",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": true,
+    "valid_in_defending_pokemon": false
+  },
+  {
+    "id": 7,
     "poke_api_id": -1,
     "name_en": "Items to enpower a specific type of moves",
     "name_jp": "タイプ強化系",
@@ -70,7 +80,7 @@
     "valid_in_defending_pokemon": false
   },
   {
-    "id": 7,
+    "id": 8,
     "poke_api_id": 245,
     "name_en": "Expert Belt",
     "name_jp": "たつじんのおび",
@@ -80,7 +90,7 @@
     "valid_in_defending_pokemon": false
   },
   {
-    "id": 8,
+    "id": 9,
     "poke_api_id": 213,
     "name_en": "Light Ball",
     "name_jp": "でんきだま",
@@ -90,7 +100,7 @@
     "valid_in_defending_pokemon": false
   },
   {
-    "id": 9,
+    "id": 10,
     "poke_api_id": 243,
     "name_en": "Muscle Band",
     "name_jp": "ちからのハチマキ",
@@ -100,7 +110,7 @@
     "valid_in_defending_pokemon": false
   },
   {
-    "id": 10,
+    "id": 11,
     "poke_api_id": 669,
     "name_en": "Normal Gem",
     "name_jp": "ノーマルジュエル",
@@ -110,7 +120,7 @@
     "valid_in_defending_pokemon": false
   },
   {
-    "id": 11,
+    "id": 12,
     "poke_api_id": 1181,
     "name_en": "Utility Umbrella",
     "name_jp": "ばんのうがさ",
@@ -120,7 +130,7 @@
     "valid_in_defending_pokemon": true
   },
   {
-    "id": 12,
+    "id": 13,
     "poke_api_id": 235,
     "name_en": "Thick Club",
     "name_jp": "ふといホネ",
@@ -130,7 +140,7 @@
     "valid_in_defending_pokemon": false
   },
   {
-    "id": 13,
+    "id": 14,
     "poke_api_id": 244,
     "name_en": "Wise Glasses",
     "name_jp": "ものしりメガネ",
@@ -140,7 +150,7 @@
     "valid_in_defending_pokemon": false
   },
   {
-    "id": 14,
+    "id": 15,
     "poke_api_id": -1,
     "name_en": "Berries that reduce the damage",
     "name_jp": "半減きのみ",
@@ -150,7 +160,7 @@
     "valid_in_defending_pokemon": true
   },
   {
-    "id": 15,
+    "id": 16,
     "poke_api_id": 581,
     "name_en": "Eviolite",
     "name_jp": "しんかのきせき",
@@ -160,7 +170,17 @@
     "valid_in_defending_pokemon": true
   },
   {
-    "id": 16,
+    "id": 17,
+    "poke_api_id": 204,
+    "name_en": "Deep Sea Scale",
+    "name_jp": "しんかいのウロコ",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": false,
+    "valid_in_defending_pokemon": true
+  },
+  {
+    "id": 18,
     "poke_api_id": 683,
     "name_en": "Assault Vest",
     "name_jp": "とつげきチョッキ",
@@ -170,7 +190,17 @@
     "valid_in_defending_pokemon": true
   },
   {
-    "id": 17,
+    "id": 19,
+    "poke_api_id": 234,
+    "name_en": "Metal Powder",
+    "name_jp": "メタルパウダー",
+    "description_en": "Not supported or No effects",
+    "description_jp": "未対応 or 効果なし",
+    "valid_in_attacking_pokemon": false,
+    "valid_in_defending_pokemon": true
+  },
+  {
+    "id": 20,
     "poke_api_id": -1,
     "name_en": "Other Items",
     "name_jp": "その他アイテム",

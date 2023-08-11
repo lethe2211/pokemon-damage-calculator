@@ -17,7 +17,7 @@ def convert_move_data():
     with open('output/poketetsu_move_data.html', 'r') as file:
         soup = BeautifulSoup(file.read(), 'html.parser')
         move_list_sv_tmp = [i.find('td').find('a').get_text() for i in soup.select(
-            'tr.sort_tr')] + ['３ぼんのや', 'ＤＤラリアット', '１０まんばりき', '１０まんボルト' + 'Ｇのちから']
+            'tr.sort_tr')] + ['３ぼんのや', 'ＤＤラリアット', '１０まんばりき', '１０まんボルト' + 'Ｇのちから']  # Add moves that have full-width characters explicitly
 
     with open('output/move_data_orig.json', 'r') as file:
         move_list_all = json.loads(file.read())
@@ -39,7 +39,8 @@ def convert_move_data():
                     'damage_class': 'special',
                     'target': 'selected-pokemon',
                     'type': 'water',
-                    'sv': True
+                    'sv': True,
+                    'is_ohko': False
                 }
             elif e['id'] == 902:
                 output_move_data = {
@@ -53,7 +54,8 @@ def convert_move_data():
                     'damage_class': 'physical',
                     'target': 'selected-pokemon',
                     'type': 'psychic',
-                    'sv': True
+                    'sv': True,
+                    'is_ohko': False
                 }
             else:
                 output_move_data = {
@@ -67,7 +69,8 @@ def convert_move_data():
                     'damage_class': e['damage_class']['name'],
                     'target': e['target']['name'],
                     'type': e['type']['name'],
-                    'sv': [x['name'] for x in e['names'] if x['language']['name'] == 'ja' or x['language']['name'] == 'ja-Hrkt'][0] in move_list_sv_tmp
+                    'sv': [x['name'] for x in e['names'] if x['language']['name'] == 'ja' or x['language']['name'] == 'ja-Hrkt'][0] in move_list_sv_tmp,
+                    'is_ohko': e['id'] in [12, 32, 90, 329] # 12: ハサミギロチン, 32: つのドリル, 90: じわれ, 329: ぜったいれいど are OHKO
                 }
             output.append(output_move_data)
 

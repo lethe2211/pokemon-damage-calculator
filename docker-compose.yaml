@@ -1,52 +1,8 @@
 version: '3'
 services:
-  web:
-    image: nginx
-    volumes:
-      - type: bind
-        source: "./web/templates"
-        target: "/etc/nginx/templates"
-    ports:
-      - "8000:80"
-    depends_on:
-      - frontend
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    depends_on:
-      - backend
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-      args:
-        - JAR_FILE=./build/libs/backend-1.0.0.jar
-    ports:
-      - "8080:8080"
-    environment:
-      - SPRING_PROFILES_ACTIVE=compose
-    depends_on:
-      - db
-  db:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-    volumes:
-      - type: bind
-        source: "./db/conf.d"
-        target: "/etc/mysql/conf.d"
-      - type: bind
-        source: "./db/docker-entrypoint-initdb.d"
-        target: "/docker-entrypoint-initdb.d"
-    ports:
-      - "3306:3306"
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - "8081:8080"

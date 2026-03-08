@@ -1,3 +1,5 @@
+"use client";
+
 import { useReducer, useState } from "react";
 import { convertHiraganaToKatakana } from "../lib/util";
 import { Ability } from "../models/ability";

@@ -22,3 +22,10 @@ A Next.js PWA for calculating Pokemon damage in Scarlet/Violet.
 - `frontend/components/` - React UI components
 - `frontend/data/` - Static JSON data files (from PokeAPI)
 - `script/extract_data/` - Python scripts for data extraction
+
+## Datasource
+
+Basically it is using these two as the true data sources of Pokemons.
+
+* [Poke API](https://pokeapi.co/)
+* [ポケモン徹底攻略](https://yakkun.com/sv/zukan/n1)

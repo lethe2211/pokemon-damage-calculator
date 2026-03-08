@@ -1,8 +1,9 @@
-import { ReactElement, useState } from "react";
+"use client";
+
+import { useState } from "react";
 import AttackingPokemon from "../components/attacking-pokemon";
 import DefendingPokemon from "../components/defending-pokemon";
 import Environment from "../components/environment";
-import Layout from "../components/layout";
 import Result from "../components/result";
 import { Ability } from "../models/ability";
 import { AttackingPokemonStatus } from "../models/attacking-pokemon-status";
@@ -20,9 +21,8 @@ import { StatusAilment } from "../models/status-ailment";
 import { TeraType } from "../models/tera-type";
 import { Terrain } from "../models/terrain";
 import { Weather } from "../models/weather";
-import { NextPageWithLayout } from "./_app";
 
-const Home: NextPageWithLayout = () => {
+export default function Home() {
   const defaultCalculationResource = new CalculationResources(
     new AttackingPokemonStatus(
       new Pokemon(887),
@@ -93,10 +93,4 @@ const Home: NextPageWithLayout = () => {
       <Result damageResult={calculationResources.calculateDamage()}></Result>
     </div>
   );
-};
-
-Home.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>;
-};
-
-export default Home;
+}

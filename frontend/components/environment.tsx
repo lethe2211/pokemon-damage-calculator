@@ -1,3 +1,5 @@
+"use client";
+
 import { EnvironmentStatus } from "../models/environment-status";
 import { Terrain } from "../models/terrain";
 import { Weather } from "../models/weather";

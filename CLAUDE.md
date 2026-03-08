@@ -15,6 +15,15 @@ A Next.js PWA for calculating Pokemon damage in Scarlet/Violet.
 - Tests: `cd frontend && npm test`
 - Lint: `cd frontend && npm run lint`
 
+## Quality Assurance
+
+Before marking any implementation as complete, you MUST verify the following:
+
+1. **Lint Check**: Run `cd frontend && npm run lint` and ensure it passes with no errors or warnings
+2. **Unit Tests**: Run `cd frontend && npm run test:ci` and ensure all tests pass
+
+Never report completion without confirming both checks pass successfully.
+
 ## Architecture
 
 - `frontend/models/calculation-resources.ts` - Core damage calculation engine

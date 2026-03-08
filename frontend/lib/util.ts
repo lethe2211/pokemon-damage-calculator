@@ -1,5 +1,3 @@
-import { Pokemon } from "../models/pokemon";
-
 // 小数点以下切り捨て
 export const roundDown = (num: number) => Math.floor(num)
 

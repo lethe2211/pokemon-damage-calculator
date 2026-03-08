@@ -10,6 +10,7 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+  id-token: write
 
 jobs:
   claude-review:
@@ -27,10 +28,10 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           # Use Anthropic API (requires ANTHROPIC_API_KEY secret)
-          anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
           # Optional: Customize the prompt for code review
-          system-prompt: |
+          prompt: |
             You are a code reviewer for a Pokemon damage calculator web application.
             Focus on:
             - Code quality and best practices

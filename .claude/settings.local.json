@@ -8,7 +8,16 @@
       "Bash(gh issue view:*)",
       "Bash(npm run build:*)",
       "mcp__playwright__browser_click",
-      "mcp__playwright__browser_console_messages"
+      "mcp__playwright__browser_console_messages",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh run view:*)",
+      "Bash(npm run lint)",
+      "Bash(npx next lint --help:*)",
+      "Bash(npx next lint:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run test:ci)"
     ]
   }
 }

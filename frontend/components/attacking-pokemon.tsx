@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import { convertHiraganaToKatakana } from "../lib/util";
 import { Ability } from "../models/ability";
 import { AttackingPokemonStatus } from "../models/attacking-pokemon-status";
@@ -753,11 +753,11 @@ const AttackingPokemon: React.FC<Props> = ({
     setShowPokemonModal(false);
   };
 
-  const onExpandStatsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onExpandStatsClick = (_e: React.MouseEvent<HTMLButtonElement>) => {
     setExpandStats(!expandStats);
   };
 
-  const onExpandRankClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onExpandRankClick = (_e: React.MouseEvent<HTMLButtonElement>) => {
     setExpandRank(!expandRank);
   };
 

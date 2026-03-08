@@ -1,5 +1,9 @@
 # Pokemon Damage Calculator
 
+[![CI](https://github.com/lethe2211/pokemon-damage-calculator/actions/workflows/ci.yml/badge.svg)](https://github.com/lethe2211/pokemon-damage-calculator/actions/workflows/ci.yml)
+[![Claude Code Review](https://github.com/lethe2211/pokemon-damage-calculator/actions/workflows/claude-review.yml/badge.svg)](https://github.com/lethe2211/pokemon-damage-calculator/actions/workflows/claude-review.yml)
+[![Security Review](https://github.com/lethe2211/pokemon-damage-calculator/actions/workflows/security-review.yml/badge.svg)](https://github.com/lethe2211/pokemon-damage-calculator/actions/workflows/security-review.yml)
+
 A web application for calculating Pokemon damage in Pokemon Scarlet and Violet. Built as a Progressive Web App (PWA) with Next.js.
 
 ## Features
@@ -16,11 +20,13 @@ A web application for calculating Pokemon damage in Pokemon Scarlet and Violet. 
 
 ## Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/) 13 (React 18)
+- **Framework**: [Next.js](https://nextjs.org/) 16 (App Router, React 19)
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS 4
 - **PWA**: next-pwa
 - **Testing**: Jest + React Testing Library
+- **CI/CD**: GitHub Actions
+- **Code Review**: Claude Code AI
 - **Containerization**: Docker / Docker Compose
 
 ## Project Structure
@@ -81,6 +87,18 @@ npm run test:ci # CI mode (single run)
 cd frontend
 npm run lint
 ```
+
+## CI/CD
+
+This project uses GitHub Actions for continuous integration and deployment:
+
+- **Lint Check**: ESLint validation on every PR
+- **Unit Tests**: Jest tests run automatically
+- **Build Test**: Ensures successful production builds
+- **Claude Code Review**: AI-powered code review on PRs
+- **Security Review**: Automated security vulnerability scanning
+
+For setup instructions, see [.github/SETUP_CI.md](.github/SETUP_CI.md).
 
 ## Data Extraction
 

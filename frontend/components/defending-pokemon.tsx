@@ -678,11 +678,11 @@ const DefendingPokemon: React.FC<Props> = ({
     setShowPokemonModal(false);
   };
 
-  const onExpandStatsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onExpandStatsClick = (_e: React.MouseEvent<HTMLButtonElement>) => {
     setExpandStats(!expandStats);
   };
 
-  const onExpandRankClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onExpandRankClick = (_e: React.MouseEvent<HTMLButtonElement>) => {
     setExpandRank(!expandRank);
   };
 

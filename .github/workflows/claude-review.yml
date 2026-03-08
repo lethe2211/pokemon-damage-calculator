@@ -1,0 +1,44 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  id-token: write
+
+jobs:
+  claude-review:
+    name: Claude Code Review
+    runs-on: ubuntu-latest
+
+    # Only run on PRs or when @claude is mentioned
+    if: |
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' &&
+       contains(github.event.comment.body, '@claude'))
+
+    steps:
+      - name: Claude Code Action
+        uses: anthropics/claude-code-action@v1
+        with:
+          # Use Anthropic API (requires ANTHROPIC_API_KEY secret)
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+          # Optional: Customize the prompt for code review
+          prompt: |
+            You are a code reviewer for a Pokemon damage calculator web application.
+            Focus on:
+            - Code quality and best practices
+            - TypeScript type safety
+            - React patterns and hooks usage
+            - Performance considerations
+            - Security issues
+            - Test coverage
+
+            Provide constructive feedback with specific suggestions for improvement.

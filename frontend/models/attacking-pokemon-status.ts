@@ -21,7 +21,7 @@ export class AttackingPokemonStatus {
   teraType: TeraType;
   ability: Ability;
   item: Item;
-  isCriticalHit: Boolean;
+  isCriticalHit: boolean;
   statusAilment: StatusAilment;
 
   constructor(
@@ -35,7 +35,7 @@ export class AttackingPokemonStatus {
     teraType: TeraType,
     ability: Ability,
     item: Item,
-    isCriticalHit: Boolean,
+    isCriticalHit: boolean,
     statusAilment: StatusAilment
   ) {
     this.pokemon = pokemon

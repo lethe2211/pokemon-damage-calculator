@@ -1,10 +1,10 @@
-import { roundDown, roundOff, roundOffIncluding5 } from "../lib/util";
+import { roundDown, roundOffIncluding5 } from "../lib/util";
 import { Ability } from "./ability";
 import { AttackingPokemonStatus } from "./attacking-pokemon-status";
 import { DamageResult } from "./damage-result";
 import { DefendingPokemonStatus } from "./defending-pokemon-status";
 import { EnvironmentStatus } from "./environment-status";
-import { Move, MoveCategory } from "./move";
+import { MoveCategory } from "./move";
 import { Stats } from "./stats";
 import { StatusAilment } from "./status-ailment";
 import { Terrain } from "./terrain";
@@ -115,14 +115,19 @@ export class CalculationResources {
 
     if (power < 1) {
       return 1;
-    } else if (
+    }
+    /* eslint-disable no-constant-condition */
+    // TODO: Need to exclude some moves that will not be the target of this adjustment
+    else if (
       this.attackingPokemonStatus.move.type.equals(
         this.attackingPokemonStatus.teraType.type
       ) &&
-      false // TODO: Need to exclude some moves that will not be the target of this adjustment
+      false
     ) {
       return 60;
-    } else {
+    }
+    /* eslint-enable no-constant-condition */
+    else {
       return power;
     }
   }
@@ -242,7 +247,7 @@ export class CalculationResources {
       );
 
       // TODO: はりきり 6144 ÷ 4096 → 切り捨て
-      attackValue = attackValue;
+      attackValue = attackValue; // eslint-disable-line no-self-assign
 
       // TODO: Calculate this value
       const adjustment = 4096;
@@ -266,7 +271,7 @@ export class CalculationResources {
       );
 
       // TODO: はりきり 6144 ÷ 4096 → 切り捨て
-      attackValue = attackValue;
+      attackValue = attackValue; // eslint-disable-line no-self-assign
 
       // TODO: Calculate this value
       const adjustment = 4096;
@@ -700,7 +705,7 @@ export class CalculationResources {
     // TODO:
     // ×複数対象3072÷4096→五捨五超入
     // ×おやこあい(2発目)1024÷4096→五捨五超入
-    finalDamage = finalDamage;
+    finalDamage = finalDamage; // eslint-disable-line no-self-assign
 
     // ×天気弱化 2048÷4096→五捨五超入
     // ×天気強化 6144÷4096→五捨五超入
@@ -713,7 +718,7 @@ export class CalculationResources {
     );
 
     // TODO: ×きょけんとつげき 8192÷4096→五捨五超入
-    finalDamage = finalDamage;
+    finalDamage = finalDamage; // eslint-disable-line no-self-assign
 
     // ×急所 6144÷4096→五捨五超入
     if (this.attackingPokemonStatus.isCriticalHit) {
@@ -776,8 +781,8 @@ export class CalculationResources {
 
     // TODO: ×Z技まもる1024÷4096→五捨五超入
     // TODO: ×ダイマックス技まもる1024÷4096→五捨五超入
-    minFinalDamage = minFinalDamage;
-    maxFinalDamage = maxFinalDamage;
+    minFinalDamage = minFinalDamage; // eslint-disable-line no-self-assign
+    maxFinalDamage = maxFinalDamage; // eslint-disable-line no-self-assign
 
     // →タイプ相性が0ではないときダメージが1より小さければ1にする
     if (this.calculateRateByTypeCompatibility() !== 0) {

@@ -7,8 +7,6 @@ on:
 permissions:
   contents: read
   pull-requests: write
-  security-events: write
-  id-token: write
 
 jobs:
   security-review:
@@ -19,17 +17,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
 
       - name: Claude Security Review
-        uses: anthropics/claude-code-security-review@v1
+        uses: anthropics/claude-code-security-review@main
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-
-          # Focus areas for security review
-          focus_areas: |
-            - Input validation and sanitization
-            - XSS vulnerabilities
-            - API security
-            - Dependency vulnerabilities
-            - Authentication and authorization issues
+          claude-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          comment-pr: true

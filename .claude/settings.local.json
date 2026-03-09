@@ -17,7 +17,8 @@
       "Bash(npx next lint:*)",
       "Bash(npx eslint:*)",
       "Bash(npm install:*)",
-      "Bash(npm run test:ci)"
+      "Bash(npm run test:ci)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }

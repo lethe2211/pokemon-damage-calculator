@@ -2,7 +2,7 @@
 
 ## Language Policy
 
-All code, comments, commit messages, and documentation in this project MUST be written in English.
+All code, commit messages, and documentation in this project MUST be written in English.
 
 ## Project Overview
 

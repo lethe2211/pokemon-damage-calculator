@@ -10,6 +10,8 @@ import { StatusAilment } from "./status-ailment";
 import { Terrain } from "./terrain";
 import { Type, TypeCompatibility } from "./type";
 import { Weather } from "./weather";
+import { AbilityEffectRegistry } from "./ability-effects/ability-effect-registry";
+import { AbilityEffectContext } from "./ability-effects/ability-effect-types";
 
 export class CalculationResources {
   attackingPokemonStatus: AttackingPokemonStatus;
@@ -98,6 +100,18 @@ export class CalculationResources {
     // クロスサンダー+クロスフレイムの後× 8192 ÷ 4096 → 四捨五入
     // クロスフレイム+クロスサンダーの後× 8192 ÷ 4096 → 四捨五入
     // ライジングボルト+エレキフィールド× 8192 ÷ 4096 → 四捨五入
+
+    // Ability-based power modifiers
+    const abilityRegistry = AbilityEffectRegistry.getInstance();
+    const context: AbilityEffectContext = {
+      attackingPokemon: this.attackingPokemonStatus,
+      defendingPokemon: this.defendingPokemonStatus,
+      environment: this.environmentStatus,
+      move: this.attackingPokemonStatus.move,
+      currentPower: power,
+    };
+    const abilityPowerModifier = abilityRegistry.getPowerModifier(context);
+    power = roundOffIncluding5((power * abilityPowerModifier) / 4096);
 
     // フィールド弱化	× 2048 ÷ 4096 → 四捨五入
     power = roundOffIncluding5(
@@ -249,8 +263,16 @@ export class CalculationResources {
       // TODO: はりきり 6144 ÷ 4096 → 切り捨て
       attackValue = attackValue; // eslint-disable-line no-self-assign
 
-      // TODO: Calculate this value
-      const adjustment = 4096;
+      // Ability-based attack modifiers
+      const abilityRegistry = AbilityEffectRegistry.getInstance();
+      const context: AbilityEffectContext = {
+        attackingPokemon: this.attackingPokemonStatus,
+        defendingPokemon: this.defendingPokemonStatus,
+        environment: this.environmentStatus,
+        move: this.attackingPokemonStatus.move,
+        currentAttack: attackValue,
+      };
+      const adjustment = abilityRegistry.getAttackModifier(context);
 
       // ×【3】攻撃の補正値 ÷ 4096 → 五捨五超入
       attackValue = roundOffIncluding5((attackValue * adjustment) / 4096);
@@ -273,8 +295,16 @@ export class CalculationResources {
       // TODO: はりきり 6144 ÷ 4096 → 切り捨て
       attackValue = attackValue; // eslint-disable-line no-self-assign
 
-      // TODO: Calculate this value
-      const adjustment = 4096;
+      // Ability-based attack modifiers (special)
+      const abilityRegistry = AbilityEffectRegistry.getInstance();
+      const context: AbilityEffectContext = {
+        attackingPokemon: this.attackingPokemonStatus,
+        defendingPokemon: this.defendingPokemonStatus,
+        environment: this.environmentStatus,
+        move: this.attackingPokemonStatus.move,
+        currentAttack: attackValue,
+      };
+      const adjustment = abilityRegistry.getAttackModifier(context);
 
       // ×【3】攻撃の補正値 ÷ 4096 → 五捨五超入
       attackValue = roundOffIncluding5((attackValue * adjustment) / 4096);
@@ -389,8 +419,16 @@ export class CalculationResources {
         defenseValue = roundDown((defenseValue * 6144) / 4096);
       }
 
-      // TODO: Calculate this value
-      const adjustment = 4096;
+      // Ability-based defense modifiers
+      const abilityRegistry = AbilityEffectRegistry.getInstance();
+      const context: AbilityEffectContext = {
+        attackingPokemon: this.attackingPokemonStatus,
+        defendingPokemon: this.defendingPokemonStatus,
+        environment: this.environmentStatus,
+        move: this.attackingPokemonStatus.move,
+        currentDefense: defenseValue,
+      };
+      const adjustment = abilityRegistry.getDefenseModifier(context);
 
       // ×【5】防御の補正値 ÷ 4096→五捨五超入
       defenseValue = roundOffIncluding5((defenseValue * adjustment) / 4096);
@@ -421,8 +459,16 @@ export class CalculationResources {
         defenseValue = roundDown((defenseValue * 6144) / 4096);
       }
 
-      // TODO: Calculate this value
-      const adjustment = 4096;
+      // Ability-based defense modifiers (special)
+      const abilityRegistry = AbilityEffectRegistry.getInstance();
+      const context: AbilityEffectContext = {
+        attackingPokemon: this.attackingPokemonStatus,
+        defendingPokemon: this.defendingPokemonStatus,
+        environment: this.environmentStatus,
+        move: this.attackingPokemonStatus.move,
+        currentDefense: defenseValue,
+      };
+      const adjustment = abilityRegistry.getDefenseModifier(context);
 
       // ×【5】防御の補正値 ÷ 4096→五捨五超入
       defenseValue = roundOffIncluding5((defenseValue * adjustment) / 4096);
@@ -506,8 +552,15 @@ export class CalculationResources {
   }
 
   calculateDamageAdjustment(): number {
-    // TODO: Implement it
-    return 4096;
+    // Ability-based damage modifiers
+    const abilityRegistry = AbilityEffectRegistry.getInstance();
+    const context: AbilityEffectContext = {
+      attackingPokemon: this.attackingPokemonStatus,
+      defendingPokemon: this.defendingPokemonStatus,
+      environment: this.environmentStatus,
+      move: this.attackingPokemonStatus.move,
+    };
+    return abilityRegistry.getDamageModifier(context);
   }
 
   calculateAdjustmentByWeather(): number {
@@ -619,6 +672,19 @@ export class CalculationResources {
   }
 
   calculateRateByTypeCompatibility(): number {
+    // Check ability-based type immunity first
+    const abilityRegistry = AbilityEffectRegistry.getInstance();
+    const context: AbilityEffectContext = {
+      attackingPokemon: this.attackingPokemonStatus,
+      defendingPokemon: this.defendingPokemonStatus,
+      environment: this.environmentStatus,
+      move: this.attackingPokemonStatus.move,
+    };
+
+    if (abilityRegistry.checkTypeImmunity(context)) {
+      return 0; // Immune
+    }
+
     const moveType = this.attackingPokemonStatus.move.type;
 
     let rate = 1;
@@ -775,9 +841,10 @@ export class CalculationResources {
       `×やけど 2048÷4096→五捨五超入: ${minFinalDamage} ${maxFinalDamage}`
     );
 
-    // TODO: ×【7】ダメージの補正値÷4096→五捨五超入
-    minFinalDamage = roundOffIncluding5((minFinalDamage * 4096) / 4096);
-    maxFinalDamage = roundOffIncluding5((maxFinalDamage * 4096) / 4096);
+    // ×【7】ダメージの補正値÷4096→五捨五超入
+    const damageAdjustment = this.calculateDamageAdjustment();
+    minFinalDamage = roundOffIncluding5((minFinalDamage * damageAdjustment) / 4096);
+    maxFinalDamage = roundOffIncluding5((maxFinalDamage * damageAdjustment) / 4096);
 
     // TODO: ×Z技まもる1024÷4096→五捨五超入
     // TODO: ×ダイマックス技まもる1024÷4096→五捨五超入

@@ -1,3 +1,4 @@
+// 個体値
 export class IV {
   hp: number;
   attack: number;

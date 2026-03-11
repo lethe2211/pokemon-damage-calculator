@@ -1,3 +1,4 @@
+// 努力値
 export class EV {
   hp: number;
   attack: number;

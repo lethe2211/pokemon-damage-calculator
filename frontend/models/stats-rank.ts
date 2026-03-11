@@ -1,3 +1,4 @@
+// ステータスランク
 export class StatsRank {
   attack: number;
   defense: number;

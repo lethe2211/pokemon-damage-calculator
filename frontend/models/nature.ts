@@ -1,3 +1,4 @@
+// 性格
 export class Nature {
   attack: number;
   defense: number;

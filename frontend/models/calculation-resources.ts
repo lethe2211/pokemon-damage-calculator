@@ -318,9 +318,6 @@ export class CalculationResources {
           )
       );
 
-      // TODO: はりきり 6144 ÷ 4096 → 切り捨て
-      attackValue = attackValue; // eslint-disable-line no-self-assign
-
       // Ability-based attack modifiers (special)
       const abilityRegistry = AbilityEffectRegistry.getInstance();
       const context: AbilityEffectContext = {

@@ -3,12 +3,14 @@ import {
   AbilityEffectCategory,
   AbilityEffectContext,
   TypeImmunityEffect,
+  TypeConversionEffect,
 } from "./ability-effect-types";
 import { powerModifierEffects } from "./power-modifiers";
 import { attackModifierEffects } from "./attack-modifiers";
 import { defenseModifierEffects } from "./defense-modifiers";
 import { damageModifierEffects } from "./damage-modifiers";
 import { typeImmunityEffects } from "./immunity-effects";
+import { typeConversionEffects } from "./type-conversion-effects";
 
 /**
  * Central registry for all ability effects in the damage calculator.
@@ -31,6 +33,7 @@ export class AbilityEffectRegistry {
   private defenseModifiers: Map<number, AbilityEffect[]>;
   private damageModifiers: Map<number, AbilityEffect[]>;
   private typeImmunities: Map<number, TypeImmunityEffect>;
+  private typeConversions: Map<number, TypeConversionEffect>;
 
   private constructor() {
     this.powerModifiers = this.buildEffectMap(powerModifierEffects);
@@ -38,6 +41,7 @@ export class AbilityEffectRegistry {
     this.defenseModifiers = this.buildEffectMap(defenseModifierEffects);
     this.damageModifiers = this.buildEffectMap(damageModifierEffects);
     this.typeImmunities = this.buildImmunityMap(typeImmunityEffects);
+    this.typeConversions = this.buildTypeConversionMap(typeConversionEffects);
   }
 
   /**
@@ -78,6 +82,21 @@ export class AbilityEffectRegistry {
     effects: TypeImmunityEffect[]
   ): Map<number, TypeImmunityEffect> {
     const map = new Map<number, TypeImmunityEffect>();
+    for (const effect of effects) {
+      map.set(effect.abilityId, effect);
+    }
+    return map;
+  }
+
+  /**
+   * Build a Map of ability ID to type conversion effect.
+   * @param effects - Array of type conversion effects
+   * @returns Map from ability ID to conversion effect
+   */
+  private buildTypeConversionMap(
+    effects: TypeConversionEffect[]
+  ): Map<number, TypeConversionEffect> {
+    const map = new Map<number, TypeConversionEffect>();
     for (const effect of effects) {
       map.set(effect.abilityId, effect);
     }
@@ -199,6 +218,26 @@ export class AbilityEffectRegistry {
   }
 
   /**
+   * Get the type conversion effect for the current context.
+   * Returns null if no conversion applies.
+   *
+   * @param context - Current calculation context
+   * @returns Type conversion effect, or null if no conversion applies
+   */
+  public getTypeConversion(
+    context: AbilityEffectContext
+  ): TypeConversionEffect | null {
+    const abilityId = context.attackingPokemon.ability.id;
+    const conversion = this.typeConversions.get(abilityId);
+
+    if (!conversion || !conversion.appliesTo(context.move)) {
+      return null;
+    }
+
+    return conversion;
+  }
+
+  /**
    * Get all registered abilities by category for debugging/testing.
    *
    * @param category - Ability effect category
@@ -216,6 +255,8 @@ export class AbilityEffectRegistry {
         return Array.from(this.damageModifiers.keys());
       case AbilityEffectCategory.TYPE_IMMUNITY:
         return Array.from(this.typeImmunities.keys());
+      case AbilityEffectCategory.TYPE_CONVERSION:
+        return Array.from(this.typeConversions.keys());
       default:
         return [];
     }

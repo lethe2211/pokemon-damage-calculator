@@ -1,3 +1,4 @@
+// 状態異常
 export class StatusAilment {
   id: number;
   nameEn: string;

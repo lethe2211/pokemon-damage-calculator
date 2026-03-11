@@ -18,7 +18,14 @@
       "Bash(npx eslint:*)",
       "Bash(npm install:*)",
       "Bash(npm run test:ci)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(npm run test:ci:*)",
+      "Bash(node:*)",
+      "Bash(npm test:*)",
+      "Bash(wc:*)",
+      "Bash(npx jest:*)",
+      "mcp__voicevox__speak",
+      "Bash(tee:*)"
     ]
   }
 }

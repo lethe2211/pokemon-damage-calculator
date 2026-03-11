@@ -17,6 +17,10 @@ export interface AbilityEffectContext {
   currentAttack?: number;
   currentDefense?: number;
   currentDamage?: number;
+  // Additional fields for damage modifier abilities (Phase 4)
+  typeEffectiveness?: number; // Type compatibility multiplier (e.g., 2.0 for super effective)
+  defenderCurrentHP?: number; // Current HP of defending Pokemon
+  defenderMaxHP?: number; // Maximum HP of defending Pokemon
 }
 
 /**
@@ -28,6 +32,7 @@ export enum AbilityEffectCategory {
   DEFENSE_MODIFIER = "DEFENSE_MODIFIER",
   DAMAGE_MODIFIER = "DAMAGE_MODIFIER",
   TYPE_IMMUNITY = "TYPE_IMMUNITY",
+  TYPE_CONVERSION = "TYPE_CONVERSION",
 }
 
 /**
@@ -138,4 +143,36 @@ export interface TypeImmunityEffect {
    * @param context - Current calculation context
    */
   onImmunity?: (context: AbilityEffectContext) => void;
+}
+
+/**
+ * Interface for type conversion abilities.
+ * These abilities convert Normal-type moves to another type and boost power.
+ * Examples: Pixilate, Aerilate, Galvanize, Refrigerate
+ */
+export interface TypeConversionEffect {
+  /** Ability ID from ability_data_sv.json */
+  abilityId: number;
+
+  /** Ability name (English or Japanese) */
+  abilityName: string;
+
+  /** Source type to convert from (typically Normal) */
+  sourceType: import("../type").Type;
+
+  /** Target type to convert to (e.g., Fairy, Flying, Electric, Ice) */
+  targetType: import("../type").Type;
+
+  /** Power modifier applied after conversion (e.g., 4915/4096 for 1.2×) */
+  powerModifier: number;
+
+  /** Priority for resolution when multiple conversion abilities exist */
+  priority: number;
+
+  /**
+   * Determines if this conversion applies to the given move.
+   * @param move - Move to check
+   * @returns true if conversion should be applied
+   */
+  appliesTo(move: Move): boolean;
 }

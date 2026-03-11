@@ -13,33 +13,65 @@ describe("AbilityEffectRegistry", () => {
   });
 
   describe("getRegisteredAbilities", () => {
-    test("returns empty array for each category in Phase 1", () => {
+    test("returns registered power modifiers (Phase 2)", () => {
       const registry = AbilityEffectRegistry.getInstance();
 
       const powerModifiers = registry.getRegisteredAbilities(
         AbilityEffectCategory.POWER_MODIFIER
       );
-      expect(powerModifiers).toEqual([]);
+      // Phase 2 + Phase 5a: 6 power modifiers (Iron Fist, Technician, Tough Claws, Sheer Force, Sand Force, Solar Power)
+      expect(powerModifiers).toEqual([89, 101, 181, 125, 159, 94]);
+    });
+
+    test("returns registered attack modifiers (Phase 3)", () => {
+      const registry = AbilityEffectRegistry.getInstance();
 
       const attackModifiers = registry.getRegisteredAbilities(
         AbilityEffectCategory.ATTACK_MODIFIER
       );
-      expect(attackModifiers).toEqual([]);
+      // Phase 3: 5 attack modifiers (Hustle, Guts, Huge Power, Pure Power, Heatproof)
+      expect(attackModifiers).toEqual([55, 62, 37, 74, 85]);
+    });
+
+    test("returns registered defense modifiers (Phase 3)", () => {
+      const registry = AbilityEffectRegistry.getInstance();
 
       const defenseModifiers = registry.getRegisteredAbilities(
         AbilityEffectCategory.DEFENSE_MODIFIER
       );
+      // Phase 3: No defense modifiers (Thick Fat and Heatproof were moved away)
       expect(defenseModifiers).toEqual([]);
+    });
+
+    test("returns registered damage modifiers (Phase 4)", () => {
+      const registry = AbilityEffectRegistry.getInstance();
 
       const damageModifiers = registry.getRegisteredAbilities(
         AbilityEffectCategory.DAMAGE_MODIFIER
       );
-      expect(damageModifiers).toEqual([]);
+      // Phase 4: 7 damage modifiers
+      // Filter, Solid Rock, Prism Armor, Multiscale, Tinted Lens, Sniper, Thick Fat
+      expect(damageModifiers).toEqual([111, 116, 232, 136, 110, 97, 47]);
+    });
+
+    test("returns registered type immunities (Phase 4)", () => {
+      const registry = AbilityEffectRegistry.getInstance();
 
       const typeImmunities = registry.getRegisteredAbilities(
         AbilityEffectCategory.TYPE_IMMUNITY
       );
-      expect(typeImmunities).toEqual([]);
+      // Phase 4: 7 type immunities (Levitate, Sap Sipper, Volt Absorb, Water Absorb, Flash Fire, Lightning Rod, Storm Drain)
+      expect(typeImmunities).toEqual([26, 157, 10, 11, 18, 31, 114]);
+    });
+
+    test("returns registered type conversions (Phase 5a + 5b)", () => {
+      const registry = AbilityEffectRegistry.getInstance();
+
+      const typeConversions = registry.getRegisteredAbilities(
+        AbilityEffectCategory.TYPE_CONVERSION
+      );
+      // Phase 5a + 5b: 5 type conversion abilities (Pixilate, Aerilate, Galvanize, Refrigerate, Normalize)
+      expect(typeConversions).toEqual([182, 184, 206, 174, 96]);
     });
   });
 

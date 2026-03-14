@@ -12,6 +12,8 @@ import { Type, TypeCompatibility } from "./type";
 import { Weather } from "./weather";
 import { AbilityEffectRegistry } from "./ability-effects/ability-effect-registry";
 import { AbilityEffectContext } from "./ability-effects/ability-effect-types";
+import { ItemEffectRegistry } from "./item-effects/item-effect-registry";
+import { ItemEffectContext } from "./item-effects/item-effect-types";
 
 export class CalculationResources {
   attackingPokemonStatus: AttackingPokemonStatus;
@@ -135,6 +137,22 @@ export class CalculationResources {
     };
     const abilityPowerModifier = abilityRegistry.getPowerModifier(context);
     power = roundOffIncluding5((power * abilityPowerModifier) / 4096);
+
+    // Item-based power modifiers
+    const itemRegistry = ItemEffectRegistry.getInstance();
+    const itemContext: ItemEffectContext = {
+      attackingPokemon: this.attackingPokemonStatus,
+      defendingPokemon: this.defendingPokemonStatus,
+      environment: this.environmentStatus,
+      move: this.attackingPokemonStatus.move,
+      currentPower: power,
+    };
+    const itemPowerModifier = itemRegistry.getPowerModifier(itemContext);
+    power = roundOffIncluding5((power * itemPowerModifier) / 4096);
+
+    // Item-based type boost (Type-specific items like Plates, Incenses, etc.)
+    const itemTypeBoost = itemRegistry.getTypeBoost(itemContext);
+    power = roundOffIncluding5((power * itemTypeBoost) / 4096);
 
     // Type conversion abilities (Pixilate, Aerilate, Galvanize, Refrigerate)
     // These abilities convert Normal-type moves to another type and boost power by 20%
@@ -303,6 +321,18 @@ export class CalculationResources {
       // ×【3】攻撃の補正値 ÷ 4096 → 五捨五超入
       attackValue = roundOffIncluding5((attackValue * adjustment) / 4096);
 
+      // Item-based attack modifiers
+      const itemRegistry = ItemEffectRegistry.getInstance();
+      const itemContext: ItemEffectContext = {
+        attackingPokemon: this.attackingPokemonStatus,
+        defendingPokemon: this.defendingPokemonStatus,
+        environment: this.environmentStatus,
+        move: this.attackingPokemonStatus.move,
+        currentAttack: attackValue,
+      };
+      const itemAdjustment = itemRegistry.getAttackModifier(itemContext);
+      attackValue = roundOffIncluding5((attackValue * itemAdjustment) / 4096);
+
       // 1より小さければ1にする
       if (attackValue < 1) attackValue = 1;
     } else if (
@@ -331,6 +361,18 @@ export class CalculationResources {
 
       // ×【3】攻撃の補正値 ÷ 4096 → 五捨五超入
       attackValue = roundOffIncluding5((attackValue * adjustment) / 4096);
+
+      // Item-based attack modifiers
+      const itemRegistry = ItemEffectRegistry.getInstance();
+      const itemContext: ItemEffectContext = {
+        attackingPokemon: this.attackingPokemonStatus,
+        defendingPokemon: this.defendingPokemonStatus,
+        environment: this.environmentStatus,
+        move: this.attackingPokemonStatus.move,
+        currentAttack: attackValue,
+      };
+      const itemAdjustment = itemRegistry.getAttackModifier(itemContext);
+      attackValue = roundOffIncluding5((attackValue * itemAdjustment) / 4096);
 
       // 1より小さければ1にする
       if (attackValue < 1) attackValue = 1;
@@ -456,6 +498,18 @@ export class CalculationResources {
       // ×【5】防御の補正値 ÷ 4096→五捨五超入
       defenseValue = roundOffIncluding5((defenseValue * adjustment) / 4096);
 
+      // Item-based defense modifiers
+      const itemRegistry = ItemEffectRegistry.getInstance();
+      const itemContext: ItemEffectContext = {
+        attackingPokemon: this.attackingPokemonStatus,
+        defendingPokemon: this.defendingPokemonStatus,
+        environment: this.environmentStatus,
+        move: this.attackingPokemonStatus.move,
+        currentDefense: defenseValue,
+      };
+      const itemAdjustment = itemRegistry.getDefenseModifier(itemContext);
+      defenseValue = roundOffIncluding5((defenseValue * itemAdjustment) / 4096);
+
       // 1より小さければ1にする
       if (defenseValue < 1) defenseValue = 1;
     } else if (
@@ -495,6 +549,18 @@ export class CalculationResources {
 
       // ×【5】防御の補正値 ÷ 4096→五捨五超入
       defenseValue = roundOffIncluding5((defenseValue * adjustment) / 4096);
+
+      // Item-based defense modifiers
+      const itemRegistry = ItemEffectRegistry.getInstance();
+      const itemContext: ItemEffectContext = {
+        attackingPokemon: this.attackingPokemonStatus,
+        defendingPokemon: this.defendingPokemonStatus,
+        environment: this.environmentStatus,
+        move: this.attackingPokemonStatus.move,
+        currentDefense: defenseValue,
+      };
+      const itemAdjustment = itemRegistry.getDefenseModifier(itemContext);
+      defenseValue = roundOffIncluding5((defenseValue * itemAdjustment) / 4096);
 
       // 1より小さければ1にする
       if (defenseValue < 1) defenseValue = 1;
@@ -827,13 +893,33 @@ export class CalculationResources {
     );
 
     // ×タイプ相性→切り捨て
-    minFinalDamage = roundDown(
-      minFinalDamage * this.calculateRateByTypeCompatibility()
-    );
-    maxFinalDamage = roundDown(
-      maxFinalDamage * this.calculateRateByTypeCompatibility()
-    );
+    const typeEffectiveness = this.calculateRateByTypeCompatibility();
+    minFinalDamage = roundDown(minFinalDamage * typeEffectiveness);
+    maxFinalDamage = roundDown(maxFinalDamage * typeEffectiveness);
     console.log(`×タイプ相性→切り捨て: ${minFinalDamage} ${maxFinalDamage}`);
+
+    // Item-based damage modifiers (Damage-Reducing Berries)
+    const itemRegistry = ItemEffectRegistry.getInstance();
+    const itemDamageContext: ItemEffectContext = {
+      attackingPokemon: this.attackingPokemonStatus,
+      defendingPokemon: this.defendingPokemonStatus,
+      environment: this.environmentStatus,
+      move: this.attackingPokemonStatus.move,
+      typeEffectiveness: typeEffectiveness,
+    };
+    const itemDamageModifier = itemRegistry.getDamageModifier(
+      itemDamageContext,
+      "AFTER_STAB"
+    );
+    minFinalDamage = roundOffIncluding5(
+      (minFinalDamage * itemDamageModifier) / 4096
+    );
+    maxFinalDamage = roundOffIncluding5(
+      (maxFinalDamage * itemDamageModifier) / 4096
+    );
+    console.log(
+      `×Item damage modifier (AFTER_STAB)→五捨五超入: ${minFinalDamage} ${maxFinalDamage}`
+    );
 
     // ×やけど 2048÷4096→五捨五超入
     // Note: Guts (こんじょう, ID: 62) negates the burn attack reduction

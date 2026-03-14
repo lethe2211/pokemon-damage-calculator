@@ -2085,7 +2085,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(6), // Damp
@@ -2099,8 +2099,8 @@ describe("CalculationResources#calculateDamage", () => {
 
       // Tough Claws: Contact move power 120 * 1.3 = 156
       // Fire is super effective vs Grass (2x)
-      // HP: 221, Damage: 296-350
-      const expected = new DamageResult(296, 350, 133.9, 158.3, 1, 1);
+      // HP: 221, Damage: 240-284
+      const expected = new DamageResult(240, 284, 108.5, 128.5, 1, 1);
       expect(result).toEqual(expected);
     });
 
@@ -2111,7 +2111,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(4, 0, 0, 252, 0, 252),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new Move(188), // Sludge Bomb - has additional effect, power 90
           new TeraType(0, false),
@@ -2125,7 +2125,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(182), // Pixilate
@@ -2165,7 +2165,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(4, 0, 0, 252, 0, 252),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(9), // Static
@@ -2179,8 +2179,8 @@ describe("CalculationResources#calculateDamage", () => {
 
       // Sand Force: Ground type in Sandstorm, power 100 * 1.3 = 130
       // Ground is super effective vs Electric (2x)
-      // HP: 136, Damage: 254-302
-      const expected = new DamageResult(254, 302, 186.7, 222, 1, 1);
+      // HP: 136, Damage: 230-272
+      const expected = new DamageResult(230, 272, 169.1, 200, 1, 1);
       expect(result).toEqual(expected);
     });
 
@@ -2205,7 +2205,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(4, 0, 0, 252, 0, 252),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(58), // Cursed Body
@@ -2219,8 +2219,8 @@ describe("CalculationResources#calculateDamage", () => {
 
       // Pure Power: Attack * 2.0
       // Psychic is super effective vs Poison (2x)
-      // HP: 136, Damage: 246-290
-      const expected = new DamageResult(246, 290, 180.8, 213.2, 1, 1);
+      // HP: 136, Damage: 222-264
+      const expected = new DamageResult(222, 264, 163.2, 194.1, 1, 1);
       expect(result).toEqual(expected);
     });
 
@@ -2231,7 +2231,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(4, 0, 0, 252, 0, 252),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new Move(53), // Flamethrower - Fire type, power 90
           new TeraType(0, false),
@@ -2245,7 +2245,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(85), // Heatproof (たいねつ)
@@ -2272,7 +2272,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(4, 0, 0, 252, 0, 252),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new Move(87), // Thunder - Electric type, power 110
           new TeraType(0, false),
@@ -2286,7 +2286,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(111), // Filter (フィルター) - Note: Mimikyu doesn't actually have Filter, but using for test
@@ -2327,7 +2327,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(116), // Solid Rock (ハードロック)
@@ -2342,8 +2342,8 @@ describe("CalculationResources#calculateDamage", () => {
       // Solid Rock: Super effective damage * 0.75
       // Dragon is super effective vs Rock/Bug (2x each = 4x)
       // Solid Rock reduces to 4x * 0.75 = 3x
-      // HP: 127, Damage: 51-60
-      const expected = new DamageResult(51, 60, 40.1, 47.2, 3, 3);
+      // HP: 127, Damage: 42-49
+      const expected = new DamageResult(42, 49, 33, 38.5, 3, 4);
       expect(result).toEqual(expected);
     });
 
@@ -2368,7 +2368,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(232), // Prism Armor (プリズムアーマー)
@@ -2383,8 +2383,8 @@ describe("CalculationResources#calculateDamage", () => {
       // Prism Armor: Super effective damage * 0.75
       // Ground is super effective vs Psychic (2x)
       // Prism Armor reduces to 2x * 0.75 = 1.5x
-      // HP: 204, Damage: 76-90
-      const expected = new DamageResult(76, 90, 37.2, 44.1, 3, 3);
+      // HP: 204, Damage: 61-73
+      const expected = new DamageResult(61, 73, 29.9, 35.7, 3, 4);
       expect(result).toEqual(expected);
     });
 
@@ -2395,7 +2395,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(4, 0, 0, 252, 0, 252),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new Move(87), // Thunder - Electric type, power 110
           new TeraType(0, false),
@@ -2409,7 +2409,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(136), // Multiscale (マルチスケイル)
@@ -2436,7 +2436,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(4, 0, 0, 252, 0, 252),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new Move(247), // Shadow Ball - Ghost type, power 80
           new TeraType(0, false),
@@ -2450,7 +2450,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 4, 252, 0, 0),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(165), // Telepathy
@@ -2465,8 +2465,8 @@ describe("CalculationResources#calculateDamage", () => {
       // Tinted Lens: Not very effective damage * 2.0
       // Ghost is not very effective vs Psychic/Fairy (0.5x)
       // Tinted Lens increases to 0.5x * 2.0 = 1.0x (neutral)
-      // HP: 175, Damage: 98-116
-      const expected = new DamageResult(98, 116, 56, 66.2, 2, 2);
+      // HP: 175, Damage: 104-126
+      const expected = new DamageResult(104, 126, 59.4, 72, 2, 2);
       expect(result).toEqual(expected);
     });
 
@@ -2491,7 +2491,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(182), // Pixilate
@@ -2506,8 +2506,8 @@ describe("CalculationResources#calculateDamage", () => {
       // Sniper: Critical hit damage * 1.5
       // Poison is super effective vs Fairy (2x)
       // Critical hit (1.5x) + Sniper (additional 1.5x) = 2.25x total
-      // HP: 202, Damage: 243-288
-      const expected = new DamageResult(243, 288, 120.2, 142.5, 1, 1);
+      // HP: 202, Damage: 201-243
+      const expected = new DamageResult(201, 243, 99.5, 120.2, 1, 2);
       expect(result).toEqual(expected);
     });
 
@@ -2532,7 +2532,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 4, 252, 0, 0),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(26), // Levitate (ふゆう)
@@ -2556,7 +2556,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 4, 252, 0, 0),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new Move(202), // Giga Drain - Grass type, power 75
           new TeraType(0, false),
@@ -2594,7 +2594,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(4, 0, 0, 252, 0, 252),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new Move(87), // Thunder - Electric type, power 110
           new TeraType(0, false),
@@ -2608,7 +2608,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(10), // Volt Absorb (ちくでん)
@@ -2632,7 +2632,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 4, 252, 0, 0),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new Move(57), // Surf - Water type, power 90
           new TeraType(0, false),
@@ -2646,7 +2646,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(11), // Water Absorb (ちょすい)
@@ -2670,7 +2670,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(4, 0, 0, 252, 0, 252),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new Move(53), // Flamethrower - Fire type, power 90
           new TeraType(0, false),
@@ -2684,7 +2684,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(18), // Flash Fire (もらいび)
@@ -2708,7 +2708,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(4, 0, 0, 252, 0, 252),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new Move(87), // Thunder - Electric type, power 110
           new TeraType(0, false),
@@ -2722,7 +2722,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(4, 0, 0, 252, 0, 252),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(31), // Lightning Rod (ひらいしん)
@@ -2746,7 +2746,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 4, 252, 0, 0),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new Move(56), // Hydro Pump - Water type, power 110
           new TeraType(0, false),
@@ -2760,7 +2760,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(114), // Storm Drain (よびみず)
@@ -2798,7 +2798,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(136), // Multiscale
@@ -2839,7 +2839,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 252, 0, 4, 0),
-          new Nature(1.0, 0.9, 1.1, 1.0, 1.0), // Bold
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
           new StatsRank(0, 0, 0, 0, 0),
           new TeraType(0, false),
           new Ability(61), // Regenerator
@@ -2854,8 +2854,8 @@ describe("CalculationResources#calculateDamage", () => {
       // Galvanize: Normal -> Electric, power 250 * 1.2 = 300
       // Electric is super effective vs Water/Poison (2x)
       // STAB applies (Golem becomes Electric-type)
-      // HP: 157, Damage: 234-276
-      const expected = new DamageResult(234, 276, 149, 175.7, 1, 1);
+      // HP: 157, Damage: 192-226
+      const expected = new DamageResult(192, 226, 122.2, 143.9, 1, 1);
       expect(result).toEqual(expected);
     });
 
@@ -2866,7 +2866,7 @@ describe("CalculationResources#calculateDamage", () => {
           50,
           new IV(31, 31, 31, 31, 31, 31),
           new EV(252, 0, 4, 252, 0, 0),
-          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Modest
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
           new StatsRank(0, 0, 0, 0, 0),
           new Move(63), // Hyper Beam - Normal type, power 150
           new TeraType(0, false),
@@ -2897,6 +2897,1039 @@ describe("CalculationResources#calculateDamage", () => {
       // STAB applies (Aurorus is Rock/Ice)
       // HP: 184, Damage: 580-688
       const expected = new DamageResult(580, 688, 315.2, 373.9, 1, 1);
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe("Item Effects Integration", () => {
+    test("Life Orb (いのちのたま) increases damage by 1.3x", () => {
+      // Without Life Orb
+      const withoutLifeOrb = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(25), // Pikachu
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(85), // Thunderbolt (Electric, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(9), // Static
+          new Item(0), // No item
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(130), // Gyarados
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 0, 252, 252),
+          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Calm
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(22), // Intimidate
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      // With Life Orb
+      const withLifeOrb = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(25), // Pikachu
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(85), // Thunderbolt
+          new TeraType(0, false),
+          new Ability(9), // Static
+          new Item(2), // Life Orb
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(130), // Gyarados
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 0, 252, 252),
+          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Calm
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(22), // Intimidate
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const resultWithout = withoutLifeOrb.calculateDamage();
+      const resultWith = withLifeOrb.calculateDamage();
+
+      // Without Life Orb: Pikachu Thunderbolt vs Gyarados
+      // Electric is super effective vs Water/Flying (4x)
+      const expectedWithout = new DamageResult(132, 156, 77.1, 91.2, 2, 2);
+      expect(resultWithout).toEqual(expectedWithout);
+
+      // With Life Orb: 1.3x damage boost (5324/4096)
+      // Electric is super effective vs Water/Flying (4x)
+      // Screenshot shows: 172 ~ 203
+      // Gyarados HP: 171, so ratios are 172/171=100.5%, 203/171=118.7%
+      const expectedWith = new DamageResult(172, 203, 100.5, 118.7, 1, 1);
+      expect(resultWith).toEqual(expectedWith);
+    });
+
+    test("Choice Band (こだわりハチマキ) boosts physical Attack by 1.5x", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(25), // Pikachu
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 252, 0, 0, 0, 252),
+          new Nature(1.0, 1.1, 0.9, 1.0, 1.0), // Jolly
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(9), // Thunder Punch (Electric, Physical, Power 75)
+          new TeraType(0, false),
+          new Ability(9), // Static
+          new Item(4), // Choice Band
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(130), // Gyarados
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(22), // Intimidate
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Choice Band: 1.5x Attack for physical moves
+      // Electric is super effective vs Water/Flying (4x)
+      const expected = new DamageResult(192, 228, 95, 112.8, 1, 2);
+      expect(result).toEqual(expected);
+    });
+
+    test("Expert Belt (たつじんのおび) boosts super-effective moves by 1.2x", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(25), // Pikachu
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(85), // Thunderbolt (Electric, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(9), // Static
+          new Item(8), // Expert Belt
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(130), // Gyarados (Water/Flying - weak to Electric)
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 0, 252, 252),
+          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Calm
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(22), // Intimidate
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Expert Belt: 1.2x damage boost for super-effective moves (4915/4096)
+      // Electric is super effective vs Water/Flying (4x)
+      // Base damage without item: 132-156
+      // With Expert Belt: 132 × 4915/4096 ≈ 158, 156 × 4915/4096 ≈ 187
+      // Gyarados HP: 171, so ratios are 158/171=92.3%, 187/171=109.3%
+      // Kakutei: ceil(171/187)=1 (max), ceil(171/158)=2 (min)
+      const expected = new DamageResult(158, 187, 92.3, 109.3, 1, 2);
+      expect(result).toEqual(expected);
+    });
+
+    test("Damage-Reducing Berries (半減きのみ) reduce super-effective damage by 0.5x", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(25), // Pikachu
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(85), // Thunderbolt (Electric, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(9), // Static
+          new Item(0), // No item
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(130), // Gyarados (Water/Flying - weak to Electric)
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 0, 252, 252),
+          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Calm
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(22), // Intimidate
+          new Item(20), // Damage-Reducing Berry (Wacan Berry for Electric)
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Damage-Reducing Berry: 0.5x damage for super-effective moves
+      // Electric is super effective vs Water/Flying (4x)
+      // Reduced by berry: 4x * 0.5 = 2x effective damage
+      const expected = new DamageResult(66, 78, 38.5, 45.6, 3, 3);
+      expect(result).toEqual(expected);
+    });
+
+    test("Type Boost Items (タイプ強化アイテム) boost type-specific moves by 1.2x", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(25), // Pikachu
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(85), // Thunderbolt (Electric, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(9), // Static
+          new Item(7), // Type Boost Item (e.g., Magnet for Electric)
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(1), // Bulbasaur
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(65), // Overgrow
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Type Boost Item: 1.2x power for Electric-type moves
+      // Electric is not very effective vs Grass (0.5x)
+      const expected = new DamageResult(36, 43, 23.6, 28.2, 4, 5);
+      expect(result).toEqual(expected);
+    });
+
+    test("Light Ball (でんきだま) doubles Pikachu's Attack and Sp.Atk", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(25), // Pikachu
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(85), // Thunderbolt (Electric, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(9), // Static
+          new Item(9), // Light Ball
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(1), // Bulbasaur
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(65), // Overgrow
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Light Ball: 2.0x Sp.Atk for Pikachu
+      // Electric is not very effective vs Grass (0.5x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(60, 71, 39.4, 46.7, 3, 3);
+      expect(result).toEqual(expected);
+    });
+
+    test("Light Ball (でんきだま) does not apply to non-Pikachu Pokemon", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(1), // Bulbasaur (not Pikachu)
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(85), // Thunderbolt (Electric, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(65), // Overgrow
+          new Item(9), // Light Ball (should not apply)
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(7), // Squirtle
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(67), // Torrent
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Light Ball should not apply to Bulbasaur
+      // Damage should be the same as without Light Ball
+      const expected = new DamageResult(94, 112, 62.2, 74.1, 2, 2);
+      expect(result).toEqual(expected);
+    });
+
+    test("Soul Dew (こころのしずく) boosts Latios/Latias Psychic and Dragon moves by 1.2x", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(381), // Latios
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0), // No nature modifier
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(94), // Psychic (Psychic, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(26), // Levitate
+          new Item(3), // Soul Dew
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(94), // Gengar
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 0, 0, 0),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(26), // Levitate
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Soul Dew: 1.2x power for Psychic/Dragon moves (Latios/Latias only)
+      // Psychic is super effective vs Poison (2x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(236, 278, 173.5, 204.4, 1, 1);
+      expect(result).toEqual(expected);
+    });
+
+    test("Soul Dew (こころのしずく) does not apply to non-Latias/Latios Pokemon", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(150), // Mewtwo (not Latias/Latios)
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(94), // Psychic (Psychic, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(94), // Pressure
+          new Item(3), // Soul Dew (should not apply)
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(94), // Gengar
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 0, 0, 0),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(26), // Levitate
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Soul Dew should not apply to Mewtwo
+      // Damage should be the same as without Soul Dew
+      const expected = new DamageResult(218, 260, 160.2, 191.1, 1, 1);
+      expect(result).toEqual(expected);
+    });
+
+    test("Choice Specs (こだわりメガネ) boosts special Attack by 1.5x", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(25), // Pikachu
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.1, 0.9), // Timid
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(85), // Thunderbolt (Electric, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(9), // Static
+          new Item(5), // Choice Specs
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(130), // Gyarados
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 0, 252, 252),
+          new Nature(1.0, 0.9, 1.0, 1.1, 1.0), // Calm
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(22), // Intimidate
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Choice Specs: 1.5x Sp.Atk for special moves
+      // Electric is super effective vs Water/Flying (4x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(192, 228, 112.2, 133.3, 1, 1);
+      expect(result).toEqual(expected);
+    });
+
+    test("Muscle Band (ちからのハチマキ) boosts physical moves by 1.1x", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(448), // Lucario
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 252, 0, 0, 0, 252),
+          new Nature(1.0, 1.1, 0.9, 1.0, 1.0), // Jolly
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(370), // Close Combat (Fighting, Physical, Power 120)
+          new TeraType(0, false),
+          new Ability(80), // Steadfast
+          new Item(10), // Muscle Band
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(143), // Snorlax
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(17), // Immunity
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Muscle Band: 1.1x power for physical moves
+      // Fighting is super effective vs Normal (2x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(188, 224, 70.4, 83.8, 2, 2);
+      expect(result).toEqual(expected);
+    });
+
+    test("Normal Gem (ノーマルジュエル) boosts Normal-type moves by 1.3x", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(143), // Snorlax
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 252, 0, 0, 4, 0),
+          new Nature(1.0, 1.1, 0.9, 1.0, 1.0), // Adamant
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(38), // Double-Edge (Normal, Physical, Power 120)
+          new TeraType(0, false),
+          new Ability(82), // Thick Fat
+          new Item(11), // Normal Gem
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(248), // Tyranitar
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(45), // Sand Stream
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Normal Gem: 1.3x power for Normal-type moves
+      // Normal is neutral vs Rock/Dark (1x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(40, 48, 19.3, 23.1, 5, 6);
+      expect(result).toEqual(expected);
+    });
+
+    test("Punch Gloves (パンチグローブ) boosts punching moves by 1.1x", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(448), // Lucario
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 252, 0, 0, 0, 252),
+          new Nature(1.0, 1.1, 0.9, 1.0, 1.0), // Jolly
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(409), // Drain Punch (Fighting, Physical, Power 75)
+          new TeraType(0, false),
+          new Ability(80), // Steadfast
+          new Item(12), // Punch Gloves
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(143), // Snorlax
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(17), // Immunity
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Punch Gloves: 1.1x power for punching moves
+      // Fighting is super effective vs Normal (2x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(116, 140, 43.4, 52.4, 2, 3);
+      expect(result).toEqual(expected);
+    });
+
+    test("Wise Glasses (ものしりメガネ) boosts special moves by 1.1x", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(94), // Gengar
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.1, 0.9), // Timid
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(247), // Shadow Ball (Ghost, Special, Power 80)
+          new TeraType(0, false),
+          new Ability(26), // Levitate
+          new Item(15), // Wise Glasses
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(282), // Gardevoir
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(28), // Synchronize
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Wise Glasses: 1.1x power for special moves
+      // Ghost is not very effective vs Psychic/Fairy (0.5x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(134, 158, 76.5, 90.2, 2, 2);
+      expect(result).toEqual(expected);
+    });
+
+    test("Fairy Feather (ようせいのハネ) boosts Fairy-type moves by 1.2x", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(700), // Sylveon
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 0, 252, 4, 0),
+          new Nature(1.0, 1.0, 1.0, 1.1, 0.9), // Modest
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(585), // Moonblast (Fairy, Special, Power 95)
+          new TeraType(0, false),
+          new Ability(182), // Cute Charm
+          new Item(16), // Fairy Feather
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(445), // Garchomp
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 252, 0, 0, 0, 252),
+          new Nature(1.0, 1.1, 0.9, 1.0, 1.0), // Jolly
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(8), // Sand Veil
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Fairy Feather: 1.2x power for Fairy-type moves
+      // Fairy is super effective vs Dragon/Ground (2x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(200, 236, 108.6, 128.2, 1, 1);
+      expect(result).toEqual(expected);
+    });
+
+    test("Thick Club (ふといホネ) doubles Cubone/Marowak's Attack", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(105), // Marowak
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 252, 0, 0, 4, 0),
+          new Nature(1.0, 1.1, 0.9, 1.0, 1.0), // Adamant
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(89), // Earthquake (Ground, Physical, Power 100)
+          new TeraType(0, false),
+          new Ability(69), // Rock Head
+          new Item(14), // Thick Club
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(25), // Pikachu
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(9), // Static
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Thick Club: 2.0x Attack for Cubone/Marowak
+      // Ground is super effective vs Electric (2x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(494, 584, 445, 526.1, 1, 1);
+      expect(result).toEqual(expected);
+    });
+
+    test("Thick Club (ふといホネ) does not apply to non-Cubone/Marowak Pokemon", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(448), // Lucario (not Cubone/Marowak)
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 252, 0, 0, 4, 0),
+          new Nature(1.0, 1.1, 0.9, 1.0, 1.0), // Adamant
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(370), // Close Combat (Fighting, Physical, Power 120)
+          new TeraType(0, false),
+          new Ability(80), // Steadfast
+          new Item(14), // Thick Club (should not apply)
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(25), // Pikachu
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(9), // Static
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Thick Club should not apply to Lucario
+      const expected = new DamageResult(183, 216, 164.8, 194.5, 1, 1);
+      expect(result).toEqual(expected);
+    });
+
+    test("Deep Sea Tooth (しんかいのキバ) doubles Clamperl's Sp.Atk", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(366), // Clamperl
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 0, 252, 4, 0),
+          new Nature(1.0, 1.0, 1.0, 1.1, 0.9), // Modest
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(57), // Surf (Water, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(75), // Shell Armor
+          new Item(6), // Deep Sea Tooth
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(324), // Torkoal
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 0, 0, 252, 4),
+          new Nature(1.0, 0.9, 1.0, 1.0, 1.1), // Calm
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(3), // White Smoke
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Deep Sea Tooth: 2.0x Sp.Atk for Clamperl
+      // Water is super effective vs Fire (2x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(210, 248, 118.6, 140.1, 1, 1);
+      expect(result).toEqual(expected);
+    });
+
+    test("Deep Sea Tooth (しんかいのキバ) does not apply to non-Clamperl Pokemon", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(7), // Squirtle (not Clamperl)
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 0, 252, 4, 0),
+          new Nature(1.0, 1.0, 1.0, 1.1, 0.9), // Modest
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(57), // Surf (Water, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(67), // Torrent
+          new Item(6), // Deep Sea Tooth (should not apply)
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(324), // Torkoal
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 0, 0, 252, 4),
+          new Nature(1.0, 0.9, 1.0, 1.0, 1.1), // Calm
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(3), // White Smoke
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Deep Sea Tooth should not apply to Squirtle
+      const expected = new DamageResult(86, 104, 48.5, 58.7, 2, 3);
+      expect(result).toEqual(expected);
+    });
+
+    test("Assault Vest (とつげきチョッキ) boosts Special Defense by 1.5x", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(94), // Gengar
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.1, 0.9), // Timid
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(247), // Shadow Ball (Ghost, Special, Power 80)
+          new TeraType(0, false),
+          new Ability(26), // Levitate
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(248), // Tyranitar
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 4, 0, 252, 0),
+          new Nature(1.0, 0.9, 1.0, 1.0, 1.1), // Careful
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(45), // Sand Stream
+          new Item(23), // Assault Vest
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Assault Vest: 1.5x Sp.Def
+      // Ghost is neutral vs Rock/Dark (1x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(18, 22, 8.6, 10.6, 10, 12);
+      expect(result).toEqual(expected);
+    });
+
+    test("Deep Sea Scale (しんかいのウロコ) doubles Clamperl's Sp.Def", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(25), // Pikachu
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.1, 0.9), // Timid
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(85), // Thunderbolt (Electric, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(9), // Static
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(366), // Clamperl
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 0, 0, 252, 4),
+          new Nature(1.0, 0.9, 1.0, 1.0, 1.1), // Calm
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(75), // Shell Armor
+          new Item(22), // Deep Sea Scale
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Deep Sea Scale: 2.0x Sp.Def for Clamperl
+      // Electric is super effective vs Water (2x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(50, 60, 35.2, 42.2, 3, 3);
+      expect(result).toEqual(expected);
+    });
+
+    test("Deep Sea Scale (しんかいのウロコ) does not apply to non-Clamperl Pokemon", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(25), // Pikachu
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 0, 0, 252, 0, 252),
+          new Nature(1.0, 1.0, 1.0, 1.1, 0.9), // Timid
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(85), // Thunderbolt (Electric, Special, Power 90)
+          new TeraType(0, false),
+          new Ability(9), // Static
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(7), // Squirtle (not Clamperl)
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 0, 0, 252, 4),
+          new Nature(1.0, 0.9, 1.0, 1.0, 1.1), // Calm
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(67), // Torrent
+          new Item(22), // Deep Sea Scale (should not apply)
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Deep Sea Scale should not apply to Squirtle
+      const expected = new DamageResult(90, 108, 59.6, 71.5, 2, 2);
+      expect(result).toEqual(expected);
+    });
+
+    test("Metal Powder (メタルパウダー) doubles Ditto's Defense", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(448), // Lucario
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 252, 0, 0, 0, 252),
+          new Nature(1.0, 1.1, 0.9, 1.0, 1.0), // Jolly
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(370), // Close Combat (Fighting, Physical, Power 120)
+          new TeraType(0, false),
+          new Ability(80), // Steadfast
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(132), // Ditto
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(7), // Limber
+          new Item(24), // Metal Powder
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Metal Powder: 2.0x Defense for Ditto
+      // Fighting is super effective vs Normal (2x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(102, 120, 65.8, 77.4, 2, 2);
+      expect(result).toEqual(expected);
+    });
+
+    test("Metal Powder (メタルパウダー) does not apply to non-Ditto Pokemon", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(448), // Lucario
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 252, 0, 0, 0, 252),
+          new Nature(1.0, 1.1, 0.9, 1.0, 1.0), // Jolly
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(370), // Close Combat (Fighting, Physical, Power 120)
+          new TeraType(0, false),
+          new Ability(80), // Steadfast
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(1), // Bulbasaur (not Ditto)
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(65), // Overgrow
+          new Item(24), // Metal Powder (should not apply)
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Metal Powder should not apply to Bulbasaur
+      const expected = new DamageResult(50, 59, 32.8, 38.8, 3, 4);
+      expect(result).toEqual(expected);
+    });
+
+    test("Eviolite (しんかのきせき) boosts Defense and Sp.Def by 1.5x for unevolved Pokemon", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(448), // Lucario
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 252, 0, 0, 0, 252),
+          new Nature(1.0, 1.1, 0.9, 1.0, 1.0), // Jolly
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(370), // Close Combat (Fighting, Physical, Power 120)
+          new TeraType(0, false),
+          new Ability(80), // Steadfast
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(440), // Happiny
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(252, 0, 252, 0, 4, 0),
+          new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(32), // Serene Grace
+          new Item(21), // Eviolite
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+
+      // Eviolite: 1.5x Defense and Sp.Def for unevolved Pokemon (Happiny can evolve to Chansey)
+      // Bold nature: Defense ↑ (1.1x), Attack ↓ (0.9x)
+      // Fighting is super effective vs Normal (2x)
+      // With STAB: 1.5x
+      const expected = new DamageResult(236, 278, 114, 134.2, 1, 1);
       expect(result).toEqual(expected);
     });
   });

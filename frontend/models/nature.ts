@@ -7,11 +7,11 @@ export class Nature {
   speed: number;
 
   constructor(
-    attack: number,
-    defense: number,
-    spAtk: number,
-    spDef: number,
-    speed: number
+    attack: number, // こうげき補正
+    defense: number, // ぼうぎょ補正
+    spAtk: number, // とくこう補正
+    spDef: number, // とくぼう補正
+    speed: number // すばやさ補正
   ) {
     this.attack = attack;
     this.defense = defense;

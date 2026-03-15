@@ -30,7 +30,8 @@
       "Bash(npm run test:coverage:*)",
       "Bash(for test in \"Attack rank -1\" \"Attack rank -6\" \"Defense rank \\\\+6\" \"Defense rank \\\\+1\" \"Defense rank -1\" \"Defense rank -6\" \"Critical hit ignores attacker\" \"Critical hit ignores defender\")",
       "Bash(do echo \"=== $test ===\")",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(gh run list:*)"
     ]
   }
 }

@@ -32,8 +32,8 @@ jobs:
       - name: Claude Code Action
         uses: anthropics/claude-code-action@v1
         with:
-          # Use Anthropic API (requires ANTHROPIC_API_KEY secret)
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Use Anthropic API (requires CLAUDE_CODE_OAUTH_TOKEN secret)
+          anthropic_api_key: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
 
           # Optional: Customize the prompt for code review
           prompt: |

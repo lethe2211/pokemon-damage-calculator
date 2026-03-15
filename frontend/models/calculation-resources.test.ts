@@ -3933,4 +3933,396 @@ describe("CalculationResources#calculateDamage", () => {
       expect(result).toEqual(expected);
     });
   });
+
+  describe("Stats Rank Modifiers", () => {
+    describe("Attacker's positive rank", () => {
+      test("Attack rank +6 (Physical move)", () => {
+        const calculationResources = new CalculationResources(
+          new AttackingPokemonStatus(
+            new Pokemon(56), // Mankey (Fighting type, Physical attacker)
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(4, 252, 0, 0, 0, 252),
+            new Nature(1.1, 1.0, 0.9, 1.0, 1.0), // Adamant (Attack↑)
+            new StatsRank(6, 0, 0, 0, 0), // Attack +6
+            new Move(98), // Quick Attack (Normal, Physical, Power 40)
+            new TeraType(0, false),
+            new Ability(1), // No effect ability
+            new Item(0), // No item
+            false,
+            new StatusAilment(0)
+          ),
+          new DefendingPokemonStatus(
+            new Pokemon(129), // Magikarp (Water type, low defense)
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(252, 0, 252, 0, 4, 0),
+            new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold (Defense↑)
+            new StatsRank(0, 0, 0, 0, 0),
+            new TeraType(0, false),
+            new Ability(1), // No effect ability
+            new Item(0), // No item
+            new StatusAilment(0)
+          ),
+          new EnvironmentStatus(new Weather(0), new Terrain(0))
+        );
+
+        const result = calculationResources.calculateDamage();
+
+        // Attack rank +6: 8/2 = 4x multiplier
+        const expected = new DamageResult(75, 89, 59, 70, 2, 2);
+        expect(result).toEqual(expected);
+      });
+
+      test("Attack rank +1 (Physical move)", () => {
+        const calculationResources = new CalculationResources(
+          new AttackingPokemonStatus(
+            new Pokemon(56), // Mankey
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(4, 252, 0, 0, 0, 252),
+            new Nature(1.1, 1.0, 0.9, 1.0, 1.0), // Adamant
+            new StatsRank(1, 0, 0, 0, 0), // Attack +1
+            new Move(98), // Quick Attack
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            false,
+            new StatusAilment(0)
+          ),
+          new DefendingPokemonStatus(
+            new Pokemon(129), // Magikarp
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(252, 0, 252, 0, 4, 0),
+            new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+            new StatsRank(0, 0, 0, 0, 0),
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            new StatusAilment(0)
+          ),
+          new EnvironmentStatus(new Weather(0), new Terrain(0))
+        );
+
+        const result = calculationResources.calculateDamage();
+
+        // Attack rank +1: 3/2 = 1.5x multiplier
+        const expected = new DamageResult(28, 34, 22, 26.7, 4, 5);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    describe("Attacker's negative rank", () => {
+      test("Attack rank -1 (Physical move)", () => {
+        const calculationResources = new CalculationResources(
+          new AttackingPokemonStatus(
+            new Pokemon(56), // Mankey
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(4, 252, 0, 0, 0, 252),
+            new Nature(1.1, 1.0, 0.9, 1.0, 1.0), // Adamant
+            new StatsRank(-1, 0, 0, 0, 0), // Attack -1
+            new Move(98), // Quick Attack
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            false,
+            new StatusAilment(0)
+          ),
+          new DefendingPokemonStatus(
+            new Pokemon(129), // Magikarp
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(252, 0, 252, 0, 4, 0),
+            new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+            new StatsRank(0, 0, 0, 0, 0),
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            new StatusAilment(0)
+          ),
+          new EnvironmentStatus(new Weather(0), new Terrain(0))
+        );
+
+        const result = calculationResources.calculateDamage();
+
+        // Attack rank -1: 2/3 ≈ 0.67x multiplier
+        const expected = new DamageResult(13, 16, 10.2, 12.5, 8, 10);
+        expect(result).toEqual(expected);
+      });
+
+      test("Attack rank -6 (Physical move)", () => {
+        const calculationResources = new CalculationResources(
+          new AttackingPokemonStatus(
+            new Pokemon(56), // Mankey
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(4, 252, 0, 0, 0, 252),
+            new Nature(1.1, 1.0, 0.9, 1.0, 1.0), // Adamant
+            new StatsRank(-6, 0, 0, 0, 0), // Attack -6
+            new Move(98), // Quick Attack
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            false,
+            new StatusAilment(0)
+          ),
+          new DefendingPokemonStatus(
+            new Pokemon(129), // Magikarp
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(252, 0, 252, 0, 4, 0),
+            new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+            new StatsRank(0, 0, 0, 0, 0),
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            new StatusAilment(0)
+          ),
+          new EnvironmentStatus(new Weather(0), new Terrain(0))
+        );
+
+        const result = calculationResources.calculateDamage();
+
+        // Attack rank -6: 2/8 = 0.25x multiplier
+        const expected = new DamageResult(5, 7, 3.9, 5.5, 19, 26);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    describe("Defender's positive rank", () => {
+      test("Defense rank +6 (Physical move)", () => {
+        const calculationResources = new CalculationResources(
+          new AttackingPokemonStatus(
+            new Pokemon(56), // Mankey
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(4, 252, 0, 0, 0, 252),
+            new Nature(1.1, 1.0, 0.9, 1.0, 1.0), // Adamant
+            new StatsRank(0, 0, 0, 0, 0),
+            new Move(98), // Quick Attack
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            false,
+            new StatusAilment(0)
+          ),
+          new DefendingPokemonStatus(
+            new Pokemon(129), // Magikarp
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(252, 0, 252, 0, 4, 0),
+            new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+            new StatsRank(0, 6, 0, 0, 0), // Defense +6
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            new StatusAilment(0)
+          ),
+          new EnvironmentStatus(new Weather(0), new Terrain(0))
+        );
+
+        const result = calculationResources.calculateDamage();
+
+        // Defense rank +6: 8/2 = 4x defense multiplier (reduces damage to 1/4)
+        const expected = new DamageResult(5, 7, 3.9, 5.5, 19, 26);
+        expect(result).toEqual(expected);
+      });
+
+      test("Defense rank +1 (Physical move)", () => {
+        const calculationResources = new CalculationResources(
+          new AttackingPokemonStatus(
+            new Pokemon(56), // Mankey
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(4, 252, 0, 0, 0, 252),
+            new Nature(1.1, 1.0, 0.9, 1.0, 1.0), // Adamant
+            new StatsRank(0, 0, 0, 0, 0),
+            new Move(98), // Quick Attack
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            false,
+            new StatusAilment(0)
+          ),
+          new DefendingPokemonStatus(
+            new Pokemon(129), // Magikarp
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(252, 0, 252, 0, 4, 0),
+            new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+            new StatsRank(0, 1, 0, 0, 0), // Defense +1
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            new StatusAilment(0)
+          ),
+          new EnvironmentStatus(new Weather(0), new Terrain(0))
+        );
+
+        const result = calculationResources.calculateDamage();
+
+        // Defense rank +1: 3/2 = 1.5x defense multiplier (reduces damage)
+        const expected = new DamageResult(13, 16, 10.2, 12.5, 8, 10);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    describe("Defender's negative rank", () => {
+      test("Defense rank -1 (Physical move)", () => {
+        const calculationResources = new CalculationResources(
+          new AttackingPokemonStatus(
+            new Pokemon(56), // Mankey
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(4, 252, 0, 0, 0, 252),
+            new Nature(1.1, 1.0, 0.9, 1.0, 1.0), // Adamant
+            new StatsRank(0, 0, 0, 0, 0),
+            new Move(98), // Quick Attack
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            false,
+            new StatusAilment(0)
+          ),
+          new DefendingPokemonStatus(
+            new Pokemon(129), // Magikarp
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(252, 0, 252, 0, 4, 0),
+            new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+            new StatsRank(0, -1, 0, 0, 0), // Defense -1
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            new StatusAilment(0)
+          ),
+          new EnvironmentStatus(new Weather(0), new Terrain(0))
+        );
+
+        const result = calculationResources.calculateDamage();
+
+        // Defense rank -1: 2/3 ≈ 0.67x defense multiplier (increases damage)
+        const expected = new DamageResult(28, 34, 22, 26.7, 4, 5);
+        expect(result).toEqual(expected);
+      });
+
+      test("Defense rank -6 (Physical move)", () => {
+        const calculationResources = new CalculationResources(
+          new AttackingPokemonStatus(
+            new Pokemon(56), // Mankey
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(4, 252, 0, 0, 0, 252),
+            new Nature(1.1, 1.0, 0.9, 1.0, 1.0), // Adamant
+            new StatsRank(0, 0, 0, 0, 0),
+            new Move(98), // Quick Attack
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            false,
+            new StatusAilment(0)
+          ),
+          new DefendingPokemonStatus(
+            new Pokemon(129), // Magikarp
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(252, 0, 252, 0, 4, 0),
+            new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+            new StatsRank(0, -6, 0, 0, 0), // Defense -6
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            new StatusAilment(0)
+          ),
+          new EnvironmentStatus(new Weather(0), new Terrain(0))
+        );
+
+        const result = calculationResources.calculateDamage();
+
+        // Defense rank -6: 2/8 = 0.25x defense multiplier (increases damage to 4x)
+        const expected = new DamageResult(76, 90, 59.8, 70.8, 2, 2);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    describe("Critical hit with rank modifiers", () => {
+      test("Critical hit ignores attacker's negative rank (Attack -6)", () => {
+        const calculationResources = new CalculationResources(
+          new AttackingPokemonStatus(
+            new Pokemon(56), // Mankey
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(4, 252, 0, 0, 0, 252),
+            new Nature(1.1, 1.0, 0.9, 1.0, 1.0), // Adamant
+            new StatsRank(-6, 0, 0, 0, 0), // Attack -6 (should be ignored on crit)
+            new Move(98), // Quick Attack
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            true, // Critical hit
+            new StatusAilment(0)
+          ),
+          new DefendingPokemonStatus(
+            new Pokemon(129), // Magikarp
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(252, 0, 252, 0, 4, 0),
+            new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+            new StatsRank(0, 0, 0, 0, 0),
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            new StatusAilment(0)
+          ),
+          new EnvironmentStatus(new Weather(0), new Terrain(0))
+        );
+
+        const result = calculationResources.calculateDamage();
+
+        // Critical hit: negative attack rank ignored (treated as 0)
+        const expected = new DamageResult(28, 34, 22, 26.7, 4, 5);
+        expect(result).toEqual(expected);
+      });
+
+      test("Critical hit ignores defender's positive rank (Defense +6)", () => {
+        const calculationResources = new CalculationResources(
+          new AttackingPokemonStatus(
+            new Pokemon(56), // Mankey
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(4, 252, 0, 0, 0, 252),
+            new Nature(1.1, 1.0, 0.9, 1.0, 1.0), // Adamant
+            new StatsRank(0, 0, 0, 0, 0),
+            new Move(98), // Quick Attack
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            true, // Critical hit
+            new StatusAilment(0)
+          ),
+          new DefendingPokemonStatus(
+            new Pokemon(129), // Magikarp
+            50,
+            new IV(31, 31, 31, 31, 31, 31),
+            new EV(252, 0, 252, 0, 4, 0),
+            new Nature(0.9, 1.1, 1.0, 1.0, 1.0), // Bold
+            new StatsRank(0, 6, 0, 0, 0), // Defense +6 (should be ignored on crit)
+            new TeraType(0, false),
+            new Ability(1),
+            new Item(0),
+            new StatusAilment(0)
+          ),
+          new EnvironmentStatus(new Weather(0), new Terrain(0))
+        );
+
+        const result = calculationResources.calculateDamage();
+
+        // Critical hit: positive defense rank ignored (treated as 0)
+        const expected = new DamageResult(28, 34, 22, 26.7, 4, 5);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
 });

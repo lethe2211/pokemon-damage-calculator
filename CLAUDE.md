@@ -21,8 +21,12 @@ Before marking any implementation as complete, you MUST verify the following:
 
 1. **Lint Check**: Run `cd frontend && npm run lint` and ensure it passes with no errors or warnings
 2. **Unit Tests**: Run `cd frontend && npm run test:ci` and ensure all tests pass
+3. **Test Coverage**: Run `cd frontend && npm run test:coverage` and ensure:
+   - Global coverage is at least 59% (lines), 60% (statements), 48% (functions)
+   - calculation-resources.ts coverage is at least 81% (lines), 80% (statements)
+   - No violations of coverage thresholds configured in jest.config.js
 
-Never report completion without confirming both checks pass successfully.
+Never report completion without confirming all three checks pass successfully.
 
 ## Testing Guidelines
 
@@ -56,6 +60,137 @@ expect(result).toEqual(expected);
 **Benefits**: Regression detection, clear expectations, easier debugging.
 
 See `~/.claude/projects/[project]/memory/TESTING_GUIDELINES.md` for detailed examples.
+
+## Coverage Measurement
+
+**CRITICAL**: All implementations MUST maintain or improve test coverage. Coverage thresholds are enforced in CI.
+
+### Coverage Requirements
+
+1. **Global Coverage**: Minimum 59% for lines, 60% for statements, 48% for functions
+2. **Core Calculation Engine** (`calculation-resources.ts`): Minimum 81% for lines, 80% for statements, 90% for functions
+3. **Branch Coverage**: Minimum 50% globally (71% for calculation-resources.ts)
+
+### Running Coverage Locally
+
+```bash
+# Generate coverage report
+cd frontend && npm run test:coverage
+
+# Generate coverage and open HTML report
+cd frontend && npm run test:coverage:html
+
+# Watch mode with coverage (updates on file save)
+cd frontend && npm run test:coverage:watch
+```
+
+### Understanding Coverage Reports
+
+**Console Output:**
+```
+------------------------|---------|----------|---------|---------|-------------------
+File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+------------------------|---------|----------|---------|---------|-------------------
+All files               |   65.23 |    52.45 |   68.12 |   65.23 |
+ models/                |   85.34 |    78.23 |   90.12 |   85.34 |
+  calculation-resources.ts | 92.15 |  88.45 |   95.23 |   92.15 | 125-130,245
+```
+
+- **% Stmts**: Percentage of statements executed
+- **% Branch**: Percentage of conditional branches taken (if/else, switch, ternary)
+- **% Funcs**: Percentage of functions called
+- **% Lines**: Percentage of lines executed
+- **Uncovered Line #s**: Specific lines not covered by tests
+
+**HTML Report** (generated in `frontend/coverage/lcov-report/index.html`):
+- Interactive browsable report
+- Click on files to see line-by-line coverage (green = covered, red = uncovered)
+- Hover over branch indicators to see which paths are untested
+
+### Coverage Guidelines for AI Agents
+
+When implementing new features or fixing bugs:
+
+1. **Check Current Coverage**:
+   ```bash
+   cd frontend && npm run test:coverage
+   ```
+
+2. **Identify Coverage Gaps**:
+   - Look for red lines in HTML report (`coverage/lcov-report/index.html`)
+   - Focus on uncovered critical paths (error handling, edge cases)
+
+3. **Write Tests to Close Gaps**:
+   - Follow Testing Guidelines (concrete assertions, no weak tests)
+   - Test meaningful behavior, not implementation details
+   - Avoid testing trivial getters/setters unless they have logic
+
+4. **Verify Coverage Improvement**:
+   ```bash
+   # Run coverage again
+   cd frontend && npm run test:coverage
+
+   # Check that coverage increased or maintained
+   # Ensure thresholds are met
+   ```
+
+5. **CI Coverage Check**:
+   - GitHub Actions runs coverage automatically on PRs
+   - Coverage report is uploaded as artifact
+   - Coverage summary appears in workflow summary
+
+### What NOT to Test (Avoid Meaningless Tests)
+
+❌ **Simple Getters/Setters**:
+```typescript
+// DON'T write tests for this
+class Pokemon {
+  get id() { return this._id; }
+  set id(value) { this._id = value; }
+}
+```
+
+❌ **Trivial Constructors**:
+```typescript
+// DON'T write tests just for coverage
+new BaseStats(100, 100, 100, 100, 100, 100);
+// Unless constructor has validation logic
+```
+
+❌ **Type Definitions**:
+```typescript
+// DON'T test type definitions
+type MoveCategory = 'physical' | 'special' | 'status';
+```
+
+✅ **What TO Test**:
+- Business logic (damage calculation, stat calculation)
+- Conditional logic (if/else branches, switch cases)
+- Error handling and edge cases
+- Integration of multiple components
+- Public API methods with meaningful behavior
+
+### If Coverage Requirements Cannot Be Met
+
+If you cannot achieve coverage thresholds without writing meaningless tests:
+
+1. **Document why** - Explain which files lack coverage and why testing them is not practical
+2. **Ask user for confirmation** - Get approval to proceed with lower coverage or adjust thresholds
+3. **Propose threshold adjustment** - Suggest realistic thresholds based on current state
+4. **Create follow-up task** - Plan to improve coverage incrementally over time
+
+**Example:**
+> "Current coverage is 55% (target: 60%). The gap is primarily in React components which currently have no tests. Writing meaningful component tests would require:
+> 1. Setting up React Testing Library integration tests
+> 2. Mocking Next.js router and app directory features
+> 3. Estimated 8-10 additional test files
+>
+> Options:
+> A) Proceed with current 55% coverage and create follow-up issue for component testing
+> B) Lower global threshold to 50% and focus on models/ directory (currently 85%)
+> C) Implement component tests now (estimated 4-6 hours)
+>
+> Which approach would you prefer?"
 
 ## Code Comment Guidelines
 

@@ -23,6 +23,55 @@ const customJestConfig = {
     '@/(.*)$': '<rootDir>/src/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
+
+  // Coverage Configuration
+  collectCoverage: false, // Don't collect by default (use --coverage flag)
+
+  collectCoverageFrom: [
+    // Include source files
+    'models/**/*.{ts,tsx}',
+    'lib/**/*.{ts,tsx}',
+    'components/**/*.{ts,tsx}',
+    'app/**/*.{ts,tsx}',
+
+    // Exclude patterns
+    '!**/*.test.{ts,tsx}',
+    '!**/*.d.ts',
+    '!**/node_modules/**',
+    '!**/.next/**',
+  ],
+
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/.next/',
+    '/coverage/',
+    '/public/',
+    '/data/', // JSON data files
+    '/styles/', // CSS files
+  ],
+
+  coverageThreshold: {
+    global: {
+      lines: 60,
+      statements: 60,
+      branches: 50,
+      functions: 48,
+    },
+    './models/calculation-resources.ts': {
+      lines: 81,
+      statements: 80,
+      branches: 71,
+      functions: 90,
+    },
+  },
+
+  coverageReporters: [
+    'text',        // Console output
+    'text-summary', // Summary in console
+    'html',        // HTML report in coverage/ directory
+    'lcov',        // For CI/CD integration
+    'json-summary', // For programmatic access
+  ],
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

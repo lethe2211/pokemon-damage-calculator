@@ -1,10 +1,10 @@
 // ステータスランク
 export class StatsRank {
-  attack: number;
-  defense: number;
-  spAtk: number;
-  spDef: number;
-  speed: number;
+  attack: number; // こうげきランク
+  defense: number; // ぼうぎょランク
+  spAtk: number; // とくこうランク
+  spDef: number; // とくぼうランク
+  speed: number; // すばやさランク
 
   constructor(
     attack: number,

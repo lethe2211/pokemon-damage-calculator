@@ -25,7 +25,8 @@
       "Bash(wc:*)",
       "Bash(npx jest:*)",
       "mcp__voicevox__speak",
-      "Bash(tee:*)"
+      "Bash(tee:*)",
+      "WebFetch(domain:yakkun.com)"
     ]
   }
 }

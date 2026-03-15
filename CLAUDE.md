@@ -111,6 +111,71 @@ This reference is authoritative for:
 - Weather/Terrain effects
 - Item and Ability effect timing
 
+## Pokemon Nature (性格補正)
+
+**Reference**: https://yakkun.com/data/seikaku.htm
+
+**CRITICAL**: Nature modifiers MUST be applied correctly to stat calculations.
+
+### Nature Modifier Rules
+
+1. **Modifier Values**:
+   - **Increased stat (上昇)**: 1.1× (exactly 11/10)
+   - **Decreased stat (下降)**: 0.9× (exactly 9/10)
+   - **Neutral stat**: 1.0×
+
+2. **Affected Stats**:
+   - Attack (こうげき)
+   - Defense (ぼうぎょ)
+   - Special Attack (とくこう)
+   - Special Defense (とくぼう)
+   - Speed (すばやさ)
+   - **HP is NEVER affected by nature**
+
+3. **Nature Types**:
+   - **20 natures with modifiers**: One stat ×1.1, one different stat ×0.9
+   - **5 neutral natures**: No stat changes (がんばりや/Hardy, すなお/Docile, きまぐれ/Quirky, てれや/Bashful, まじめ/Serious)
+
+### Implementation in Code
+
+The `Nature` class has **5 parameters** (NO HP parameter):
+
+```typescript
+class Nature {
+  attack: number;    // こうげき補正 (1.0, 1.1, or 0.9)
+  defense: number;   // ぼうぎょ補正 (1.0, 1.1, or 0.9)
+  spAtk: number;     // とくこう補正 (1.0, 1.1, or 0.9)
+  spDef: number;     // とくぼう補正 (1.0, 1.1, or 0.9)
+  speed: number;     // すばやさ補正 (1.0, 1.1, or 0.9)
+}
+```
+
+### Common Nature Examples
+
+- **Adamant (いじっぱり)**: Attack↑ (1.1), Sp.Atk↓ (0.9) → `new Nature(1.1, 1.0, 0.9, 1.0, 1.0)`
+- **Modest (ひかえめ)**: Sp.Atk↑ (1.1), Attack↓ (0.9) → `new Nature(0.9, 1.0, 1.1, 1.0, 1.0)`
+- **Jolly (ようき)**: Speed↑ (1.1), Sp.Atk↓ (0.9) → `new Nature(1.0, 1.0, 0.9, 1.0, 1.1)`
+- **Timid (おくびょう)**: Speed↑ (1.1), Attack↓ (0.9) → `new Nature(0.9, 1.0, 1.0, 1.0, 1.1)`
+- **Bold (ずぶとい)**: Defense↑ (1.1), Attack↓ (0.9) → `new Nature(0.9, 1.1, 1.0, 1.0, 1.0)`
+- **Calm (おだやか)**: Sp.Def↑ (1.1), Attack↓ (0.9) → `new Nature(0.9, 1.0, 1.0, 1.1, 1.0)`
+- **Hardy/Docile/Quirky/Bashful/Serious**: No modifiers → `new Nature(1.0, 1.0, 1.0, 1.0, 1.0)`
+
+### ❌ Common Mistakes to Avoid
+
+**WRONG Parameter Order**:
+```typescript
+// Bold nature (Defense↑ Attack↓) - INCORRECT
+new Nature(1.0, 0.9, 1.1, 1.0, 1.0)  // Wrong! This is Attack=1.0, Defense=0.9
+```
+
+**CORRECT Parameter Order**:
+```typescript
+// Bold nature (Defense↑ Attack↓) - CORRECT
+new Nature(0.9, 1.1, 1.0, 1.0, 1.0)  // Correct: Attack=0.9, Defense=1.1
+```
+
+**Parameter order is: (attack, defense, spAtk, spDef, speed)** - NOT alphabetical!
+
 ## Datasource
 
 Basically it is using these two as the true data sources of Pokemons.

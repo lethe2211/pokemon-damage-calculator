@@ -12,7 +12,9 @@
     "test:coverage": "jest --coverage",
     "test:coverage:ci": "jest --coverage --ci --maxWorkers=2",
     "test:coverage:watch": "jest --coverage --watch",
-    "test:coverage:html": "jest --coverage && open coverage/lcov-report/index.html"
+    "test:coverage:html": "jest --coverage && open coverage/lcov-report/index.html",
+    "verify:fetch": "python3 ../script/verify_external_calculator/main.py --input",
+    "verify:random": "python3 ../script/verify_external_calculator/main.py --random"
   },
   "dependencies": {
     "next": "16.1.6",

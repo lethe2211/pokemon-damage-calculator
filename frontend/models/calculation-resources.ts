@@ -898,7 +898,25 @@ export class CalculationResources {
     maxFinalDamage = roundDown(maxFinalDamage * typeEffectiveness);
     console.log(`×タイプ相性→切り捨て: ${minFinalDamage} ${maxFinalDamage}`);
 
-    // Item-based damage modifiers (Damage-Reducing Berries)
+    // ×やけど 2048÷4096→五捨五超入
+    // Note: Guts (こんじょう, ID: 62) negates the burn attack reduction
+    if (
+      this.attackingPokemonStatus.move.category.equals(
+        MoveCategory.fromNameEn("Physical")
+      ) &&
+      this.attackingPokemonStatus.statusAilment.equals(
+        StatusAilment.fromNameEn("Burn")
+      ) &&
+      this.attackingPokemonStatus.ability.id !== 62 // Guts negates burn reduction
+    ) {
+      minFinalDamage = roundOffIncluding5((minFinalDamage * 2048) / 4096);
+      maxFinalDamage = roundOffIncluding5((maxFinalDamage * 2048) / 4096);
+    }
+    console.log(
+      `×やけど 2048÷4096→五捨五超入: ${minFinalDamage} ${maxFinalDamage}`
+    );
+
+    // Item-based damage modifiers (Life Orb, Expert Belt, Damage-Reducing Berries)
     const itemRegistry = ItemEffectRegistry.getInstance();
     const itemDamageContext: ItemEffectContext = {
       attackingPokemon: this.attackingPokemonStatus,
@@ -919,24 +937,6 @@ export class CalculationResources {
     );
     console.log(
       `×Item damage modifier (AFTER_STAB)→五捨五超入: ${minFinalDamage} ${maxFinalDamage}`
-    );
-
-    // ×やけど 2048÷4096→五捨五超入
-    // Note: Guts (こんじょう, ID: 62) negates the burn attack reduction
-    if (
-      this.attackingPokemonStatus.move.category.equals(
-        MoveCategory.fromNameEn("Physical")
-      ) &&
-      this.attackingPokemonStatus.statusAilment.equals(
-        StatusAilment.fromNameEn("Burn")
-      ) &&
-      this.attackingPokemonStatus.ability.id !== 62 // Guts negates burn reduction
-    ) {
-      minFinalDamage = roundOffIncluding5((minFinalDamage * 2048) / 4096);
-      maxFinalDamage = roundOffIncluding5((maxFinalDamage * 2048) / 4096);
-    }
-    console.log(
-      `×やけど 2048÷4096→五捨五超入: ${minFinalDamage} ${maxFinalDamage}`
     );
 
     // ×【7】ダメージの補正値÷4096→五捨五超入

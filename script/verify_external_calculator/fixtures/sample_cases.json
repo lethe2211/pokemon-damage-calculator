@@ -1,0 +1,64 @@
+[
+  {
+    "attacker": {
+      "pokemon_name_jp": "ドラパルト",
+      "move_name_jp": "りゅうせいぐん",
+      "level": 50,
+      "ev": { "hp": 0, "attack": 0, "defense": 0, "sp_atk": 252, "sp_def": 0, "speed": 252 },
+      "iv": { "hp": 31, "attack": 31, "defense": 31, "sp_atk": 31, "sp_def": 31, "speed": 31 },
+      "nature": { "attack": 0.9, "defense": 1.0, "sp_atk": 1.1, "sp_def": 1.0, "speed": 1.0 },
+      "ability_name_jp": null,
+      "item_name_jp": null,
+      "stats_rank": { "attack": 0, "defense": 0, "sp_atk": 0, "sp_def": 0, "speed": 0 },
+      "is_critical": false,
+      "status_ailment": null,
+      "tera_type": null
+    },
+    "defender": {
+      "pokemon_name_jp": "サーフゴー",
+      "level": 50,
+      "ev": { "hp": 252, "attack": 0, "defense": 0, "sp_atk": 0, "sp_def": 0, "speed": 0 },
+      "iv": { "hp": 31, "attack": 31, "defense": 31, "sp_atk": 31, "sp_def": 31, "speed": 31 },
+      "nature": { "attack": 1.0, "defense": 1.0, "sp_atk": 1.0, "sp_def": 1.0, "speed": 1.0 },
+      "ability_name_jp": null,
+      "item_name_jp": null,
+      "stats_rank": { "attack": 0, "defense": 0, "sp_atk": 0, "sp_def": 0, "speed": 0 },
+      "status_ailment": null
+    },
+    "environment": {
+      "weather": null,
+      "terrain": null
+    }
+  },
+  {
+    "attacker": {
+      "pokemon_name_jp": "ガブリアス",
+      "move_name_jp": "げきりん",
+      "level": 50,
+      "ev": { "hp": 0, "attack": 252, "defense": 0, "sp_atk": 0, "sp_def": 0, "speed": 252 },
+      "iv": { "hp": 31, "attack": 31, "defense": 31, "sp_atk": 31, "sp_def": 31, "speed": 31 },
+      "nature": { "attack": 1.1, "defense": 1.0, "sp_atk": 0.9, "sp_def": 1.0, "speed": 1.0 },
+      "ability_name_jp": null,
+      "item_name_jp": null,
+      "stats_rank": { "attack": 0, "defense": 0, "sp_atk": 0, "sp_def": 0, "speed": 0 },
+      "is_critical": false,
+      "status_ailment": null,
+      "tera_type": null
+    },
+    "defender": {
+      "pokemon_name_jp": "カイリュー",
+      "level": 50,
+      "ev": { "hp": 252, "attack": 0, "defense": 0, "sp_atk": 0, "sp_def": 0, "speed": 0 },
+      "iv": { "hp": 31, "attack": 31, "defense": 31, "sp_atk": 31, "sp_def": 31, "speed": 31 },
+      "nature": { "attack": 1.0, "defense": 1.0, "sp_atk": 1.0, "sp_def": 1.0, "speed": 1.0 },
+      "ability_name_jp": null,
+      "item_name_jp": null,
+      "stats_rank": { "attack": 0, "defense": 0, "sp_atk": 0, "sp_def": 0, "speed": 0 },
+      "status_ailment": null
+    },
+    "environment": {
+      "weather": null,
+      "terrain": null
+    }
+  }
+]

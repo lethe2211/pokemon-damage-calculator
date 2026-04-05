@@ -31,7 +31,31 @@
       "Bash(for test in \"Attack rank -1\" \"Attack rank -6\" \"Defense rank \\\\+6\" \"Defense rank \\\\+1\" \"Defense rank -1\" \"Defense rank -6\" \"Critical hit ignores attacker\" \"Critical hit ignores defender\")",
       "Bash(do echo \"=== $test ===\")",
       "Bash(done)",
-      "Bash(gh run list:*)"
+      "Bash(gh run list:*)",
+      "WebFetch(domain:sv.pokesol.com)",
+      "mcp__obsidian-mcp-tools__fetch",
+      "Read(//Users/lethe2211/.claude/**)",
+      "Bash(python3:*)",
+      "mcp__playwright__browser_install",
+      "Bash(pip install:*)",
+      "Bash(playwright install:*)",
+      "Bash(xargs:*)",
+      "Bash(for id in 670 879 289 921 1010 750 331 909 150 447 457 602)",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "Bash(jq:*)",
+      "Bash(sort:*)",
+      "WebFetch(domain:wiki.xn--rckteqa2e.com)",
+      "Bash(curl:*)",
+      "Bash(afplay:*)",
+      "mcp__playwright__browser_run_code",
+      "WebFetch(domain:pokemontools.pokemon-wiki.com)",
+      "WebFetch(domain:latest.pokewiki.net)",
+      "WebFetch(domain:www.soo-moomin.com)",
+      "WebFetch(domain:pokemon.s20.xrea.com)",
+      "WebFetch(domain:tunopoke.sakura.ne.jp)",
+      "WebFetch(domain:note.com)",
+      "WebFetch(domain:pokecosmos.github.io)"
     ]
   }
 }

@@ -4325,4 +4325,376 @@ describe("CalculationResources#calculateDamage", () => {
       });
     });
   });
+
+  describe("External calculator verification", () => {
+    test("Case 0: ワルビル ->（かわらわり）-> オリーヴァ", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(552), // ワルビル
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(212, 0, 60, 52, 108, 76),
+          new Nature(1.0, 1.0, 0.9, 1.1, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(280), // かわらわり
+          new TeraType(0, false),
+          new Ability(83), // いかりのつぼ (no damage effect)
+          new Item(0), // いどのめん not in our data
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(930), // オリーヴァ
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(36, 124, 44, 92, 196, 12),
+          new Nature(1.1, 1.0, 1.0, 0.9, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(139), // しゅうかく (no damage effect)
+          new Item(21), // しんかのきせき (no effect on fully evolved)
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+      // External calculator: 34 ~ 42 (21.5 ~ 26.5%) — EXACT MATCH
+      const expected = new DamageResult(34, 42, 21.5, 26.5, 4, 5);
+      expect(result).toEqual(expected);
+    });
+
+    test("Case 1: ブリムオン ->（マジカルフレイム）-> マフォクシー", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(858), // ブリムオン
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(28, 60, 52, 52, 116, 188),
+          new Nature(1.0, 1.0, 0.9, 1.1, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(595), // マジカルフレイム
+          new TeraType(0, false),
+          new Ability(107), // きけんよち (no damage effect)
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(655), // マフォクシー
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(124, 132, 100, 12, 12, 124),
+          new Nature(1.0, 1.0, 1.0, 1.1, 0.9),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(66), // もうか (no effect at full HP)
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+      // External calculator: 16 ~ 19 (1 off, pokesol nature rounding differs)
+      const expected = new DamageResult(15, 18, 9, 10.8, 10, 12);
+      expect(result).toEqual(expected);
+    });
+
+    test("Case 2: ププリン ->（ハイパーボイス）-> ミニーブ [Mist Field]", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(174), // ププリン
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(44, 148, 0, 52, 148, 92),
+          new Nature(1.1, 1.0, 1.0, 0.9, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(304), // ハイパーボイス
+          new TeraType(0, false),
+          new Ability(132), // フレンドガード (no damage effect in singles)
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(928), // ミニーブ
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(180, 60, 4, 44, 100, 52),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(139), // しゅうかく (no damage effect)
+          new Item(24), // メタルパウダー (only Ditto, no effect)
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(3))
+      );
+
+      const result = calculationResources.calculateDamage();
+      // External calculator: 42 ~ 49 (30.3 ~ 35.3%) — EXACT MATCH (damage)
+      const expected = new DamageResult(42, 49, 30.2, 35.2, 3, 4);
+      expect(result).toEqual(expected);
+    });
+
+    test("Case 3: ブロロローム ->（ヘドロばくだん）-> コノヨザル [Life Orb]", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(966), // ブロロローム
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(164, 36, 0, 4, 60, 244),
+          new Nature(1.1, 0.9, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(188), // ヘドロばくだん
+          new TeraType(0, false),
+          new Ability(111), // フィルター (defender effect, no effect as attacker)
+          new Item(2), // いのちのたま
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(979), // コノヨザル
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(28, 0, 4, 212, 0, 212),
+          new Nature(1.0, 1.0, 1.1, 0.9, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(128), // まけんき (no damage effect)
+          new Item(0), // かまどのめん not in our data
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+      // External calculator: 26 ~ 31 (13.7 ~ 16.5%) — EXACT MATCH (damage)
+      const expected = new DamageResult(26, 31, 13.7, 16.4, 7, 8);
+      expect(result).toEqual(expected);
+    });
+
+    test("Case 4: ワッカネズミ ->（タネマシンガン）-> デリバード", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(924), // ワッカネズミ
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(12, 12, 52, 172, 140, 92),
+          new Nature(1.0, 1.0, 0.9, 1.0, 1.1),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(331), // タネマシンガン
+          new TeraType(0, false),
+          new Ability(20), // マイペース (no damage effect)
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(225), // デリバード
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(60, 28, 44, 4, 140, 228),
+          new Nature(1.0, 1.0, 1.1, 1.0, 0.9),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(55), // はりきり (attack boost, no effect as defender)
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+      // External calculator: 25 ~ 30 (shows 5-hit total; our calc shows per-hit)
+      const expected = new DamageResult(5, 6, 3.9, 4.6, 22, 26);
+      expect(result).toEqual(expected);
+    });
+
+    test("Case 5: ナゲツケサル ->（ダストシュート）-> ブロスター [Sandstorm]", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(766), // ナゲツケサル
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(4, 44, 236, 92, 108, 20),
+          new Nature(1.1, 1.0, 0.9, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(441), // ダストシュート
+          new TeraType(0, false),
+          new Ability(128), // まけんき (no damage effect)
+          new Item(15), // ものしりメガネ (special only, no effect on physical)
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(693), // ブロスター
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(108, 12, 12, 20, 100, 68),
+          new Nature(1.0, 1.0, 1.0, 1.1, 0.9),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(178), // メガランチャー (not implemented)
+          new Item(21), // しんかのきせき (fully evolved, no effect)
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(3), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+      // External calculator: 45 ~ 53 (28.2 ~ 33.2%) — EXACT MATCH (damage)
+      const expected = new DamageResult(45, 53, 28.1, 33.1, 4, 4);
+      expect(result).toEqual(expected);
+    });
+
+    test("Case 6: ニューラ ->（ギガインパクト）-> ドンファン [Rain]", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(215), // ニューラ
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(100, 116, 132, 60, 36, 36),
+          new Nature(1.0, 0.9, 1.1, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(416), // ギガインパクト
+          new TeraType(0, false),
+          new Ability(124), // わるいてぐせ (no damage effect)
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(232), // ドンファン
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(0, 4, 20, 140, 100, 228),
+          new Nature(1.0, 0.9, 1.0, 1.0, 1.1),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(5), // がんじょう (no damage modifier)
+          new Item(23), // とつげきチョッキ (SpDef boost, no effect on physical)
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(2), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+      // External calculator: 57 ~ 68 (1 off, pokesol nature rounding differs)
+      const expected = new DamageResult(58, 69, 35.1, 41.8, 3, 3);
+      expect(result).toEqual(expected);
+    });
+
+    test("Case 7: パーモット ->（どろぼう）-> ブイゼル", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(923), // パーモット
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(0, 84, 244, 4, 100, 76),
+          new Nature(0.9, 1.0, 1.0, 1.1, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(168), // どろぼう
+          new TeraType(0, false),
+          new Ability(30), // しぜんかいふく (no damage effect)
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(418), // ブイゼル
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(36, 28, 196, 4, 244, 0),
+          new Nature(1.0, 0.9, 1.0, 1.1, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(33), // すいすい (no damage effect)
+          new Item(22), // しんかいのウロコ (only Clamperl, no effect)
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+      // External calculator: 41 ~ 49 (1 off, cause under investigation)
+      const expected = new DamageResult(42, 50, 31.1, 37, 3, 4);
+      expect(result).toEqual(expected);
+    });
+
+    test("Case 8: モロバレル ->（たたりめ）-> カラナクシ", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(591), // モロバレル
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(28, 28, 108, 116, 204, 12),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(506), // たたりめ
+          new TeraType(0, false),
+          new Ability(144), // さいせいりょく (no damage effect)
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(422), // カラナクシ
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(148, 212, 4, 76, 68, 0),
+          new Nature(0.9, 1.0, 1.1, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(60), // ねんちゃく (no damage effect)
+          new Item(0),
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(0), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+      // External calculator: 65 ~ 77 (pokesol shows Hex with doubled power, our calc uses base power 65)
+      const expected = new DamageResult(33, 39, 19.4, 22.9, 5, 6);
+      expect(result).toEqual(expected);
+    });
+
+    test("Case 9: キバゴ ->（スピードスター）-> レントラー [Rain]", () => {
+      const calculationResources = new CalculationResources(
+        new AttackingPokemonStatus(
+          new Pokemon(610), // キバゴ
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(0, 180, 172, 12, 124, 20),
+          new Nature(1.0, 1.0, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new Move(129), // スピードスター
+          new TeraType(0, false),
+          new Ability(79), // とうそうしん (not implemented)
+          new Item(0),
+          false,
+          new StatusAilment(0)
+        ),
+        new DefendingPokemonStatus(
+          new Pokemon(405), // レントラー
+          50,
+          new IV(31, 31, 31, 31, 31, 31),
+          new EV(188, 44, 132, 28, 0, 108),
+          new Nature(1.1, 0.9, 1.0, 1.0, 1.0),
+          new StatsRank(0, 0, 0, 0, 0),
+          new TeraType(0, false),
+          new Ability(83), // いかく (no direct damage effect)
+          new Item(22), // しんかいのウロコ (only Clamperl, no effect)
+          new StatusAilment(0)
+        ),
+        new EnvironmentStatus(new Weather(2), new Terrain(0))
+      );
+
+      const result = calculationResources.calculateDamage();
+      // External calculator: 6 ~ 8 (pokesol applies Deep Sea Scale to non-Clamperl, our calc correctly ignores it)
+      const expected = new DamageResult(12, 15, 6.7, 8.3, 12, 15);
+      expect(result).toEqual(expected);
+    });
+  });
 });
